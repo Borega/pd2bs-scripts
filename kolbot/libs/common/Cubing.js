@@ -574,41 +574,41 @@ var Cubing = {
 
 					break;		
 				//PD2 Low Rune Stacks (3 Runes + Key)
-				case 689: //El > Eld
-				case 690: //Eld > Tir
-				case 691: //Tir > Nef
-				case 692: //Nef > Eth
-				case 693: //Eth > Ith
-				case 694: //Ith > Tal
-				case 695: //Tal > Ral
-				case 696: //Ral > Ort
-				case 697: //Ort > Thul
-				case 698: //Thul > Amn
-				case 699: //Amn > Sol
-				case 700: //Sol > Shael
-				case 701: //Shael > Dol
-				case 702: //Dol > Hel
-				case 703: //Hel > Io
-				case 704: //Io > Lum
-				case 705: //Lum > Ko
-				case 706: //Ko > Fal
-				case 707: //Fal > Lem
-				case 708: //Lem > Pul
+				case 683: //El > Eld
+				case 684: //Eld > Tir
+				case 685: //Tir > Nef
+				case 686: //Nef > Eth
+				case 687: //Eth > Ith
+				case 688: //Ith > Tal
+				case 689: //Tal > Ral
+				case 690: //Ral > Ort
+				case 691: //Ort > Thul
+				case 692: //Thul > Amn
+				case 693: //Amn > Sol
+				case 694: //Sol > Shael
+				case 695: //Shael > Dol
+				case 696: //Dol > Hel
+				case 697: //Hel > Io
+				case 698: //Io > Lum
+				case 699: //Lum > Ko
+				case 700: //Ko > Fal
+				case 701: //Fal > Lem
+				case 702: //Lem > Pul
 					this.recipes.push({Ingredients: [Config.Recipes[i][1], 543], Index: Recipe.Rune});
 					break;
 				//PD2 Mid/High Rune Stacks (2 Runes + Key)	
-				case 709: //Pul > Um
-				case 710: //Um > Mal
-				case 711: //Mal > Ist
-				case 712: //Ist > Gul
-				case 713: //Gul > Vex
-				case 714: //Vex > Ohm
-				case 715: //Ohm > Lo
-				case 716: //Lo > Sur
-				case 717: //Sur > Ber
-				case 718: //Ber > Jah
-				case 719: //Jah > Cham
-				case 720: //Cham > Zod
+				case 703: //Pul > Um
+				case 704: //Um > Mal
+				case 705: //Mal > Ist
+				case 706: //Ist > Gul
+				case 707: //Gul > Vex
+				case 708: //Vex > Ohm
+				case 709: //Ohm > Lo
+				case 710: //Lo > Sur
+				case 711: //Sur > Ber
+				case 712: //Ber > Jah
+				case 713: //Jah > Cham
+				case 714: //Cham > Zod
 					this.recipes.push({Ingredients: [Config.Recipes[i][1], 543], Index: Recipe.Rune});
 					break;
 			}
