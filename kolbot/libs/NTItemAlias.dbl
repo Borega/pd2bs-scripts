@@ -795,7 +795,7 @@ NTIPAliasClassID["r31s"] = 713;  NTIPAliasClassID["jahstack"] = 713;
 NTIPAliasClassID["r32s"] = 714;  NTIPAliasClassID["chamstack"] = 714;
 NTIPAliasClassID["r33s"] = 715;  NTIPAliasClassID["zodstack"] = 715;
 NTIPAliasClassID["wss"] = 659;  NTIPAliasClassID["worldstoneshard"] = 659;
-NTIPAliasClassID["lpb"] = 674;  NTIPAliasClassID["larzuk'spuzzlebox"] = 668;
+NTIPAliasClassID["lpb"] = 668;  NTIPAliasClassID["larzuk'spuzzlebox"] = 668;
 NTIPAliasClassID["vot"] = 722;  NTIPAliasClassID["visionofterror"] = 722;
 NTIPAliasClassID["pde"] = 723;  NTIPAliasClassID["puredemonicessence"] = 723;
 NTIPAliasClassID["bss"] = 724;  NTIPAliasClassID["blacksoulstone"] = 724;
