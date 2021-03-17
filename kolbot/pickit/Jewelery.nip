@@ -1,0 +1,18 @@
+[Type] == Ring 	&& [Quality] == Unique # [ItemMagicBonus] >= 40 																			//Nagel
+[Type] == Ring 	&& [Quality] == Unique # [ItemMaxManaPercent] >= 15 																		//SOJ
+[Type] == Ring 	&& [Quality] == Unique # [MaxHP] >= 50 && [MagicDamageReduction] == 15 && [ItemAbsorbFirePercent] >= 8 						//Perf Dwarf
+[Type] == Ring 	&& [Quality] == Unique # [MaxHP] >= 35 && [MagicDamageReduction] >= 12 && [ItemAbsorbFirePercent] >= 4 						//Dwarf
+[Type] == Ring	&& [Quality] == Unique # [Dexterity] >= 20 && [ToHit] >= 250 																//RAVEN FROST PERFECT
+[Type] == Ring	&& [Quality] == Unique # [Dexterity] >= 15 && [ToHit] >= 150 																//RAVEN FROST
+[Type] == Ring 	&& [Quality] == Unique # [NormalDamageReduction] >= 7 																		//Natures peace
+[Type] == Ring 	&& [Quality] == Unique # [ItemAbsorbLightPercent] >= 4 																		// Wisp
+[Type] == Ring 	&& [Quality] == Unique # [ItemAbsorbLightPercent] >= 6 && [ItemMagicBonus] >= 12 											// Perf Wisp
+[Type] == Ring 	&& [Quality] == Unique # [LifeLeech] >= 5 && [ItemAllSkills] == 1															//BUL-KATHOS' WEDDING BAND PERFECT
+[Type] == Ring 	&& [Quality] == Unique # [LifeLeech] >= 3 && [ItemAllSkills] == 1															//BUL-KATHOS' WEDDING BAND
+
+[Type] == Amulet && [Quality] == Unique # [LightResist] >= 35																				//Perf Highlords
+[Type] == Amulet && [Quality] == Unique # [LightResist] >= 25																				//Highlords
+[Type] == Amulet && [Quality] == Unique # [DefensiveAurasSkillTab] >= 1																		//SERAPH'S HYMN
+[Type] == Amulet && [Quality] == Unique # [ColdResist] >= 25																				//METALGRID
+[Type] == Amulet && [Quality] == Unique # [ItemAllSkills] == 2 && [FireResist] >= 30     													//MARA'S KALEIDOSCOPE PERFECT
+[Type] == Amulet && [Quality] == Unique # [ItemAllSkills] == 2 && [FireResist] >= 20     													//MARA'S KALEIDOSCOPE

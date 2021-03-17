@@ -1,0 +1,165 @@
+//UTILITY
+[Type] == Gold # [Gold] >= 1000
+//[Name] == ScrollofTownPortal 
+//[Name] == ScrollofIdentify
+
+//UBERS
+[Name] == KeyOfTerror	
+[Name] == KeyOfHate		
+[Name] == KeyOfDestruction	
+[Name] == KeyOfTerror 	
+[Name] == KeyOfHate 		
+[Name] == KeyOfDestruction 
+[name] == diablo'shorn
+[name] == mephisto'sbrain
+[name] == baal'seye
+
+//TOKENS
+[Name] == TwistedEssenceOfSuffering 	
+[Name] == ChargedEssenceOfHatred 	
+[Name] == BurningEssenceOfTerror 		
+[Name] == FesteringEssenceOfDestruction 	
+[Name] == TokenOfAbsolution 		
+
+//RUNES Unstacked (Probably not used in PD2
+//but doesn't hurt to keep them in 
+[Name] == ElRune 	
+[Name] == EldRune 
+[Name] == TirRune
+[Name] == NefRune 
+[Name] == EthRune 
+[Name] == IthRune
+[Name] == TalRune 
+[Name] == RalRune 
+[Name] == OrtRune
+[Name] == ThulRune 
+[Name] == AmnRune 
+[Name] == SolRune 
+[Name] == ShaelRune 
+[Name] == DolRune 
+[Name] == HelRune 
+[Name] == IoRune 
+[Name] == LumRune 
+[Name] == KoRune 
+[Name] == FalRune 
+[Name] == LemRune 
+[Name] == PulRune 	
+[Name] == UmRune 	
+[Name] == MalRune 
+[Name] == IstRune 	
+[Name] == GulRune 	
+[Name] == VexRune 
+[Name] == OhmRune 
+[Name] == LoRune 	
+[Name] == SurRune 	
+[Name] == BerRune 
+[Name] == JahRune 
+[Name] == ChamRune 	
+[Name] == ZodRune 	
+
+//RUNESTACKS
+[Name] == Elstack 	
+[Name] == Eldstack 
+[Name] == Tirstack
+[Name] == Nefstack
+[Name] == Ethstack 
+[Name] == Ithstack 
+[Name] == Talstack 
+[Name] == Ralstack 
+[Name] == Ortstack 
+[Name] == Thulstack 
+[Name] == Amnstack 
+[Name] == Solstack 
+[Name] == Shaelstack 
+[Name] == Dolstack 
+[Name] == Helstack 
+[Name] == Iostack 	
+[Name] == Lumstack 
+[Name] == Kostack 	
+[Name] == Falstack 
+[Name] == Lemstack 
+[Name] == Pulstack 
+[Name] == Umstack 	
+[Name] == Malstack 
+[Name] == Iststack 	
+[Name] == Gulstack 
+[Name] == Vexstack 
+[Name] == Ohmstack 	
+[Name] == Lostack 	
+[Name] == Surstack 
+[Name] == Berstack 
+[Name] == Jahstack 	
+[Name] == Chamstack 	
+[Name] == Zodstack 
+
+//GEMS
+//[Name] == ChippedAmethyst 	# # [MaxQuantity] == 1
+//[Name] == ChippedDiamond 		# # [MaxQuantity] == 1
+//[Name] == ChippedEmerald 		# # [MaxQuantity] == 1
+//[Name] == ChippedRuby 		# # [MaxQuantity] == 1
+//[Name] == ChippedSapphire 	# # [MaxQuantity] == 1
+//[Name] == ChippedSkull 		# # [MaxQuantity] == 1
+//[Name] == ChippedTopaz 		# # [MaxQuantity] == 1
+//[Name] == FlawedAmethyst 		# # [MaxQuantity] == 1
+//[Name] == FlawedDiamond 		# # [MaxQuantity] == 1
+//[Name] == FlawedEmerald 		# # [MaxQuantity] == 1
+//[Name] == FlawedRuby 			# # [MaxQuantity] == 1
+//[Name] == FlawedSapphire 		# # [MaxQuantity] == 1
+//[Name] == FlawedSkull 		# # [MaxQuantity] == 1
+//[Name] == FlawedTopaz 		# # [MaxQuantity] == 1
+//[Name] == Amethyst 			# # [MaxQuantity] == 2
+//[Name] == Diamond 			# # [MaxQuantity] == 1
+//[Name] == Emerald 			# # [MaxQuantity] == 1
+//[Name] == Ruby 				# # [MaxQuantity] == 2
+//[Name] == Skull 				# # [MaxQuantity] == 1
+//[Name] == Sapphire 			# # [MaxQuantity] == 2
+//[Name] == Topaz 				# # [MaxQuantity] == 1
+//[Name] == FlawlessAmethyst 	
+//[Name] == FlawlessDiamond 	
+//[Name] == FlawlessEmerald 	
+//[Name] == FlawlessRuby 		
+//[Name] == FlawlessSapphire 	
+//[Name] == FlawlessSkull 	
+//[Name] == FlawlessTopaz 	
+[Name] == PerfectAmethyst 
+[Name] == PerfectDiamond 	
+[Name] == PerfectEmerald 
+[Name] == PerfectRuby 		
+[Name] == PerfectSapphire 	
+[Name] == PerfectSkull 			
+[Name] == PerfectTopaz 		
+
+//GEMSTACKS
+[Name] == FlawlessAmethyststack 	
+[Name] == FlawlessDiamondstack 	
+[Name] == FlawlessEmeraldstack 	
+[Name] == FlawlessRubystack 	
+[Name] == FlawlessSapphirestack 	
+[Name] == FlawlessSkullstack 	
+[Name] == FlawlessTopazstack 	
+[Name] == PerfectAmethyststack 	
+[Name] == PerfectDiamondstack 	
+[Name] == PerfectEmeraldstack 	
+[Name] == PerfectRubystack 		
+[Name] == PerfectSapphirestack 	
+[Name] == PerfectSkullstack 	
+[Name] == PerfectTopazstack 	
+
+//POTIONS
+[Name] == SuperHealingPotion
+[Name] == SuperManaPotion
+[Name] == RejuvenationPotion
+[Name] == FullRejuvenationPotion
+
+//PD2 ITEMS
+[Name] == worldstoneshard
+[Name] == larzuk'spuzzlebox
+[Name] == visionofterror
+[Name] == puredemonicessence
+[Name] == blacksoulstone
+[Name] == primeevilsoul
+
+//MAPS
+//[Name] == tieronemap && [Quality] == Rare
+//[Name] == tiertwomap && [Quality] == Rare
+//[Name] == tierthreemap && [Quality] == Rare

@@ -1,0 +1,164 @@
+//UTILITY
+[Type] == Gold # [Gold] >= 7000
+//[Name] == ScrollofTownPortal 
+//[Name] == ScrollofIdentify
+
+//UBERS
+//[Name] == KeyOfTerror			# # [MaxQuantity] == 1
+//[Name] == KeyOfHate			# # [MaxQuantity] == 1
+//[Name] == KeyOfDestruction	# # [MaxQuantity] == 1
+//[Name] == KeyOfTerror 		# # [MaxQuantity] == 10
+//[Name] == KeyOfHate 			# # [MaxQuantity] == 10
+//[Name] == KeyOfDestruction 	# # [MaxQuantity] == 10
+//[Name] == MephistosBrain
+//[Name] == BaalsEye
+//[Name] == DiablosHorn
+
+//TOKENS
+[Name] == TwistedEssenceOfSuffering 		# # [MaxQuantity] == 2
+[Name] == ChargedEssenceOfHatred 			# # [MaxQuantity] == 2
+[Name] == BurningEssenceOfTerror 			# # [MaxQuantity] == 2
+[Name] == FesteringEssenceOfDestruction 	# # [MaxQuantity] == 2
+[Name] == TokenOfAbsolution 				# # [MaxQuantity] == 5
+
+//RUNES
+//[Name] == ElRune 	# # [MaxQuantity] == 1
+//[Name] == EldRune # # [MaxQuantity] == 1
+//[Name] == TirRune # # [MaxQuantity] == 1
+//[Name] == NefRune # # [MaxQuantity] == 1
+//[Name] == EthRune # # [MaxQuantity] == 1
+//[Name] == IthRune # # [MaxQuantity] == 1
+//[Name] == TalRune # # [MaxQuantity] == 50
+//[Name] == RalRune # # [MaxQuantity] == 50
+//[Name] == OrtRune # # [MaxQuantity] == 50
+//[Name] == ThulRune # # [MaxQuantity] == 50
+//[Name] == AmnRune # # [MaxQuantity] == 50
+//[Name] == SolRune # # [MaxQuantity] == 50
+//[Name] == ShaelRune # # [MaxQuantity] == 50
+//[Name] == DolRune # # [MaxQuantity] == 50
+//[Name] == HelRune # # [MaxQuantity] == 50
+//[Name] == IoRune 	# # [MaxQuantity] == 50
+//[Name] == LumRune # # [MaxQuantity] == 50
+//[Name] == KoRune 	# # [MaxQuantity] == 50
+//[Name] == FalRune # # [MaxQuantity] == 50
+[Name] == LemRune # # [MaxQuantity] == 50
+[Name] == PulRune 	# # [MaxQuantity] == 50
+[Name] == UmRune 	# # [MaxQuantity] == 50
+[Name] == MalRune 	# # [MaxQuantity] == 15
+[Name] == IstRune 	# # [MaxQuantity] == 50
+[Name] == GulRune 	# # [MaxQuantity] == 50
+[Name] == VexRune 	# # [MaxQuantity] == 50
+[Name] == OhmRune 	# # [MaxQuantity] == 50
+[Name] == LoRune 	# # [MaxQuantity] == 50
+[Name] == SurRune 	# # [MaxQuantity] == 50
+[Name] == BerRune 	# # [MaxQuantity] == 50
+[Name] == JahRune 	# # [MaxQuantity] == 10
+[Name] == ChamRune 	# # [MaxQuantity] == 10
+[Name] == ZodRune 	# # [MaxQuantity] == 10
+
+//RUNESTACKS
+//[Name] == Elstack 	# # [MaxQuantity] == 1
+//[Name] == Eldstack # # [MaxQuantity] == 1
+//[Name] == Tirstack # # [MaxQuantity] == 1
+//[Name] == Nefstack # # [MaxQuantity] == 1
+//[Name] == Ethstack # # [MaxQuantity] == 1
+//[Name] == Ithstack # # [MaxQuantity] == 1
+//[Name] == Talstack # # [MaxQuantity] == 1
+//[Name] == Ralstack # # [MaxQuantity] == 1
+//[Name] == Ortstack # # [MaxQuantity] == 1
+//[Name] == Thulstack # # [MaxQuantity] == 1
+//[Name] == Amnstack # # [MaxQuantity] == 1
+//[Name] == Solstack # # [MaxQuantity] == 1
+//[Name] == Shaelstack # # [MaxQuantity] == 1
+//[Name] == Dolstack # # [MaxQuantity] == 1
+//[Name] == Helstack # # [MaxQuantity] == 1
+//[Name] == Iostack 	# # [MaxQuantity] == 1
+//[Name] == Lumstack # # [MaxQuantity] == 1
+//[Name] == Kostack 	# # [MaxQuantity] == 1
+//[Name] == Falstack # # [MaxQuantity] == 1
+[Name] == Lemstack # # [MaxQuantity] == 10
+[Name] == Pulstack 	# # [MaxQuantity] == 10
+[Name] == Umstack 	# # [MaxQuantity] == 10
+[Name] == Malstack 	# # [MaxQuantity] == 10
+[Name] == Iststack 	# # [MaxQuantity] == 10
+[Name] == Gulstack 	# # [MaxQuantity] == 10
+[Name] == Vexstack 	# # [MaxQuantity] == 10
+[Name] == Ohmstack 	# # [MaxQuantity] == 10
+[Name] == Lostack 	# # [MaxQuantity] == 10
+[Name] == Surstack 	# # [MaxQuantity] == 10
+[Name] == Berstack 	# # [MaxQuantity] == 10
+[Name] == Jahstack 	# # [MaxQuantity] == 10
+[Name] == Chamstack 	# # [MaxQuantity] == 10
+[Name] == Zodstack 	# # [MaxQuantity] == 10
+
+//GEMS
+//[Name] == ChippedAmethyst 	# # [MaxQuantity] == 1
+//[Name] == ChippedDiamond 		# # [MaxQuantity] == 1
+//[Name] == ChippedEmerald 		# # [MaxQuantity] == 1
+//[Name] == ChippedRuby 		# # [MaxQuantity] == 1
+//[Name] == ChippedSapphire 	# # [MaxQuantity] == 1
+//[Name] == ChippedSkull 		# # [MaxQuantity] == 1
+//[Name] == ChippedTopaz 		# # [MaxQuantity] == 1
+//[Name] == FlawedAmethyst 		# # [MaxQuantity] == 1
+//[Name] == FlawedDiamond 		# # [MaxQuantity] == 1
+//[Name] == FlawedEmerald 		# # [MaxQuantity] == 1
+//[Name] == FlawedRuby 			# # [MaxQuantity] == 1
+//[Name] == FlawedSapphire 		# # [MaxQuantity] == 1
+//[Name] == FlawedSkull 		# # [MaxQuantity] == 1
+//[Name] == FlawedTopaz 		# # [MaxQuantity] == 1
+//[Name] == Amethyst 			# # [MaxQuantity] == 2
+//[Name] == Diamond 			# # [MaxQuantity] == 1
+//[Name] == Emerald 			# # [MaxQuantity] == 1
+//[Name] == Ruby 				# # [MaxQuantity] == 2
+//[Name] == Skull 				# # [MaxQuantity] == 1
+//[Name] == Sapphire 			# # [MaxQuantity] == 2
+//[Name] == Topaz 				# # [MaxQuantity] == 1
+//[Name] == FlawlessAmethyst 	# # [MaxQuantity] == 3
+//[Name] == FlawlessDiamond 	# # [MaxQuantity] == 3
+//[Name] == FlawlessEmerald 	# # [MaxQuantity] == 3
+//[Name] == FlawlessRuby 		# # [MaxQuantity] == 3
+//[Name] == FlawlessSapphire 	# # [MaxQuantity] == 3
+//[Name] == FlawlessSkull 		# # [MaxQuantity] == 3
+//[Name] == FlawlessTopaz 		# # [MaxQuantity] == 3
+[Name] == PerfectAmethyst 		# # [MaxQuantity] == 3
+[Name] == PerfectDiamond 		# # [MaxQuantity] == 3
+[Name] == PerfectEmerald 		# # [MaxQuantity] == 3
+[Name] == PerfectRuby 			# # [MaxQuantity] == 3
+[Name] == PerfectSapphire 		# # [MaxQuantity] == 3
+[Name] == PerfectSkull 			# # [MaxQuantity] == 3
+[Name] == PerfectTopaz 			# # [MaxQuantity] == 3
+
+//GEMSTACKS
+//[Name] == FlawlessAmethyststack 	# # [MaxQuantity] == 3
+//[Name] == FlawlessDiamondstack 	# # [MaxQuantity] == 3
+//[Name] == FlawlessEmeraldstack 	# # [MaxQuantity] == 3
+//[Name] == FlawlessRubystack 		# # [MaxQuantity] == 3
+//[Name] == FlawlessSapphirestack 	# # [MaxQuantity] == 3
+//[Name] == FlawlessSkullstack 		# # [MaxQuantity] == 3
+//[Name] == FlawlessTopazstack 		# # [MaxQuantity] == 3
+[Name] == PerfectAmethyststack 		# # [MaxQuantity] == 50
+[Name] == PerfectDiamondstack 		# # [MaxQuantity] == 50
+[Name] == PerfectEmeraldstack 		# # [MaxQuantity] == 50
+[Name] == PerfectRubystack 			# # [MaxQuantity] == 50
+[Name] == PerfectSapphirestack 		# # [MaxQuantity] == 50
+[Name] == PerfectSkullstack 			# # [MaxQuantity] == 50
+[Name] == PerfectTopazstack 			# # [MaxQuantity] == 50
+
+//POTIONS
+[Name] == SuperHealingPotion
+[Name] == SuperManaPotion
+[Name] == RejuvenationPotion
+[Name] == FullRejuvenationPotion
+
+//PD2 ITEMS
+[Name] == worldstoneshard
+[Name] == larzuk'spuzzlebox
+[Name] == visionofterror
+[Name] == puredemonicessence
+[Name] == blacksoulstone
+[Name] == primeevilsoul
+
+//MAPS
+//[Name] == tieronemap && [Quality] == Rare
+//[Name] == tiertwomap && [Quality] == Rare
+[Name] == tierthreemap && [Quality] == Rare

@@ -1,0 +1,56 @@
+//GLOVES
+[Name] == ChainGloves 			&& [Quality] == Unique && [Flag] != Ethereal # [ItemMagicBonus] >= 40																							//CHANCE GUARDS
+//[Name] == ChainGloves 		&& [Quality] == Unique && [Flag] != Ethereal # [ItemMagicBonus] >= 40 && [EnhancedDefense] >= 30																//CHANCE GUARDS PERFECT
+//[Name] == LightGauntlets 		&& [Quality] == Unique && [Flag] != Ethereal # [EnhancedDefense] >= 30 && [ManaRegen] >= 25																		//MAGEFIST PERFECT
+//[Name] == Gauntlets 			&& [Quality] == Unique && [Flag] != Ethereal # [EnhancedDefense] >= 20																							//FROSTBURN PERFECT
+//[Name] == VampireboneGloves 	&& [Quality] == Unique && [Flag] != Ethereal # [Strength] == 15 && [LifeLeech] >= 10 && [ItemHealAfterKill] >= 10 && [EnhancedDefense] >= 120					//DRACUL'S GRASP PERFECT
+//[Name] == VampireboneGloves 	&& [Quality] == Unique && [Flag] != Ethereal # [Strength] >= 10																									//DRACUL'S GRASP
+//[Name] == OgreGauntlets 		&& [Quality] == Unique && [Flag] != Ethereal # [EnhancedDamage] >= 60 && [Strength] >= 20 && [PlusDefense] >= 210												//STEELREND PERFECT
+//[Name] == OgreGauntlets 		&& [Quality] == Unique && [Flag] != Ethereal # [EnhancedDamage] >= 60 && [Strength] >= 20																		//STEELREND SEMI-PERFECT
+[Name] == OgreGauntlets 		&& [Quality] == Unique && [Flag] != Ethereal # [EnhancedDamage] >= 40 && [Strength] >= 15																		//STEELREND
+
+//BELTS
+[Name] == HeavyBelt 			&& [Quality] == Unique && [Flag] != Ethereal # [ItemMagicBonus] >= 40																							//GOLDWRAP PERFECT MF
+[Name] == WarBelt				&& [Quality] == Unique && [Flag] != Ethereal # [EnhancedDefense] >= 160																							//THUNDERGOD'S VIGOR
+//[Name] == SpiderwebSash 		&& [Quality] == Unique && [Flag] != Ethereal # [FCR] >= 10																										//ARACHNID MESH
+//[Name] == SpiderwebSash 		&& [Quality] == Unique && [Flag] != Ethereal # [FCR] >= 20																										//ARACHNID MESH PERF FCR
+//[Name] == VampirefangBelt 	&& [Quality] == Unique && [Flag] != Ethereal # [LifeLeech] >= 3																									//NOSFERATU'S COIL
+//[Name] == VampirefangBelt 	&& [Quality] == Unique && [Flag] != Ethereal # [LifeLeech] >= 6 && [Strength] >= 15																				//NOSFERATU'S COIL PERF
+//[Name] == MithrilCoil 		&& [Quality] == Unique && [Flag] != Ethereal # [DamageResist] >= 15																								//VERDUNGO'S HEARTY CORD
+//[Name] == MithrilCoil 		&& [Quality] == Unique && [Flag] != Ethereal # [DamageResist] >= 15	&& [Vitality] >= 40 																		//VERDUNGO'S HEARTY CORD
+//[Name] == MithrilCoil 		&& [Quality] == Unique && [Flag] != Ethereal # [Vitality] >= 40 																								//VERDUNGO'S HEARTY CORD
+//[Name] == MithrilCoil 		&& [Quality] == Unique && [Flag] != Ethereal # [DamageResist] >= 15	&& [Vitality] >= 40 && [HPRegen] >= 13 && [EnhancedDefense] >= 140 && [MaxStamina] >= 120 	//VERDUNGO'S HEARTY CORD PERFECT
+
+//BOOTS
+//[Name] == Boots 				&& [Quality] == Unique && [Flag] != Ethereal # [EnhancedDefense] >= 20																							//HOTSPUR PERFECT
+//[Name] == SharkskinBoots 		&& [Quality] == Unique && [Flag] != Ethereal # [EnhancedDefense] >= 210 && [MaxHP] >= 65																		//WATERWALK PERFECT
+[Name] == SharkskinBoots 		&& [Quality] == Unique && [Flag] != Ethereal # [MaxHP] >= 60																									//Waterwalk
+//[Name] == ScarabshellBoots 	&& [Quality] == Unique && [Flag] != Ethereal # [Strength] >= 15 && [Vitality] >= 15 && [PoisonResist] >= 70														//SANDSTORM TREK PERFECT
+//[Name] == ScarabshellBoots 	&& [Quality] == Unique && [Flag] == Ethereal # [Strength] >= 15 && [Vitality] >= 15 && [PoisonResist] >= 70														//ETH SANDSTORM TREK PERFECT
+[Name] == ScarabshellBoots 		&& [Quality] == Unique && [Flag] != Ethereal # [Strength] >= 15 && [Vitality] >= 15																				//SANDSTORM TREK
+//[Name] == ScarabshellBoots 	&& [Quality] == Unique && [Flag] == Ethereal # [Strength] >= 15 && [Vitality] >= 15																				//ETH SANDSTORM TREK
+[Name] == BoneweaveBoots 		&& [Quality] == Unique && [Flag] != Ethereal # [EnhancedDefense] >= 200 && [SkillSkeletonMastery] >= 2 && [Strength] >= 20										//MARROWWALK PERFECT
+//[Name] == MyrmidonGreaves 	&& [Quality] == Unique && [Flag] != Ethereal # [ShadowDisciplinesSkillTab] >= 2 && [Dexterity] >= 25 && [EnhancedDefense] >= 100								//SHADOW DANCER PERFECT
+[Name] == MyrmidonGreaves 		&& [Quality] == Unique && [Flag] != Ethereal # [ShadowDisciplinesSkillTab] >= 2 && [Dexterity] >= 25															//SHADOW DANCER
+//[Name] == BattleBoots 		&& [Quality] == Unique && [Flag] != Ethereal # [ItemMagicBonus] >= 50																							//WAR TRAVELER PERFECT MF
+//[Name] == BattleBoots 		&& [Quality] == Unique && [Flag] != Ethereal # [ItemMagicBonus] >= 40																							//WAR TRAVELER
+[Name] == WarBoots 				&& [Quality] == Unique && [Flag] != Ethereal # [EnhancedDefense] >= 200																							//GORE RIDER PERFECT
+[Name] == MeshBoots 			&& [Quality] == Unique && [Flag] != Ethereal # [EnhancedDefense] >= 190																							//SILKWEAVE PERFECT
+
+//ARMORS
+//[Name] == SerpentskinArmor 	&& [Quality] == Unique && [Flag] != Ethereal # [ColdResist] >= 30 && [MagicDamageReduction] >= 8																//SKIN OF THE VIPERMAGI PERFECT
+[Name] == SerpentskinArmor 		&& [Quality] == Unique && [Flag] != Ethereal # [ColdResist] >= 30																								//SKIN OF THE VIPERMAGI
+[Name] == DuskShroud 			&& [Quality] == Unique && [Flag] != Ethereal # [PassiveLtngMastery] >= 15 && ([SkillLightning] >= 3 || [SkillNova] >= 3)										//ORMUS' ROBES
+[Name] == DuskShroud 			&& [Quality] == Unique && [Flag] != Ethereal # [PassiveColdMastery] >= 15 && [SkillBlizzard] >= 3																//ORMUS' ROBES
+[Name] == DuskShroud 			&& [Quality] == Unique && [Flag] != Ethereal # [PassiveFireMastery] >= 15 && [SkillFireball] >= 3																//ORMUS' ROBES
+[Name] == SacredArmor 			&& [Quality] == Unique # [Strength] >= 20 && [FireResist] >= 20																									//TYREAL'S MIGHT
+
+//SHIELDS
+
+
+
+
+[Name] == Jewel 				&& [Quality] == Unique # [PassiveColdMastery] >= 5 && [PassiveColdPierce] >= 5														//RAINBOW FACET COLD
+[Name] == Jewel 				&& [Quality] == Unique # [PassiveFireMastery] >= 5 && [PassiveFirePierce] >= 5														//RAINBOW FACET FIRE
+[Name] == Jewel 				&& [Quality] == Unique # [PassiveLtngMastery] >= 5 && [PassiveLtngPierce] >= 5														//RAINBOW FACET LIGHT
+[Name] == GrandCharm 			&& [Quality] == Unique # [ItemMagicBonus] >= 40	

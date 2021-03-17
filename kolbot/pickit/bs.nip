@@ -1,0 +1,55 @@
+[Name] == greaterhealingpotion
+[Name] == superhealingpotion
+
+[Name] == greatermanapotion
+[Name] == supermanapotion
+
+[Name] == rejuvenationpotion
+[Name] == fullrejuvenationpotion
+
+
+[quality] == unique && [class] == normal
+[quality] == set && [class] == normal
+[quality] == unique && [class] == exceptional
+[quality] == set && [class] == exceptional
+[quality] == unique && [class] == elite
+[quality] == set && [class] == elite
+
+[Type] == Jewel 		&& [Quality] == Rare 
+//[Type] == Jewel 		&& [Quality] == magic 
+[Type] == Ring 			&& [Quality] == rare
+[Type] == Amulet 		&& [Quality] == rare
+
+[Type] == Ring 			&& [Quality] == set
+[Type] == Amulet 		&& [Quality] == set
+[Type] == Shield 		&& [Quality] == set
+[Type] == Gloves 		&& [Quality] == set
+[Type] == Boots 		&& [Quality] == set
+[Type] == Belt 			&& [Quality] == set
+[Type] == Helm 			&& [Quality] == set
+[Type] == Circlet 		&& [Quality] == set
+[Type] == Armor 		&& [Quality] == set
+
+[Type] == Sword 		&& [Quality] == set
+[Type] == Mace 			&& [Quality] == set
+[Type] == Scepter 		&& [Quality] == set
+[Type] == Knife 		&& [Quality] == set
+[Type] == Axe 			&& [Quality] == set
+
+[Type] == Jewel 		&& [Quality] == unique 
+
+[Type] == Ring 			&& [Quality] == unique
+[Type] == Amulet 		&& [Quality] == unique
+[Type] == Shield 		&& [Quality] == unique
+[Type] == Gloves 		&& [Quality] == unique
+[Type] == Boots 		&& [Quality] == unique
+[Type] == Belt 			&& [Quality] == unique
+[Type] == Helm 			&& [Quality] == unique
+[Type] == Circlet 		&& [Quality] == unique
+[Type] == Armor 		&& [Quality] == unique
+
+[Type] == Sword 		&& [Quality] == unique
+[Type] == Mace 			&& [Quality] == unique
+[Type] == Scepter 		&& [Quality] == unique
+[Type] == Knife 		&& [Quality] == unique
+[Type] == Axe 			&& [Quality] == unique
