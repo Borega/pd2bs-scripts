@@ -422,11 +422,33 @@ var Precast = new function () {
 				else {
 					count = 1;
 					
-				}							
+				}	
+				break;
 			case 85: // Blood Golem
 			case 94: // Fire Golem
+				var mastery = me.getSkill(79, 1);
 				minion = 3;
-
+				if (mastery >= 5 && mastery < 10 ) {
+					count = 2;
+					
+				}
+				else if (mastery >= 10 && mastery < 15) {
+					count = 3;
+					
+				}
+				else if (mastery >= 15 && mastery < 20) {
+					count = 4;
+					
+				}
+				else if (mastery >= 20) {
+					count = 5;
+					
+				}	
+				else {
+					count = 1;
+					
+				}
+			
 				break;
 			case 221: // Raven
 				minion = 10;
