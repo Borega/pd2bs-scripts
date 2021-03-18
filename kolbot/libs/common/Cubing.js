@@ -860,7 +860,7 @@ IngredientLoop:
 
 		
 		// PD2 - Validate & Quantity Check Low Rune Stack
-		if (unit.classid >= 689 && unit.classid <= 708) {
+		if (unit.classid >= 683 && unit.classid <= 702) {
 			if(!Config.MinRuneStack && unit.getStat(70) >= 3){
 				return true;
 			} else if (unit.getStat(70) >= Config.MinRuneStack + 3) {
@@ -869,7 +869,7 @@ IngredientLoop:
 		}
 		
 		// PD2 - Validate & Quantity Check Mid/High Rune Stack
-		if (unit.classid >= 709 && unit.classid <= 720) {
+		if (unit.classid >= 703 && unit.classid <= 714) {
 			if(!Config.MinRuneStack && unit.getStat(70) >= 2){
 				return true;
 			} else if (unit.getStat(70) >= Config.MinRuneStack + 2) {
