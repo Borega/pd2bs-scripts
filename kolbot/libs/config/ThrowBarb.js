@@ -371,7 +371,52 @@ function LoadConfig() {
 	/* Cubing config. All recipe names are available in Templates/Cubing.txt. For item names/classids check NTItemAlias.dbl
 	 * The format is Config.Recipes.push([recipe_name, item_name_or_classid, etherealness]). Etherealness is optional and only applies to some recipes.
 	 */
-	Config.Cubing = false; // Set to true to enable cubing.
+	Config.Cubing = true; // Set to true to enable cubing.
+	Config.MinRuneStack = 0; // PD2 - Minimum Amount of runes to always keep in stack (So you don't use up all your low runes)
+
+	Config.Recipes.push([Recipe.Gem, 669]); // Make Perfect Amethyst from stack
+	Config.Recipes.push([Recipe.Gem, 671]); // Make Perfect Topaz from stack
+	Config.Recipes.push([Recipe.Gem, 673]); // Make Perfect Sapphire from stack
+	Config.Recipes.push([Recipe.Gem, 675]); // Make Perfect Emerald from stack
+	Config.Recipes.push([Recipe.Gem, 677]); // Make Perfect Ruby from stack
+	Config.Recipes.push([Recipe.Gem, 679]); // Make Perfect Diamond from stack
+	Config.Recipes.push([Recipe.Gem, 681]); // Make Perfect Skull from stack
+
+	//PD2 Low Rune Rune Stacks (3 Runes + Key)
+	Config.Recipes.push([Recipe.Rune, 683]); //El > Eld
+	Config.Recipes.push([Recipe.Rune, 684]); //Eld > Tir
+	Config.Recipes.push([Recipe.Rune, 685]); //Tir > Nef
+	Config.Recipes.push([Recipe.Rune, 686]); //Nef > Eth
+	Config.Recipes.push([Recipe.Rune, 687]); //Eth > Ith
+	Config.Recipes.push([Recipe.Rune, 688]); //Ith > Tal
+	Config.Recipes.push([Recipe.Rune, 689]); //Tal > Ral
+	Config.Recipes.push([Recipe.Rune, 690]); //Ral > Ort
+	Config.Recipes.push([Recipe.Rune, 691]); //Ort > Thul
+	Config.Recipes.push([Recipe.Rune, 692]); //Thul > Amn
+	Config.Recipes.push([Recipe.Rune, 693]); //Amn > Sol
+	Config.Recipes.push([Recipe.Rune, 694]); //Sol > Shael
+	Config.Recipes.push([Recipe.Rune, 695]); //Shael > Dol
+	Config.Recipes.push([Recipe.Rune, 696]); //Dol > Hel
+	Config.Recipes.push([Recipe.Rune, 697]); //Hel > Io
+	Config.Recipes.push([Recipe.Rune, 698]); //Io > Lum
+	Config.Recipes.push([Recipe.Rune, 699]); //Lum > Ko
+	Config.Recipes.push([Recipe.Rune, 700]); //Ko > Fal
+	Config.Recipes.push([Recipe.Rune, 701]); //Fal > Lem
+	Config.Recipes.push([Recipe.Rune, 702]); //Lem > Pul
+
+	//PD2 Low Mid/High Rune Stacks (2 Runes + Key)
+	Config.Recipes.push([Recipe.Rune, 703]); //Pul > Um
+	//Config.Recipes.push([Recipe.Rune, 704]); //Um > Mal
+	//Config.Recipes.push([Recipe.Rune, 705]); //Mal > Ist
+	//Config.Recipes.push([Recipe.Rune, 706]); //Ist > Gul
+	//Config.Recipes.push([Recipe.Rune, 707]); //Gul > Vex
+	//Config.Recipes.push([Recipe.Rune, 708]); //Vex > Ohm
+	//Config.Recipes.push([Recipe.Rune, 709]); //Ohm > Lo
+	//Config.Recipes.push([Recipe.Rune, 710]); //Lo > Sur
+	//Config.Recipes.push([Recipe.Rune, 711]); //Sur > Ber
+	//Config.Recipes.push([Recipe.Rune, 712]); //Ber > Jah
+	//Config.Recipes.push([Recipe.Rune, 713]); //Jah > Cham
+	//Config.Recipes.push([Recipe.Rune, 714]); //Cham > Zod
 
 	// Ingredients for the following recipes will be auto-picked, for classids check libs/NTItemAlias.dbl
 
