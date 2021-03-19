@@ -1421,6 +1421,8 @@ AuraLoop: // Skip monsters with auras
 		this.elements = ["physical", "fire", "lightning", "magic", "cold", "poison", "none"];
 
 		switch (skillId) {
+		case 56: //Meteor
+			return "none";
 		case 74: // Corpse Explosion
 		case 144: // Concentrate
 		case 147: // Frenzy
