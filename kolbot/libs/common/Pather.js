@@ -56,7 +56,7 @@ var NodeAction = {
 	// Open chests while pathing
 	popChests: function () {
 		if (!!Config.OpenChests) {
-			Misc.openChests(10);
+			Misc.openChests(20);
 		}
 	},
 
@@ -123,7 +123,7 @@ var Pather = {
 	lastPortalTick: 0,
 
 	useTeleport: function () {
-		return this.teleport && !Config.NoTele && !me.getState(139) && !me.getState(140) && !me.inTown && !([3, 73, 121, 57, 60].indexOf(me.area) > -1 &&[1, 2].indexOf(me.diff) > -1)&&((me.classid === 1 && me.getSkill(54, 1)) || me.getStat(97, 54));
+		return this.teleport && !Config.NoTele && !me.getState(139) && !me.getState(140) && !me.inTown && ((me.classid === 1 && me.getSkill(54, 1)) || me.getStat(97, 54));
 	},
 
 	/*
@@ -507,11 +507,38 @@ ModeLoop:
 		var useTeleport = this.useTeleport();
 
 		if (offX === undefined) {
-			offX = 0;
+if (me.classid != 3)// not paladin
+			{
+				if (unit.type === 1) //is monster
+				{
+					offX = 5; //prevent sorc & similar teleporting on top of the target
+				}
+				else
+				{
+					offX = 0;
+				}
+			}
+			else
+			{
+				offX = 0;
+			}
 		}
 
 		if (offY === undefined) {
-			offY = 0;
+			if (me.classid != 3)
+			{
+				if (unit.type === 1)
+				{
+					offY = 5; //prevent sorc & similar teleporting on top of the target
+				}
+				else
+				{
+					offY = 0;
+				}
+			}
+			else
+			{
+				offY = 0;
 		}
 
 		if (clearPath === undefined) {
