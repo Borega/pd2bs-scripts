@@ -507,7 +507,7 @@ ModeLoop:
 		var useTeleport = this.useTeleport();
 
 		if (offX === undefined) {
-if (me.classid != 3)// not paladin
+			if (me.classid != 3)// not paladin
 			{
 				if (unit.type === 1) //is monster
 				{
@@ -540,7 +540,7 @@ if (me.classid != 3)// not paladin
 			{
 				offY = 0;
 		}
-
+		}
 		if (clearPath === undefined) {
 			clearPath = false;
 		}
