@@ -311,6 +311,7 @@ function LoadConfig() {
 	Config.PickitFiles.push("Magic.nip");
 	Config.PickitFiles.push("Jewelery.nip");
 	Config.PickitFiles.push("New.nip");
+	Config.PickitFiles.push("redix.nip");
 	Config.PickRange = 40; // Pick radius
 	Config.FastPick = false; // Check and pick items between attacks
 	Config.ManualPlayPick = false; // If set to true and D2BotMap entry script is used, will enable picking in manual play.
