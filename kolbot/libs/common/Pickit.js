@@ -303,7 +303,7 @@ MainLoop:
 						return true;
 					case 529: // Scroll of Town Portal
 					case 530: // Scroll of Identify
-						print("ÿc7Picked up " + stats.color + stats.name + " ÿc7(" + Town.checkScrolls(stats.classid === 529 ? "tbk" : "ibk") + "/20)");
+						print("ÿc7Picked up " + stats.color + stats.name + " ÿc7(" + Town.checkScrolls(stats.classid === 529 ? "tbk" : "ibk") + "/50)");
 
 						return true;
 					}
