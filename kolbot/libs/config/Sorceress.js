@@ -54,7 +54,7 @@ function LoadConfig() {
 	Scripts.Cows = false;
 
 	// *** act 2 ***
-	Scripts.StonyTomb = true;
+	Scripts.StonyTomb = false;
         Config.StonyTomb.ClearType = 0; // 0xF = skip normal, 0x7 = champions/bosses, 0 = all
 	Scripts.MaggotLair = false;
 		Config.MaggotLair.ClearType = 0; // 0xF = skip normal, 0x7 = champions/bosses, 0 = all
