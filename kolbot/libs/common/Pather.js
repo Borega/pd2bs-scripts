@@ -123,7 +123,7 @@ var Pather = {
 	lastPortalTick: 0,
 
 	useTeleport: function () {
-		return this.teleport && !Config.NoTele && !me.getState(139) && !me.getState(140) && !me.inTown && ((me.classid === 1 && me.getSkill(54, 1)) || me.getStat(97, 54));
+		return this.teleport && !Config.NoTele && !me.getState(139) && !me.getState(140) && !me.inTown && !([3, 73, 121, 57, 60].indexOf(me.area) > -1 &&[1, 2].indexOf(me.diff) > -1)&&((me.classid === 1 && me.getSkill(54, 1)) || me.getStat(97, 54));
 	},
 
 	/*
