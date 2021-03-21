@@ -444,8 +444,10 @@ var Precast = new function () {
 
 				break;
 			case 247: // Grizzly
+				if(Config.GrizzlyCount){
+					count = Config.GrizzlyCount;
+				}
 				minion = 15;
-
 				break;
 			case 268: // Shadow Warrior
 			case 279: // Shadow Master
