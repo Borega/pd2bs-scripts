@@ -3,7 +3,7 @@
 *	@author		kolton, D3STROY3R
 *	@desc		handle out of game operations like creating characters/accounts, maintaining profile datafiles, d2bot# logging etc.
 */
-var gameserver = "gs 3"; //Enter the gameserver you'd like to use here, change to "" to use any;
+var gameserver = ""; //Enter the gameserver you'd like to use here, Example: "gs 1"
 
 var D2Bot = {
 	handle: 0,
