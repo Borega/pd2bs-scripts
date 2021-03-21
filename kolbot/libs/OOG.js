@@ -3,6 +3,7 @@
 *	@author		kolton, D3STROY3R
 *	@desc		handle out of game operations like creating characters/accounts, maintaining profile datafiles, d2bot# logging etc.
 */
+var gameserver = "gs 3"; //Enter the gameserver you'd like to use here, change to "" to use any;
 
 var D2Bot = {
 	handle: 0,
@@ -633,7 +634,7 @@ MainLoop:
 
 		ControlAction.setText(1, 432, 162, 158, 20, name);
 		ControlAction.setText(1, 432, 217, 158, 20, pass);
-		//ControlAction.setText(1,432,268,333,20, "gs 3");
+		ControlAction.setText(1,432,268,333,20, gameserver);
 
 		switch (diff) {
 		case "Normal":
