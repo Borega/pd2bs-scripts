@@ -404,7 +404,7 @@
 [Name] == SwirlingCrystal 	&& [Quality] == Set 										//TAL RASHA'S LIDLESS EYE
 [Name] == DeathMask 		&& [Quality] == Set											//TAL RASHA'S HORADRIC CREST
 [Name] == LacqueredPlate 	&& [Quality] == Set											//TAL RASHA'S GUARDIANSHIP
-[Type] == Amulet 			&& [Quality] == Set 										//TAL RASHA'S ADJUCATION
+[name] == Amulet 			&& [Quality] == Set # [lightresist] == 33					//TAL RASHA'S ADJUCATION
 [Name] == MeshBelt 			&& [Quality] == Set											//TAL RASHA'S FINE-SPUN CLOTH
 
 //TRANG-OUL'S AVATAR
