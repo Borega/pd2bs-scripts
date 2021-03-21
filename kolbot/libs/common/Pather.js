@@ -56,7 +56,7 @@ var NodeAction = {
 	// Open chests while pathing
 	popChests: function () {
 		if (!!Config.OpenChests) {
-			Misc.openChests(20);
+			Misc.openChests(10);
 		}
 	},
 
@@ -121,9 +121,10 @@ var Pather = {
 	wpAreas: [1, 3, 4, 5, 6, 27, 29, 32, 35, 40, 48, 42, 57, 43, 44, 52, 74, 46, 75, 76, 77, 78, 79, 80, 81, 83, 101, 103, 106, 107, 109, 111, 112, 113, 115, 123, 117, 118, 129],
 	recursion: true,
 	lastPortalTick: 0,
+	
 
 	useTeleport: function () {
-		return this.teleport && !Config.NoTele && !me.getState(139) && !me.getState(140) && !me.inTown && !([3, 73, 121, 57, 60].indexOf(me.area) > -1 &&[1, 2].indexOf(me.diff) > -1)&&((me.classid === 1 && me.getSkill(54, 1)) || me.getStat(97, 54));
+		return this.teleport && this.teleCheck() && !Config.NoTele && !me.getState(139) && !me.getState(140) && !me.getState(121) && !me.inTown && !([3, 73, 121, 57, 60].indexOf(me.area) > -1 &&[1, 2].indexOf(me.diff) > -1);
 	},
 
 	/*
@@ -134,6 +135,21 @@ var Pather = {
 		clearPath - kill monsters while moving
 		pop - remove last node
 	*/
+	teleCheck: function() {
+			var classes = [1, 2, 5],
+				teleSkills = [54, 367, 370],
+				mySkills = me.getSkill(4);
+				
+		if (classes.indexOf(me.classid) > -1) {
+				for (var i = 0; i < mySkills.length; i++) {
+					if (teleSkills.indexOf(mySkills[i][0]) > -1) {
+							return true;
+					}
+				}
+			}
+		return false;
+		},
+		
 	moveTo: function (x, y, retry, clearPath, pop) {
 		if (me.dead) { // Abort if dead
 			return false;
@@ -148,7 +164,7 @@ var Pather = {
 				me.cancel();
 			}
 		}
-
+		
 		if (getDistance(me, x, y) < 2) {
 			return true;
 		}
@@ -172,9 +188,9 @@ var Pather = {
 		if (pop === undefined) {
 			pop = false;
 		}
-
+		
 		useTeleport = this.useTeleport();
-
+		
 		/* Disabling getPath optimizations, they are causing desync -- noah
 		// Teleport without calling getPath if the spot is close enough
 		if (useTeleport && getDistance(me, x, y) <= this.teleDistance) {
@@ -208,10 +224,11 @@ var Pather = {
 		}
 
 		while (path.length > 0) {
+			useTeleport = this.useTeleport();
 			if (me.dead) { // Abort if dead
 				return false;
 			}
-
+			
 			for (i = 0; i < this.cancelFlags.length; i += 1) {
 				if (getUIFlag(this.cancelFlags[i])) {
 					me.cancel();
@@ -233,7 +250,7 @@ var Pather = {
 						node.y = adjustedNode[1];
 					}
 				}
-
+					
 				if (useTeleport ? this.teleportTo(node.x, node.y) : this.walkTo(node.x, node.y, (fail > 0 || me.inTown) ? 2 : 4)) {
 					if (!me.inTown) {
 						if (this.recursion) {
@@ -247,7 +264,6 @@ var Pather = {
 
 							this.recursion = true;
 						}
-
 						Misc.townCheck();
 					}
 				} else {
@@ -316,19 +332,37 @@ var Pather = {
 		}
 
 MainLoop:
+
+		var skillToUse;
+		switch(me.classid){
+			case 1:
+				skillToUse = 54;
+				
+				break;
+			case 2:
+				skillToUse = 367;
+				
+				break;
+			case 5:
+				skillToUse = 370;
+				
+				break;
+		}
+
 		for (i = 0; i < 3; i += 1) {
 			if (Config.PacketCasting) {
-				Skill.setSkill(54, 0);
+				Skill.setSkill(skillToUse, 0);
 				Packet.castSkill(0, x, y);
 			} else {
-				Skill.cast(54, 0, x, y);
+				Skill.cast(skillToUse, 0, x, y);
 			}
+
 
 			tick = getTickCount();
 
 			while (getTickCount() - tick < Math.max(500, me.ping * 2 + 200)) {
 				if (getDistance(me.x, me.y, x, y) < maxRange) {
-					return true;
+						return true;
 				}
 
 				delay(10);
@@ -507,40 +541,31 @@ ModeLoop:
 		var useTeleport = this.useTeleport();
 
 		if (offX === undefined) {
-			if (me.classid != 3)// not paladin
+			if (me.classid != 3) // not paladin
 			{
 				if (unit.type === 1) //is monster
 				{
 					offX = 5; //prevent sorc & similar teleporting on top of the target
-				}
-				else
-				{
+				} else {
 					offX = 0;
 				}
-			}
-			else
-			{
+			} else {
 				offX = 0;
 			}
 		}
 
 		if (offY === undefined) {
-			if (me.classid != 3)
-			{
-				if (unit.type === 1)
-				{
+			if (me.classid != 3) {
+				if (unit.type === 1) {
 					offY = 5; //prevent sorc & similar teleporting on top of the target
-				}
-				else
-				{
+				} else {
 					offY = 0;
 				}
-			}
-			else
-			{
+			} else {
 				offY = 0;
+			}
 		}
-		}
+
 		if (clearPath === undefined) {
 			clearPath = false;
 		}
