@@ -1050,7 +1050,7 @@ IngredientLoop:
 				if (items) {
 					for (j = 0; j < items.length; j += 1) {
 						Storage.Inventory.MoveTo(items[j]);
- 						result = Pickit.checkItem(items[j]);
+ 				/*		result = Pickit.checkItem(items[j]);
 
 						switch (result.result) {
 						case 0:
@@ -1067,7 +1067,7 @@ IngredientLoop:
 							CraftingSystem.update(items[j]);
 
 							break;
-						} 
+						} */
 					}
 				}
 
