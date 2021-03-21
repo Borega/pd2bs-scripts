@@ -594,7 +594,6 @@ function LoadConfig() {
 
 	Config.ExplodeCorpses = 0; // Explode corpses. Use skill number or 0 to disable. 74 = Corpse Explosion, 83 = Poison Explosion
 	Config.Golem = "None"; // Golem. 0 or "None" = don't summon, 1 or "Clay" = Clay Golem, 2 or "Blood" = Blood Golem, 3 or "Fire" = Fire Golem
-	Config.GolemCount = -1; //Number of golems to summon
 	Config.Skeletons = 0; // Number of skeletons to raise. Set to "max" to auto detect, set to 0 to disable.
 	Config.SkeletonMages = 0; // Number of skeleton mages to raise. Set to "max" to auto detect, set to 0 to disable.
 	Config.Revives = 0; // Number of revives to raise. Set to "max" to auto detect, set to 0 to disable.

@@ -403,9 +403,24 @@ var Precast = new function () {
 			case 75: // Clay Golem
 			case 85: // Blood Golem
 			case 94: // Fire Golem
-				if(Config.GolemCount){
-					count = Config.GolemCount;
+				var mastery = me.getSkill(79, 0);
+				
+				if (mastery >= 20 ) {
+					count = 5;
 				}
+				else if (mastery >= 15) {
+					count = 4;
+				}
+				else if (mastery >= 10) {
+					count = 3;
+				}
+				else if (mastery >= 5) {
+					count = 2;
+				}	
+				else {
+					count = 1;
+				}
+				
 				minion = 3;
 				break;
 			case 221: // Raven
