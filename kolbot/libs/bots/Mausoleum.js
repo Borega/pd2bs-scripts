@@ -9,14 +9,12 @@ function Mausoleum() {
 	Pather.useWaypoint(3);
 	Precast.doPrecast(true);
 
-			Pather.teleport = false;
 	if (!Pather.moveToExit(17, true)) {
 		throw new Error("Failed to move to Burial Grounds");
 	}
 
-			Pather.teleport = true;
 	if (Config.Mausoleum.KillBloodRaven) {
-		Pather.moveToPreset(17, 1, 872);
+		Pather.moveToPreset(17, 1, 957);
 		Attack.kill(getLocaleString(3111)); // Blood Raven
 		Pickit.pickItems();
 	}
@@ -25,7 +23,7 @@ function Mausoleum() {
 		throw new Error("Failed to move to Mausoleum");
 	}
 
-	Attack.clearLevel(Config.Mausoleum.ClearType);
+	Attack.clearLevel(Config.ClearType);
 
 	if (Config.Mausoleum.ClearCrypt) {
 		// Crypt exit is... awkward
