@@ -14,7 +14,8 @@ function LoadConfig() {
 	 */
 
 	// User addon script. Read the description in libs/bots/UserAddon.js
-	Scripts.UserAddon = false; // !!!YOU MUST SET THIS TO FALSE IF YOU WANT TO RUN BOSS/AREA SCRIPTS!!!
+	Scripts.UserAddon = true; // !!!YOU MUST SET THIS TO FALSE IF YOU WANT TO RUN BOSS/AREA SCRIPTS!!!
+	Scripts.Manual = false; //Set to true if you want to use "Manual.js" during manual play
 
 	// Battle orders script - Use this for 2+ characters (for example BO barb + sorc)
 	Scripts.BattleOrders = false;
@@ -270,11 +271,11 @@ function LoadConfig() {
 	 * 1 = item is unlocked and will be dropped, stashed or sold.
 	 * If you don't change the default values, the bot won't stash items.
 	 */
-	Config.Inventory[0] = [0,1,1,1,1,1,1,1,1,1];
-    Config.Inventory[1] = [0,1,1,1,1,1,1,1,1,1];
-    Config.Inventory[2] = [0,1,1,1,1,1,1,1,1,1];
-    Config.Inventory[3] = [0,1,1,1,1,1,1,1,1,1];
-    Config.Inventory[4] = [0,0,0,0,0,0,0,0,0,0];
+	Config.Inventory[0] = [1,1,1,1,1,1,1,1,1,0];
+    Config.Inventory[1] = [1,1,1,1,1,1,1,1,1,0];
+    Config.Inventory[2] = [1,1,1,1,1,1,1,1,1,0];
+    Config.Inventory[3] = [1,1,1,1,1,1,1,1,1,0];
+    Config.Inventory[4] = [1,1,1,1,1,1,1,1,1,0];
     Config.Inventory[5] = [0,0,0,0,0,0,0,0,0,0];
     Config.Inventory[6] = [0,0,0,0,0,0,0,0,0,0];
     Config.Inventory[7] = [0,0,0,0,0,0,0,0,0,0];
@@ -300,14 +301,7 @@ function LoadConfig() {
 
 	// Pickit config. Default folder is kolbot/pickit.
 	Config.PickitFiles.push("kolton.nip");
-	Config.PickitFiles.push("Unid.nip");
-	Config.PickitFiles.push("White.nip");
-	Config.PickitFiles.push("Set.nip");
-	Config.PickitFiles.push("Rare.nip");
-	Config.PickitFiles.push("Misc.nip");
-	Config.PickitFiles.push("Magic.nip");
-	Config.PickitFiles.push("Jewelery.nip");
-	Config.PickitFiles.push("New.nip");
+	Config.PickitFiles.push("redix.nip");
 	Config.PickRange = 40; // Pick radius
 	Config.FastPick = false; // Check and pick items between attacks
 	Config.ManualPlayPick = false; // If set to true and D2BotMap entry script is used, will enable picking in manual play.
