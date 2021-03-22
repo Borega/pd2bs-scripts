@@ -1049,25 +1049,31 @@ IngredientLoop:
 
 				if (items) {
 					for (j = 0; j < items.length; j += 1) {
-						Storage.Inventory.MoveTo(items[j]);
- 				/*		result = Pickit.checkItem(items[j]);
+						
+						if(this.validIngredients.indexOf(items[j].classid)){
+							Storage.Inventory.MoveTo(items[j]);
+						} else {
+							result = Pickit.checkItem(items[j]);
+							
+							switch (result.result) {
+							case 0:
+							if(!items[j].classid == 549){
+								Misc.itemLogger("Dropped", items[j], "doCubing");
+								items[j].drop();
+							}
 
-						switch (result.result) {
-						case 0:
-							Misc.itemLogger("Dropped", items[j], "doCubing");
-							items[j].drop();
+								break;
+							case 1:
+								Misc.itemLogger("Cubing Kept", items[j]);
+								Misc.logItem("Cubing Kept", items[j], result.line);
 
-							break;
-						case 1:
-							Misc.itemLogger("Cubing Kept", items[j]);
-							Misc.logItem("Cubing Kept", items[j], result.line);
+								break;
+							case 5: // Crafting System
+								CraftingSystem.update(items[j]);
 
-							break;
-						case 5: // Crafting System
-							CraftingSystem.update(items[j]);
-
-							break;
-						} */
+								break;
+							} 
+						}
 					}
 				}
 
