@@ -124,7 +124,7 @@ var Pather = {
 	
 
 	useTeleport: function () {
-		return this.teleport && this.teleCheck() && !Config.NoTele && !me.getState(139) && !me.getState(140) && !me.getState(121) && !me.inTown && !([3, 73, 121, 57, 60].indexOf(me.area) > -1 &&[1, 2].indexOf(me.diff) > -1);
+		return this.teleport && this.teleCheck() > -1 && !Config.NoTele && !me.getState(139) && !me.getState(140) && !me.getState(121) && !me.inTown && !([3, 73, 121, 57, 60].indexOf(me.area) > -1 &&[1, 2].indexOf(me.diff) > -1);
 	},
 
 	/*
@@ -135,20 +135,63 @@ var Pather = {
 		clearPath - kill monsters while moving
 		pop - remove last node
 	*/
+	
 	teleCheck: function() {
-			var classes = [1, 2, 5],
-				teleSkills = [54, 367, 370],
-				mySkills = me.getSkill(4);
+		
+		var teleSkills = [54, 367, 370],
+		mySkills = me.getSkill(4);
 				
-		if (classes.indexOf(me.classid) > -1) {
-				for (var i = 0; i < mySkills.length; i++) {
-					if (teleSkills.indexOf(mySkills[i][0]) > -1) {
-							return true;
-					}
+		for (var i = 0; i < mySkills.length; i++) {
+			if (teleSkills.indexOf(mySkills[i][0]) > -1) {
+					return mySkills[i][0];
+			}
+		}
+		return -1;
+		},
+	
+	countCharges: function () {
+		var teleItems = this.findTeleItems();
+			for (var i = 0; i < teleItems.length; i++){
+				if (teleItems[i].skill === 54){
+					return teleItems[i].charges;
 				}
 			}
-		return false;
-		},
+		return -1;	
+	},
+	
+	findTeleItems: function () {
+		
+		var teleItems = [];
+
+		var i, stats,
+			item = me.getItem(-1, 1); // Get equipped item
+
+		if (item) {
+			do {
+				stats = item.getStat(-2);
+
+				if (stats.hasOwnProperty(204)) {
+					if (stats[204] instanceof Array) {
+						for (i = 0; i < stats[204].length; i += 1) {
+							if (stats[204][i] !== undefined) {
+								teleItems.push({
+									skill: stats[204][i].skill,
+									charges: stats[204][i].charges,
+								});
+							}
+						}
+					} else {
+						teleItems.push({
+							skill: stats[204].skill,
+							charges: stats[204].charges,
+						});
+					}
+				}
+			} while (item.getNext());
+		}
+
+		return teleItems;
+	},
 		
 	moveTo: function (x, y, retry, clearPath, pop) {
 		if (me.dead) { // Abort if dead
@@ -165,6 +208,7 @@ var Pather = {
 			}
 		}
 		
+
 		if (getDistance(me, x, y) < 2) {
 			return true;
 		}
@@ -190,6 +234,7 @@ var Pather = {
 		}
 		
 		useTeleport = this.useTeleport();
+		
 		
 		/* Disabling getPath optimizations, they are causing desync -- noah
 		// Teleport without calling getPath if the spot is close enough
@@ -229,6 +274,7 @@ var Pather = {
 				return false;
 			}
 			
+
 			for (i = 0; i < this.cancelFlags.length; i += 1) {
 				if (getUIFlag(this.cancelFlags[i])) {
 					me.cancel();
@@ -250,7 +296,8 @@ var Pather = {
 						node.y = adjustedNode[1];
 					}
 				}
-					
+				
+				
 				if (useTeleport ? this.teleportTo(node.x, node.y) : this.walkTo(node.x, node.y, (fail > 0 || me.inTown) ? 2 : 4)) {
 					if (!me.inTown) {
 						if (this.recursion) {
@@ -336,15 +383,9 @@ MainLoop:
 		var skillToUse;
 		switch(me.classid){
 			case 1:
-				skillToUse = 54;
-				
-				break;
 			case 2:
-				skillToUse = 367;
-				
-				break;
 			case 5:
-				skillToUse = 370;
+				skillToUse = this.teleCheck();
 				
 				break;
 		}
@@ -354,7 +395,11 @@ MainLoop:
 				Skill.setSkill(skillToUse, 0);
 				Packet.castSkill(0, x, y);
 			} else {
-				Skill.cast(skillToUse, 0, x, y);
+				if(this.countCharges()){
+					me.castChargedSkill(54, x, y);
+				} else {
+					Skill.cast(skillToUse, 0, x, y);
+				}
 			}
 
 
