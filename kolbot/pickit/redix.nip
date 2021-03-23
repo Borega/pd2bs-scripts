@@ -512,12 +512,6 @@
 [type] == dungeon
 [type] >= t1map && [type] <= t3map
 
-//Or if you want just specific tiers:
-//[name] >= t11 && [name] <= t13 //Just Tier One Maps
-//[name] >= t21 && [name] <= t24 //Just Tier Two Maps
-//[name] >= t31 && [name] <= t35 //Just Tier Three Maps
-
-
 
 ///////////MAGIC.NIP
 //////CHARMS AND STUFF
