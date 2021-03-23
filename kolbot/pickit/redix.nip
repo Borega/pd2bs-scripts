@@ -510,7 +510,7 @@
 
 //MAPS
 [type] == dungeon
-[type] == map
+[type] >= t1map && [type] <= t3map
 
 //Or if you want just specific tiers:
 //[name] >= t11 && [name] <= t13 //Just Tier One Maps
