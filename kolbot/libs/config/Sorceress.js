@@ -556,10 +556,10 @@ function LoadConfig() {
 	 * Skills MUST be POSITIVE numbers. For reference see ...\kolbot\sdk\skills.txt
 	 */
 	Config.AttackSkill[0] = -1; // Preattack skill.
-	Config.AttackSkill[1] = 376; // Primary skill to bosses.
-	Config.AttackSkill[2] = 47; // Primary untimed skill to bosses. Keep at -1 if Config.AttackSkill[1] is untimed skill.
-	Config.AttackSkill[3] = 376; // Primary skill to others.
-	Config.AttackSkill[4] = 47; // Primary untimed skill to others. Keep at -1 if Config.AttackSkill[3] is untimed skill.
+	Config.AttackSkill[1] = -1; // Primary skill to bosses.
+	Config.AttackSkill[2] = -1; // Primary untimed skill to bosses. Keep at -1 if Config.AttackSkill[1] is untimed skill.
+	Config.AttackSkill[3] = -1; // Primary skill to others.
+	Config.AttackSkill[4] = -1; // Primary untimed skill to others. Keep at -1 if Config.AttackSkill[3] is untimed skill.
 	Config.AttackSkill[5] = -1; // Secondary skill if monster is immune to primary.
 	Config.AttackSkill[6] = -1; // Secondary untimed skill if monster is immune to primary untimed.
 

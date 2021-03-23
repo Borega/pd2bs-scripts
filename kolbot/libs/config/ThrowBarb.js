@@ -554,9 +554,9 @@ function LoadConfig() {
 	 * Skills MUST be POSITIVE numbers. For reference see ...\kolbot\sdk\skills.txt
 	 */
 	Config.AttackSkill[0] = -1; // Preattack skill.
-	Config.AttackSkill[1] = 140; // Primary skill for bosses.
+	Config.AttackSkill[1] = -1; // Primary skill for bosses.
 	Config.AttackSkill[2] = -1; // Backup/Immune skill for bosses.
-	Config.AttackSkill[3] = 140; // Primary skill for others.
+	Config.AttackSkill[3] = -1; // Primary skill for others.
 	Config.AttackSkill[4] = -1; // Backup/Immune skill for others.
 
 	// Low mana skills - these will be used if main skills can't be cast.
