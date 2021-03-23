@@ -25,7 +25,7 @@ Read the original Kolbot NIP file guide here: https://github.com/blizzhackers/pi
 ### D2BS keeps crashing! What do I do?
 
 There's a wide variety of reasons D2BS crashes, some of the more common fixes are:
-- Make sure your PD2BS is up to date
+- Make sure your PD2BS is up to date, click `About` in your PD2Bot manager to check for updates
 - Set administrator rights to both `D2Bot.exe` and `game.exe`
 - Set Compatibility for `D2Bot.exe` and `game.exe` to Windows 7
 - Turn off A/V detection for `D2Bot.exe`, `D2M.dll`, and `D2BS.dll`
