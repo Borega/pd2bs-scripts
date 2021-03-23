@@ -401,7 +401,7 @@ MainLoop:
 
 	// Timed skills
 	isTimed: function (skillId) {
-		return [15, 25, 27, 51, 59, 62, 121, 225, 223, 228, 229, 234, 244, 247, 249, 250, 256, 268, 275, 277, 279, 376, 383].indexOf(skillId) > -1;
+		return [15, 25, 27, 51, 59, 62, 121, 225, 223, 228, 229, 234, 244, 247, 249, 250, 256, 268, 275, 277, 279, 364, 376, 383].indexOf(skillId) > -1;
 	},
 
 	// Wereform skill check
