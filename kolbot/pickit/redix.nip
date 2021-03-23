@@ -462,7 +462,6 @@
 
 
 //GEMS
-
 [Name] == flawlessamethyst
 [Name] == flawlessdiamond 	
 [Name] == flawlessemerald 
@@ -507,24 +506,12 @@
 [Name] == puredemonicessence
 [Name] == blacksoulstone
 [Name] == primeevilsoul
-[name] == larzuk'spuzzlebox && [quality] == unique
-
+[name] == larzuk'spuzzlebox
 
 //MAPS
-[Name] == tieronemap 
-[Name] == tiertwomap 
-[Name] == tierthreemap 
-
-
-
-
-
-
-
-
-
-
-
+[name] >= t11 && [name] <= t13 //All Tier One Maps
+[name] >= t21 && [name] <= t24 //All Tier Two Maps
+[name] >= t31 && [name] <= t42 //All Tier Three Maps
 
 
 ///////////MAGIC.NIP
