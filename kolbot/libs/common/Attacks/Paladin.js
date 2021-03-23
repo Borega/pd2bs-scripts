@@ -8,8 +8,10 @@ var ClassAttack = {
 	
 	holyNova: function(unit){
 		if(me.getSkill(364, 1) && (!me.getState(121) || !Skill.isTimed(364))){
-			if(getDistance(me, unit) < 20){
-				Skill.cast(364, 1);
+			if(me.mp > me.mpmax / 3) {
+				if(getDistance(me, unit) < 20){
+					Skill.cast(364, 1);
+				}
 			}
 		}
 	},
