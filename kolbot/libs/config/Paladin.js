@@ -591,6 +591,7 @@ function LoadConfig() {
 	Config.Wereform = false; // 0 / false - don't shapeshift, 1 / "Werewolf" - change to werewolf, 2 / "Werebear" - change to werebear
 
 	// Class specific config
+	Config.UseHolyNova = true;
 	Config.AvoidDolls = false; // Try to attack dolls from a greater distance with hammerdins.
 	Config.Vigor = true; // Swith to Vigor when running
 	Config.Charge = true; // Use Charge when running
