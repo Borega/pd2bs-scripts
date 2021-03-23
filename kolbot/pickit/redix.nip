@@ -509,9 +509,14 @@
 [name] == larzuk'spuzzlebox
 
 //MAPS
-[name] >= t11 && [name] <= t13 //All Tier One Maps
-[name] >= t21 && [name] <= t24 //All Tier Two Maps
-[name] >= t31 && [name] <= t42 //All Tier Three Maps
+[type] == dungeon
+[type] == map
+
+//Or if you want just specific tiers:
+//[name] >= t11 && [name] <= t13 //Just Tier One Maps
+//[name] >= t21 && [name] <= t24 //Just Tier Two Maps
+//[name] >= t31 && [name] <= t35 //Just Tier Three Maps
+
 
 
 ///////////MAGIC.NIP

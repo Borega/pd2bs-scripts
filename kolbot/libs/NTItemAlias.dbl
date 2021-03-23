@@ -101,6 +101,7 @@ NTIPAliasType["sapphire"] = 100;
 NTIPAliasType["topaz"] = 101;
 NTIPAliasType["skull"] = 102;
 NTIPAliasType["map"] = 106;
+NTIPAliasType["dungeon"] = 109;
 
 var NTIPAliasClassID = {};
 NTIPAliasClassID["hax"] = 0;    NTIPAliasClassID["handaxe"] = 0;
