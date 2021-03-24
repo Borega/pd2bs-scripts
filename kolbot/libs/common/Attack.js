@@ -1038,7 +1038,12 @@ var Attack = {
 
 		var i, unit,
 			list = [],
-			ids = ["chest", "chest3", "weaponrack", "armorstand"];
+			ids = ["chest", "loose rock", "hidden stash", "loose boulder", "corpseonstick", "casket", "armorstand", "weaponrack",
+                "holeanim", "tomb2", "tomb3", "roguecorpse", "ratnest", "corpse", "goo pile", "largeurn", "urn", "chest3", "jug", "skeleton",
+                "guardcorpse", "sarcophagus", "object2", "cocoon", "basket", "stash", "hollow log", "hungskeleton", "pillar", "skullpile",
+                "skull pile", "bonechest", "woodchestl", "woodchestr", "burialchestr", "burialchestl",
+                "explodingchest", "chestl", "chestr", "groundtomb", "deadperson",
+                "deadperson2", "evilurn", "tomb1l", "tomb3l", "groundtombl"];
 
 		unit = getUnit(2);
 
