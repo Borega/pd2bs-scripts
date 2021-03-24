@@ -102,7 +102,7 @@ NTIPAliasType["topaz"] = 101;
 NTIPAliasType["skull"] = 102;
 NTIPAliasType["t1map"] = 106;
 NTIPAliasType["t2map"] = 107;
-NTIPAliasType["t2map"] = 108;
+NTIPAliasType["t3map"] = 108;
 NTIPAliasType["dungeon"] = 109;
 
 var NTIPAliasClassID = {};
