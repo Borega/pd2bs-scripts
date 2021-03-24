@@ -100,6 +100,10 @@ NTIPAliasType["ruby"] = 99;
 NTIPAliasType["sapphire"] = 100;
 NTIPAliasType["topaz"] = 101;
 NTIPAliasType["skull"] = 102;
+NTIPAliasType["t1map"] = 106;
+NTIPAliasType["t2map"] = 107;
+NTIPAliasType["t2map"] = 108;
+NTIPAliasType["dungeon"] = 109;
 
 var NTIPAliasClassID = {};
 NTIPAliasClassID["hax"] = 0;    NTIPAliasClassID["handaxe"] = 0;
@@ -761,6 +765,36 @@ NTIPAliasClassID["ceh"] = 655;  NTIPAliasClassID["chargedessenceofhatred"] = 655
 NTIPAliasClassID["bet"] = 656;  NTIPAliasClassID["burningessenceofterror"] = 656;
 NTIPAliasClassID["fed"] = 657;  NTIPAliasClassID["festeringessenceofdestruction"] = 657;
 NTIPAliasClassID["std"] = 658;  NTIPAliasClassID["standardofheroes"] = 658;
+
+//PD2 Other
+NTIPAliasClassID["wss"]  = 659;  NTIPAliasClassID["worldstoneshard"] = 659;
+NTIPAliasClassID["imma"] = 660;  NTIPAliasClassID["arcaneorb"] = 660;
+NTIPAliasClassID["imrn"] = 661;  NTIPAliasClassID["demoniccube"] = 661;
+NTIPAliasClassID["imra"] = 662;  NTIPAliasClassID["zakarumorb"] = 662;
+NTIPAliasClassID["rera"] = 663;  NTIPAliasClassID["horadrimorb"] = 663;
+NTIPAliasClassID["scou"] = 664;  NTIPAliasClassID["orbofdestruction"] = 664;
+NTIPAliasClassID["upma"] = 665;  NTIPAliasClassID["angelicorb"] = 665;
+NTIPAliasClassID["upmp"] = 666;  NTIPAliasClassID["cartographersorb"] = 666;
+NTIPAliasClassID["scrb"] = 667;  NTIPAliasClassID["horadrimscarab"] = 667;
+NTIPAliasClassID["lpb"]  = 668;  NTIPAliasClassID["larzuk'spuzzlebox"] = 668;
+
+//PD2 Gems
+NTIPAliasClassID["gzvs"] = 669;  NTIPAliasClassID["flawlessamethyststack"] = 669;
+NTIPAliasClassID["gpvs"] = 670;  NTIPAliasClassID["perfectamethyststack"] = 670;
+NTIPAliasClassID["glys"] = 671;  NTIPAliasClassID["flawlesstopazstack"] = 671;
+NTIPAliasClassID["gpys"] = 672;  NTIPAliasClassID["perfecttopazstack"] = 672;
+NTIPAliasClassID["glbs"] = 673;  NTIPAliasClassID["flawlesssapphirestack"] = 673;
+NTIPAliasClassID["gpbs"] = 674;  NTIPAliasClassID["perfectsapphirestack"] = 674;
+NTIPAliasClassID["glgs"] = 675;  NTIPAliasClassID["flawlessemeraldstack"] = 675;
+NTIPAliasClassID["gpgs"] = 676;  NTIPAliasClassID["perfectemeraldstack"] = 676;
+NTIPAliasClassID["glrs"] = 677;  NTIPAliasClassID["flawlessrubystack"] = 677;
+NTIPAliasClassID["gprs"] = 678;  NTIPAliasClassID["perfectrubystack"] = 678;
+NTIPAliasClassID["glws"] = 679;  NTIPAliasClassID["flawlessdiamondstack"] = 679;
+NTIPAliasClassID["gpws"] = 680;  NTIPAliasClassID["perfectdiamondstack"] = 680;
+NTIPAliasClassID["skls"] = 681;  NTIPAliasClassID["flawlessskullstack"] = 681;
+NTIPAliasClassID["skzs"] = 682;  NTIPAliasClassID["perfectskullstack"] = 682;
+
+//PD2 Runes
 NTIPAliasClassID["r01s"] = 683;  NTIPAliasClassID["elstack"] = 683;
 NTIPAliasClassID["r02s"] = 684;  NTIPAliasClassID["eldstack"] = 684;
 NTIPAliasClassID["r03s"] = 685;  NTIPAliasClassID["tirstack"] = 685;
@@ -794,29 +828,29 @@ NTIPAliasClassID["r30s"] = 712;  NTIPAliasClassID["berstack"] = 712;
 NTIPAliasClassID["r31s"] = 713;  NTIPAliasClassID["jahstack"] = 713;
 NTIPAliasClassID["r32s"] = 714;  NTIPAliasClassID["chamstack"] = 714;
 NTIPAliasClassID["r33s"] = 715;  NTIPAliasClassID["zodstack"] = 715;
-NTIPAliasClassID["wss"] = 659;  NTIPAliasClassID["worldstoneshard"] = 659;
-NTIPAliasClassID["lpb"] = 668;  NTIPAliasClassID["larzuk'spuzzlebox"] = 668;
-NTIPAliasClassID["vot"] = 722;  NTIPAliasClassID["visionofterror"] = 722;
-NTIPAliasClassID["pde"] = 723;  NTIPAliasClassID["puredemonicessence"] = 723;
-NTIPAliasClassID["bss"] = 724;  NTIPAliasClassID["blacksoulstone"] = 724;
-NTIPAliasClassID["pes"] = 725;  NTIPAliasClassID["primeevilsoul"] = 725;
-NTIPAliasClassID["gzvs"] = 669;  NTIPAliasClassID["flawlessamethyststack"] = 669;
-NTIPAliasClassID["gpvs"] = 670;  NTIPAliasClassID["perfectamethyststack"] = 670;
-NTIPAliasClassID["glys"] = 671;  NTIPAliasClassID["flawlesstopazstack"] = 671;
-NTIPAliasClassID["gpys"] = 672;  NTIPAliasClassID["perfecttopazstack"] = 672;
-NTIPAliasClassID["glbs"] = 673;  NTIPAliasClassID["flawlesssapphirestack"] = 673;
-NTIPAliasClassID["gpbs"] = 674;  NTIPAliasClassID["perfectsapphirestack"] = 674;
-NTIPAliasClassID["glgs"] = 675;  NTIPAliasClassID["flawlessemeraldstack"] = 675;
-NTIPAliasClassID["gpgs"] = 676;  NTIPAliasClassID["perfectemeraldstack"] = 676;
-NTIPAliasClassID["glrs"] = 677;  NTIPAliasClassID["flawlessrubystack"] = 677;
-NTIPAliasClassID["gprs"] = 678;  NTIPAliasClassID["perfectrubystack"] = 678;
-NTIPAliasClassID["glws"] = 679;  NTIPAliasClassID["flawlessdiamondstack"] = 679;
-NTIPAliasClassID["gpws"] = 680;  NTIPAliasClassID["perfectdiamondstack"] = 680;
-NTIPAliasClassID["skls"] = 681;  NTIPAliasClassID["flawlessskullstack"] = 681;
-NTIPAliasClassID["skzs"] = 682;  NTIPAliasClassID["perfectskullstack"] = 682;
-NTIPAliasClassID["map1"] = 665;  NTIPAliasClassID["tieronemap"] = 665;
-NTIPAliasClassID["map2"] = 667;  NTIPAliasClassID["tiertwomap"] = 667;
-NTIPAliasClassID["map3"] = 666;  NTIPAliasClassID["tierthreemap"] = 666;
+
+//PD2 DClone Ingredients
+NTIPAliasClassID["dcma"] = 716;  NTIPAliasClassID["visionofterror"] = 716;
+NTIPAliasClassID["dcbl"] = 717;  NTIPAliasClassID["puredemonicessence"] = 717;
+NTIPAliasClassID["dcho"] = 718;  NTIPAliasClassID["blacksoulstone"] = 718;
+NTIPAliasClassID["dcso"] = 719;  NTIPAliasClassID["primeevilsoul"] = 719;
+
+//PD2 Maps
+NTIPAliasClassID["t11"] = 720;  NTIPAliasClassID["ruinsofviz"] = 720;
+NTIPAliasClassID["t12"] = 721;  NTIPAliasClassID["horazon'smemory"] = 721;
+NTIPAliasClassID["t13"] = 722;  NTIPAliasClassID["bastionskeep"] = 722;
+NTIPAliasClassID["t21"] = 723;  NTIPAliasClassID["phlegethon"] = 723;
+NTIPAliasClassID["t22"] = 724;  NTIPAliasClassID["torajanjungle"] = 724;
+NTIPAliasClassID["t23"] = 725;  NTIPAliasClassID["arreatbattlefield"] = 725;
+NTIPAliasClassID["t24"] = 726;  NTIPAliasClassID["bloodmoon"] = 726;
+NTIPAliasClassID["t31"] = 727;  NTIPAliasClassID["riverofblood"] = 727;
+NTIPAliasClassID["t32"] = 728;  NTIPAliasClassID["throneofinsanity"] = 728;
+NTIPAliasClassID["t33"] = 729;  NTIPAliasClassID["sewersofharrogath"] = 729;
+NTIPAliasClassID["t34"] = 730;  NTIPAliasClassID["ancestraltrial"] = 730;
+NTIPAliasClassID["t35"] = 731;  NTIPAliasClassID["tombofzoltunkulle"] = 731;
+NTIPAliasClassID["t41"] = 732;  NTIPAliasClassID["cathedraloflight"] = 732;
+NTIPAliasClassID["t43"] = 733;  NTIPAliasClassID["plainsoftorment"] = 733;
+NTIPAliasClassID["t42"] = 734;  NTIPAliasClassID["desertmap"] = 734;
 
 var NTIPAliasClass = {};
 NTIPAliasClass["normal"] = 0;

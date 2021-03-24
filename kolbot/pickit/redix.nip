@@ -462,7 +462,6 @@
 
 
 //GEMS
-
 [Name] == flawlessamethyst
 [Name] == flawlessdiamond 	
 [Name] == flawlessemerald 
@@ -507,25 +506,25 @@
 [Name] == puredemonicessence
 [Name] == blacksoulstone
 [Name] == primeevilsoul
-[name] == larzuk'spuzzlebox && [quality] == unique
-
+[name] == larzuk'spuzzlebox
 
 //MAPS
-[Name] == tieronemap 
-[Name] == tiertwomap 
-[Name] == tierthreemap 
+[type] == dungeon
+[type] >= t1map && [type] <= t3map //Pick up all maps
 
-
-
-
-
-
-
-
-
-
-
-
+//Or if you want specific maps:
+// [name] == ruinsofviz
+// [name] == horazon'smemory
+// [name] == bastionskeep
+// [name] == phlegethon
+// [name] == torajanjungle
+// [name] == arreatbattlefield
+// [name] == bloodmoon
+// [name] == riverofblood
+// [name] == throneofinsanity
+// [name] == sewersofharrogath
+// [name] == ancestraltrial
+// [name] == tombofzoltunkulle
 
 ///////////MAGIC.NIP
 //////CHARMS AND STUFF

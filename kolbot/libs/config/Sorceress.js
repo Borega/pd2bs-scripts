@@ -15,6 +15,7 @@ function LoadConfig() {
 
 	// User addon script. Read the description in libs/bots/UserAddon.js
 	Scripts.UserAddon = true; // !!!YOU MUST SET THIS TO FALSE IF YOU WANT TO RUN BOSS/AREA SCRIPTS!!!
+	Scripts.Manual = false; //Set to true if you want to use "Manual.js" during manual play
 
 	// Battle orders script - Use this for 2+ characters (for example BO barb + sorc)
 	Scripts.BattleOrders = false;
@@ -273,11 +274,11 @@ function LoadConfig() {
 	 * 1 = item is unlocked and will be dropped, stashed or sold.
 	 * If you don't change the default values, the bot won't stash items.
 	 */
-    Config.Inventory[0] = [1,1,1,1,1,1,1,1,1,0];
+	Config.Inventory[0] = [1,1,1,1,1,1,1,1,1,0];
     Config.Inventory[1] = [1,1,1,1,1,1,1,1,1,0];
-    Config.Inventory[2] = [1,1,1,1,1,1,1,1,0,0];
+    Config.Inventory[2] = [1,1,1,1,1,1,1,1,1,0];
     Config.Inventory[3] = [1,1,1,1,1,1,1,1,1,0];
-    Config.Inventory[4] = [0,0,0,0,0,0,0,0,0,0];
+    Config.Inventory[4] = [1,1,1,1,1,1,1,1,1,0];
     Config.Inventory[5] = [0,0,0,0,0,0,0,0,0,0];
     Config.Inventory[6] = [0,0,0,0,0,0,0,0,0,0];
     Config.Inventory[7] = [0,0,0,0,0,0,0,0,0,0];
@@ -303,14 +304,6 @@ function LoadConfig() {
 
 	// Pickit config. Default folder is kolbot/pickit.
 	Config.PickitFiles.push("kolton.nip");
-	Config.PickitFiles.push("Unid.nip");
-	Config.PickitFiles.push("White.nip");
-	Config.PickitFiles.push("Set.nip");
-	Config.PickitFiles.push("Rare.nip");
-	Config.PickitFiles.push("Misc.nip");
-	Config.PickitFiles.push("Magic.nip");
-	Config.PickitFiles.push("Jewelery.nip");
-	Config.PickitFiles.push("New.nip");
 	Config.PickitFiles.push("redix.nip");
 	Config.PickRange = 40; // Pick radius
 	Config.FastPick = false; // Check and pick items between attacks
@@ -563,10 +556,10 @@ function LoadConfig() {
 	 * Skills MUST be POSITIVE numbers. For reference see ...\kolbot\sdk\skills.txt
 	 */
 	Config.AttackSkill[0] = -1; // Preattack skill.
-	Config.AttackSkill[1] = 376; // Primary skill to bosses.
-	Config.AttackSkill[2] = 47; // Primary untimed skill to bosses. Keep at -1 if Config.AttackSkill[1] is untimed skill.
-	Config.AttackSkill[3] = 376; // Primary skill to others.
-	Config.AttackSkill[4] = 47; // Primary untimed skill to others. Keep at -1 if Config.AttackSkill[3] is untimed skill.
+	Config.AttackSkill[1] = -1; // Primary skill to bosses.
+	Config.AttackSkill[2] = -1; // Primary untimed skill to bosses. Keep at -1 if Config.AttackSkill[1] is untimed skill.
+	Config.AttackSkill[3] = -1; // Primary skill to others.
+	Config.AttackSkill[4] = -1; // Primary untimed skill to others. Keep at -1 if Config.AttackSkill[3] is untimed skill.
 	Config.AttackSkill[5] = -1; // Secondary skill if monster is immune to primary.
 	Config.AttackSkill[6] = -1; // Secondary untimed skill if monster is immune to primary untimed.
 
