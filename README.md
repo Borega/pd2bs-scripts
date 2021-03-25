@@ -48,7 +48,7 @@ You can find the latest release of P2BS at one of the following links:
 - https://discord.gg/jwkm47kX in the #downloads channel.
 
 These include the main core files for the bot. Make sure to allow them in your A/V so it doesn't delete any files. 
-### 3. Download the `kolbot` folder from this repo and replace it with the one that is packaged in Step 1.
+### 3. Download the `kolbot` folder from this repo and replace it with the one that is packaged in Step 2.
 <img align="right" width="30%" height="30%" padding="10" src="https://i.imgur.com/X4zJuGy.jpg">
 <p align="left">This folder includes up-to-date script fixes and improvements to properly run on PD2, replace the folder located at \d2bs\kolbot. To download files on Github, click the green "Code" button and then click "Download Zip" as shown here:</p>
 <br><br><br>
