@@ -65,7 +65,8 @@ So our first step is going to be to click `Add` on the left side of the manager.
  </tr>
  <tr>
     <td>1. Profile Name</td>
-   <td>This is the name of the profile. You can set it to whatever you want as long as there's no special characters or white spaces.</td>
+   <td>This is the name of the profile. You can set it to whatever you want as
+	   <br>long as there's no special characters or white spaces.</td>
  </tr>
    <tr>
     <td>2. Account</td>
@@ -81,11 +82,12 @@ So our first step is going to be to click `Add` on the left side of the manager.
  </tr>
    <tr>
     <td>5. Game Info</td>
-     <td>The bot will use this information to create games. ALWAYS use a password to avoid creating public games.</td>
+     <td>The bot will use this information to create games.
+	     <br>ALWAYS use a password to avoid creating public games.</td>
  </tr>
    <tr>
     <td>6. Difficulty</td>
-     <td>This is the name of the profile. You can set it to whatever you want as long as there's no special characters or white spaces.</td>
+     <td>The game difficulty you'd like your character to create a game in</td>
  </tr>
    <tr>
     <td>7. Game Path</td>
@@ -93,7 +95,7 @@ So our first step is going to be to click `Add` on the left side of the manager.
  </tr>
    <tr>
     <td>8. Entry Script</td>
-     <td>The main entry script you'll use is `D2BotLead.dbj`. If you want to play manually, use `D2BotMap.dbj`.</td>
+     <td>The main entry script you'll use is `D2BotLead.dbj`.<br>If you want to play manually, use `D2BotMap.dbj`.</td>
  </tr>
 </table>
 
