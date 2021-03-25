@@ -42,7 +42,11 @@ There might be more solutions that aren't listed here that might be specific to 
 PD2BS requires the following Visual C++ Redistributable Packages to run. If you don't already have these in your system, install them before continuing:
 - https://www.microsoft.com/en-us/download/details.aspx?id=5555 (Microsoft Visual C++ 2010 Redistributable Package x86)
 - https://aka.ms/vs/16/release/vc_redist.x86.exe (Microsoft Visual C++ 2015-2019 Redistributable Package x86)
-### 2. Download the latest release of PD2BS from https://shako.org/pd2bs-release.zip or the #downloads channel at https://discord.gg/jwkm47kX
+### 2. Download the latest release of PD2BS
+You can find the latest release of P2BS at one of the following links:
+- https://shako.org/pd2bs-release.zip
+- https://discord.gg/jwkm47kX in the #downloads channel.
+
 These include the main core files for the bot. Make sure to allow them in your A/V so it doesn't delete any files. 
 ### 3. Download the `kolbot` folder from this repo and replace it with the one that is packaged in Step 1.
 <img align="right" width="30%" height="30%" padding="10" src="https://i.imgur.com/X4zJuGy.jpg">
@@ -101,7 +105,7 @@ So our first step is going to be to click `Add` on the left side of the manager.
 
 After filling out all the required information, click `Apply` and then `OK` to close out this window. You should now see your first profile on the list. Click on your profile and hit `Start` on the left hand side. If you did everything correctly, the manager will automatically start open a new Diablo II window and will proceed to log in automatically (If you used D2BotMap.dbj, you'll have to log in yourself).
 
-Once your character is in-game you should see a bunch of warning text on the top of the screen, this is the `Console` area. First time characters need a Character config file, and to generate one for the first time for your character, you'll need to click `Home` on your keyboard, and then `Space`. The game window should close down, if you try to start it again you'll see some more errors regarding your newly created character config file. The most common first time error is due to your character's attacks not being set.
+Once your character is in-game you should see a bunch of warning text on the top of the screen, this is the `Console` area. First time characters need a Character config file, and to generate one for the first time for your character, you'll need to press `Home` on your keyboard, and then `Space`. The game window should close down, if you try to start it again you'll see some more errors regarding your newly created character config file. The most common first time error is due to your character's attacks not being set.
 
 ### Basic Config Setup
 
@@ -154,7 +158,7 @@ In the top section of your character config you'll notice scripts that look like
   ```
  This section is pretty self explanatory. By default, boss/area scripts are set to `false`. If you want to run a specific script you must change it to `true`.
  
-That is basically the esentials to get you started. Start your bot and watch it to make sure it's properly running scripts, if something isn't right, go back to your character config file and fine tune it to your liking.
+That is basically the essentials to get you started. Start your bot and watch it to make sure it's properly running scripts, if something isn't right, go back to your character config file and fine tune it to your liking.
 
 Here's some more comprehensive guides from the original Kolbot:
 
