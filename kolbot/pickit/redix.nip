@@ -776,10 +776,10 @@
 //[Type] == Armor 			&& [Quality] == Magic && [Flag] != Ethereal # [Sockets] == 4 && [MaxHP] >= 100
 
 //MAGIC GLOVES
-[Type] == Gloves 			&& [Quality] == Magic && [Flag] != Ethereal # [IAS] >= 20 && [JavelinAndSpearSkillTab] >= 1
-[Name] == Vambraces 		&& [Quality] == Magic && [Flag] != Ethereal # [IAS] >= 20 && [JavelinAndSpearSkillTab] >= 1
-[Name] == BrambleMitts 	&& [Quality] == Magic && [Flag] != Ethereal # [IAS] >= 20 && [JavelinAndSpearSkillTab] >= 1
-[Name] == VampireboneGloves && [Quality] == Magic && [Flag] != Ethereal # [IAS] >= 20 && [JavelinAndSpearSkillTab] >= 1
+[Type] == Gloves 			&& [Quality] >= Magic && [Flag] != Ethereal # [IAS] >= 20 && [JavelinAndSpearSkillTab] >= 1
+[Name] == Vambraces 		&& [Quality] >= Magic && [Flag] != Ethereal # [IAS] >= 20 && [JavelinAndSpearSkillTab] >= 1
+[Name] == BrambleMitts 		&& [Quality] >= Magic && [Flag] != Ethereal # [IAS] >= 20 && [JavelinAndSpearSkillTab] >= 1
+[Name] == VampireboneGloves && [Quality] >= Magic && [Flag] != Ethereal # [IAS] >= 20 && [JavelinAndSpearSkillTab] >= 1
 
 //MAGIC BOOTS
 //[Type] == Boots 			&& [Quality] == Magic && [Flag] == Ethereal && [Class] == Elite # [EnhancedDefense] >= 200 && ([ItemReplenishDurability] >= 1 || [ItemIndestructible] >= 1)
@@ -1218,7 +1218,7 @@
 [Name] == ColossusVoulge 	&& [Quality] == superior && [Flag] != Ethereal # [Sockets] == 4
 [Name] == CrypticAxe 		&& [Quality] == superior && [Flag] != Ethereal # [Sockets] == 4 
 [Name] == GiantThresher 	&& [Quality] == superior && [Flag] != Ethereal # [Sockets] == 4 
-[Name] == GreatPoleaxe 	&& [Quality] == superior && [Flag] != Ethereal # [Sockets] == 4 
+[Name] == GreatPoleaxe 		&& [Quality] == superior && [Flag] != Ethereal # [Sockets] == 4 
 [Name] == Thresher 			&& [Quality] == superior && [Flag] != Ethereal # [Sockets] == 4 
 [Name] == ColossusVoulge 	&& [Quality] == superior && [Flag] == Ethereal # [Sockets] == 4
 [Name] == CrypticAxe 		&& [Quality] == superior && [Flag] == Ethereal # [Sockets] == 4
@@ -1227,31 +1227,31 @@
 [Name] == GreatPoleaxe 		&& [Quality] == superior && [Flag] == Ethereal # [Sockets] == 4
 [Name] == Thresher 			&& [Quality] == superior && [Flag] == Ethereal # [Sockets] == 4
 
-[Name] == PhaseBlade 	&& [Quality] >= normal && [Flag] != Ethereal #   ([Sockets] == 5 || [Sockets] == 6)										//LAST WISH, GRIEF
-[Name] == WarSpike 		&& [Quality] >= normal && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 5 || [Sockets] == 6)										//BOTD, DEATH
-[Name] == BerserkerAxe 	&& [Quality] >= normal && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 5 || [Sockets] == 6) 									//BOTD, DEATH
-[Name] == BerserkerAxe 	&& [Quality] >= normal && [Flag] != Ethereal #   ([Sockets] == 0 || [Sockets] == 5 || [Sockets] == 6) 									//LAST WISH, GRIEF
-[Name] == GloriousAxe 	&& [Quality] >= normal && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 5)														//DEATH
-[Name] == Decapitator 	&& [Quality] >= normal && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 5)														//DEATH
-[Name] == ThunderMaul 	&& [Quality] >= normal && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 5 || [Sockets] == 6)										//BOTD
-[Name] == ColossusBlade && [Quality] >= normal && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 5 || [Sockets] == 6) 									//BOTD, DEATH
-[Name] == ColossusBlade && [Quality] >= normal && [Flag] != Ethereal #   ([Sockets] == 0 || [Sockets] == 5 || [Sockets] == 6)																	//GRIEF
-[Name] == ColossusSword && [Quality] >= normal && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 5 )													//DEATH
-[Name] == ColossusSword && [Quality] >= normal && [Flag] != Ethereal #   ([Sockets] == 0 || [Sockets] == 5 )													//GRIEF
-[Name] == Zweihander 	&& [Quality] >= normal && [Flag] != Ethereal #   ([Sockets] == 0 || [Sockets] == 5 )													//GRIEF
-[Name] == ArchonStaff 	&& [Quality] == normal && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 6)													//BOTD
-[Name] == WarPike 		&& [Quality] == normal && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 6)												//BOTD
-[Name] == GhostSpear 	&& [Quality] == normal && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 6)													//BOTD
-[Name] == Scythe 		&& [Quality] >= normal && [Flag] == Ethereal #   [Sockets] == 4													//INFINITY
-[Name] == CrypticAxe 	&& [Quality] >= normal && [Flag] == Ethereal #   ( [Sockets] == 4 || [Sockets] == 5)										//INFINITY, INSIGHT, OBEDIENCE, DESTRUCTION, DOOM
-[Name] == GiantThresher && [Quality] >= normal && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 4 || [Sockets] == 5)																	//INFINITY, INSIGHT
-[Name] == GreatPoleaxe 	&& [Quality] >= normal && [Flag] == Ethereal #   [Sockets] == 4																	//INFINITY, INSIGHT
-[Name] == Thresher 		&& [Quality] >= normal && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 4 || [Sockets] == 5)										//INFINITY, INSIGHT, OBEDIENCE, DESTRUCTION, DOOM
-[Name] == ColossusVoulge && [Quality] >= normal && [Flag] == Ethereal #  [Sockets] == 4													//INFINITY, INSIGHT
+[Name] == PhaseBlade 	&& [Quality] == superior && [Flag] != Ethereal #   ([Sockets] == 5 || [Sockets] == 6)										//LAST WISH, GRIEF
+[Name] == WarSpike 		&& [Quality] == superior && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 5 || [Sockets] == 6)										//BOTD, DEATH
+[Name] == BerserkerAxe 	&& [Quality] == superior && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 5 || [Sockets] == 6) 									//BOTD, DEATH
+[Name] == BerserkerAxe 	&& [Quality] == superior && [Flag] != Ethereal #   ([Sockets] == 0 || [Sockets] == 5 || [Sockets] == 6) 									//LAST WISH, GRIEF
+[Name] == GloriousAxe 	&& [Quality] == superior && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 5)														//DEATH
+[Name] == Decapitator 	&& [Quality] == superior && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 5)														//DEATH
+[Name] == ThunderMaul 	&& [Quality] == superior && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 5 || [Sockets] == 6)										//BOTD
+[Name] == ColossusBlade && [Quality] == superior && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 5 || [Sockets] == 6) 									//BOTD, DEATH
+[Name] == ColossusBlade && [Quality] == superior && [Flag] != Ethereal #   ([Sockets] == 0 || [Sockets] == 5 || [Sockets] == 6)																	//GRIEF
+[Name] == ColossusSword && [Quality] == superior && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 5 )													//DEATH
+[Name] == ColossusSword && [Quality] == superior && [Flag] != Ethereal #   ([Sockets] == 0 || [Sockets] == 5 )													//GRIEF
+[Name] == Zweihander 	&& [Quality] == superior && [Flag] != Ethereal #   ([Sockets] == 0 || [Sockets] == 5 )													//GRIEF
+[Name] == ArchonStaff 	&& [Quality] == superior && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 6)													//BOTD
+[Name] == WarPike 		&& [Quality] == superior && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 6)												//BOTD
+[Name] == GhostSpear 	&& [Quality] == superior && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 6)													//BOTD
+[Name] == Scythe 		&& [Quality] == superior && [Flag] == Ethereal #   [Sockets] == 4													//INFINITY
+[Name] == CrypticAxe 	&& [Quality] == superior && [Flag] == Ethereal #   ([Sockets] == 4 || [Sockets] == 5)										//INFINITY, INSIGHT, OBEDIENCE, DESTRUCTION, DOOM
+[Name] == GiantThresher && [Quality] == superior && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 4 || [Sockets] == 5)																	//INFINITY, INSIGHT
+[Name] == GreatPoleaxe 	&& [Quality] == superior && [Flag] == Ethereal #   [Sockets] == 4																	//INFINITY, INSIGHT
+[Name] == Thresher 		&& [Quality] == superior && [Flag] == Ethereal #   ([Sockets] == 0 || [Sockets] == 4 || [Sockets] == 5)										//INFINITY, INSIGHT, OBEDIENCE, DESTRUCTION, DOOM
+[Name] == ColossusVoulge && [Quality] == superior && [Flag] == Ethereal #  [Sockets] == 4													//INFINITY, INSIGHT
 
-[Name] == GrandMatronBow && [Quality] >= normal # 	[BowAndCrossbowSkillTab] >= 3 && ( [Sockets] == 4 || [Sockets] == 5)
-[Name] == GrandMatronBow && [Quality] >= normal #   [BowAndCrossbowSkillTab] >= 3 && ( [Sockets] == 4 || [Sockets] == 5)
-[Name] == MatriarchalBow && [Quality] >= normal #   [BowAndCrossbowSkillTab] >= 3 && ( [Sockets] == 4 || [Sockets] == 5)
+[Name] == GrandMatronBow && [Quality] == superior #   [BowAndCrossbowSkillTab] >= 3 && ( [Sockets] == 4 || [Sockets] == 5)
+[Name] == GrandMatronBow && [Quality] == superior #   [BowAndCrossbowSkillTab] >= 3 && ( [Sockets] == 4 || [Sockets] == 5)
+[Name] == MatriarchalBow && [Quality] == superior #   [BowAndCrossbowSkillTab] >= 3 && ( [Sockets] == 4 || [Sockets] == 5)
 
 
 //[Type] == Staff			&& [Quality] >= normal # [SkillEnergyShield] == 3 && [SkillChillingArmor] >= 3 && ([Sockets] == 0 || [Sockets] == 4 || [Sockets] == 5)
