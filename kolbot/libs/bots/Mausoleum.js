@@ -23,16 +23,16 @@ function Mausoleum() {
 		throw new Error("Failed to move to Mausoleum");
 	}
 
-	Attack.clearLevel(Config.ClearType);
+	//Attack.clearLevel(Config.ClearType);
 
-	if (Config.Mausoleum.ClearCrypt) {
+	/*if (Config.Mausoleum.ClearCrypt) {
 		// Crypt exit is... awkward
 		if (!(Pather.moveToExit(17, true) && Pather.moveToPreset(17, 5, 6) && Pather.moveToExit(18, true))) {
 			throw new Error("Failed to move to Crypt");
 		}
 
 		Attack.clearLevel(Config.ClearType);
-	}
+	}*/
 
 	return true;
 }
