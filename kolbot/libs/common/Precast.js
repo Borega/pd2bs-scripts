@@ -47,7 +47,7 @@ var Precast = new function () {
 			sumSwap = 0;
 
 		switch (skillId) {
-			//case 40: // Frozen Armor // PD2
+			case 40: // Cold Enchant
 			case 50: // Shiver Armor
 			case 60: // Chilling Armor
 				classid = 1;
@@ -167,12 +167,28 @@ var Precast = new function () {
 					}
 				}
 
-
-				if (me.getSkill(52, 0) && (!me.getState(16) || force)) {
+				switch(Config.Enchant){
+					case "None":
+						break;
+					case "Cold":
+						if(me.getSkill(40, 0) && (!me.getState(188) || force)){
+							this.enchant(40);
+						}
+						break;
+					case "Fire":
+						if(me.getSkill(52, 0) && (!me.getState(16) || force)){
+							this.enchant(52);
+						}
+						break;	
+				}
+				break;				
+/* 				if (me.getSkill(52, 0) && (!me.getState(16) || force)) {
 					this.enchant();
 				}
-
-				break;
+				
+				if (me.getSkill(52, 0) && (!me.getState(16) || force)) {
+					this.enchant();
+				} */
 			case 2: // Necromancer
 				if (me.getSkill(68, 0) && (!me.getState(14) || force)) {
 					this.precastSkill(68); // Bone Armor
@@ -487,10 +503,10 @@ var Precast = new function () {
 		return !!rv;
 	};
 
-	this.enchant = function () {
+	this.enchant = function (skillId) {
 		var unit, slot = me.weaponswitch, chanted = [];
 
-		Attack.weaponSwitch(this.getBetterSlot(52));
+		Attack.weaponSwitch(this.getBetterSlot(skillId));
 
 		// Player
 		unit = getUnit(0);
@@ -498,7 +514,7 @@ var Precast = new function () {
 		if (unit) {
 			do {
 				if (!unit.dead && Misc.inMyParty(unit.name) && getDistance(me, unit) <= 40) {
-					Skill.cast(52, 0, unit);
+					Skill.cast(skillId, 0, unit);
 					chanted.push(unit.name);
 				}
 			} while (unit.getNext());
@@ -510,7 +526,7 @@ var Precast = new function () {
 		if (unit) {
 			do {
 				if (unit.getParent() && chanted.indexOf(unit.getParent().name) > -1 && getDistance(me, unit) <= 40) {
-					Skill.cast(52, 0, unit);
+					Skill.cast(skillId, 0, unit);
 				}
 			} while (unit.getNext());
 		}

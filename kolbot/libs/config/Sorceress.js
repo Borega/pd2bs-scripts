@@ -599,6 +599,7 @@ function LoadConfig() {
 	Config.Wereform = false; // 0 / false - don't shapeshift, 1 / "Werewolf" - change to werewolf, 2 / "Werebear" - change to werebear
 
 	// Class specific config
+	Config.Enchant = "None"; //"Fire" = Fire Enchant, "Cold" = Cold Enchant, "None" = No Enchant;
 	Config.CastStatic = 60; // Cast static until the target is at designated life percent. 100 = disabled.
 	Config.StaticList = []; // List of monster NAMES or CLASSIDS to static. Example: Config.StaticList = ["Andariel", 243];
 
