@@ -182,13 +182,6 @@ var Precast = new function () {
 						break;	
 				}
 				break;				
-/* 				if (me.getSkill(52, 0) && (!me.getState(16) || force)) {
-					this.enchant();
-				}
-				
-				if (me.getSkill(52, 0) && (!me.getState(16) || force)) {
-					this.enchant();
-				} */
 			case 2: // Necromancer
 				if (me.getSkill(68, 0) && (!me.getState(14) || force)) {
 					this.precastSkill(68); // Bone Armor
