@@ -150,12 +150,12 @@ var Pather = {
 				if (me.getSkill(370, 1) && !me.getState(121)){
 					return 370;
 				}
-			default:
-				if(me.getStat(97, 357) && countCharges(357) > 0){
+/* 			case 3:	
+				if(me.getSkill(357, 1, true)) {
 					return 357;
-				} else if (me.getStat(97, 54) && countCharges(54) > 0){
+				} else if(me.getSkill(54, 1, true)){
 					return 54;
-				}					
+				} */
 		}
 		return false;
 	},
@@ -185,6 +185,7 @@ var Pather = {
 					if (stats[204] instanceof Array) {
 						for (i = 0; i < stats[204].length; i += 1) {
 							if (stats[204][i] !== undefined) {
+								print("found charged skill");
 								teleItems.push({
 									skill: stats[204][i].skill,
 									charges: stats[204][i].charges,
@@ -192,6 +193,7 @@ var Pather = {
 							}
 						}
 					} else {
+						print("found charged skill");
 						teleItems.push({
 							skill: stats[204].skill,
 							charges: stats[204].charges,
@@ -659,10 +661,12 @@ ModeLoop:
 			throw new Error("moveToPreset: Invalid parameters.");
 		}
 
+		var presetUnit = getPresetUnit(area, unitType, unitId);
+
 		if (offX === undefined) {
 			if (me.classid != 3 && !me.inTown) // not paladin
 			{
-				if (unit.type === 1) //is monster
+				if (presetUnit.type === 1) //is monster
 				{
 					offX = 5; //prevent sorc & similar teleporting on top of the target
 				} else {
@@ -675,7 +679,7 @@ ModeLoop:
 
 		if (offY === undefined) {
 			if (me.classid != 3 && !me.inTown) {
-				if (unit.type === 1) {
+				if (presetUnit.type === 1) {
 					offY = 5; //prevent sorc & similar teleporting on top of the target
 				} else {
 					offY = 0;
@@ -692,8 +696,6 @@ ModeLoop:
 		if (pop === undefined) {
 			pop = false;
 		}
-
-		var presetUnit = getPresetUnit(area, unitType, unitId);
 
 		if (!presetUnit) {
 			throw new Error("moveToPreset: Couldn't find preset unit - id " + unitId);
