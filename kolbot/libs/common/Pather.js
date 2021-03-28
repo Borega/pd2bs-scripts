@@ -150,12 +150,12 @@ var Pather = {
 				if (me.getSkill(370, 1) && !me.getState(121)){
 					return 370;
 				}
-/* 			case 3:	
+			default:
 				if(me.getSkill(357, 1, true)) {
 					return 357;
-				} else if(me.getSkill(54, 1, true)){
+				} else if (me.getSkill(54, 1, true)){
 					return 54;
-				} */
+				}				
 		}
 		return false;
 	},
@@ -185,7 +185,6 @@ var Pather = {
 					if (stats[204] instanceof Array) {
 						for (i = 0; i < stats[204].length; i += 1) {
 							if (stats[204][i] !== undefined) {
-								print("found charged skill");
 								teleItems.push({
 									skill: stats[204][i].skill,
 									charges: stats[204][i].charges,
@@ -193,7 +192,6 @@ var Pather = {
 							}
 						}
 					} else {
-						print("found charged skill");
 						teleItems.push({
 							skill: stats[204].skill,
 							charges: stats[204].charges,
@@ -403,14 +401,10 @@ MainLoop:
 			if (Config.PacketCasting) {
 				Skill.setSkill(skillToUse, 0);
 				Packet.castSkill(0, x, y);
+			} else if (me.classid != 1 && (skillToUse == 54 || skillToUse == 357)) {
+				me.castChargedSkill(skillToUse, x, y);
 			} else {
 				Skill.cast(skillToUse, 0, x, y);
-				
-/* 				if(this.countCharges()){
-					me.castChargedSkill(54, x, y);
-				} else {
-					Skill.cast(skillToUse, 0, x, y);
-				} */
 			}
 
 
@@ -660,9 +654,8 @@ ModeLoop:
 		if (area === undefined || unitType === undefined || unitId === undefined) {
 			throw new Error("moveToPreset: Invalid parameters.");
 		}
-
 		var presetUnit = getPresetUnit(area, unitType, unitId);
-
+		
 		if (offX === undefined) {
 			if (me.classid != 3 && !me.inTown) // not paladin
 			{
@@ -696,6 +689,8 @@ ModeLoop:
 		if (pop === undefined) {
 			pop = false;
 		}
+
+		
 
 		if (!presetUnit) {
 			throw new Error("moveToPreset: Couldn't find preset unit - id " + unitId);
