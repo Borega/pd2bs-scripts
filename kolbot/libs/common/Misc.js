@@ -1370,6 +1370,13 @@ var Misc = {
 
 	// Log kept item stats in the manager.
 	logItem: function (action, unit, keptLine) {
+		// Low runes (El - Dol):
+		var lowRuneList = [ "r01", "r02", "r03", "r04", "r05", "r06", "r07", "r08", "r09", "r10", "r11", "r12", "r13", "r14", "r01s", "r02s", "r03s", "r04s", "r05s", "r06s", "r07s", "r08s", "r09s", "r10s", "r11s", "r12s", "r13s", "r14s" ];
+		// Middle runes (Hel - Mal):
+		var middleRuneList = [ "r15", "r16", "r17", "r18", "r19", "r20", "r21", "r22", "r23", "r15s", "r16s", "r17s", "r18s", "r19s", "r20s", "r21s", "r22s", "r23s" ];
+		// High runes (Ist - Zod):
+		var highRuneList = [ "r24", "r25", "r26", "r27", "r28", "r29", "r30", "r31", "r32", "r33", "r24s", "r25s", "r26s", "r27s", "r28s", "r29s", "r30s", "r31s", "r32s", "r33s" ];
+
 		if (!this.useItemLog) {
 			return false;
 		}
@@ -1384,15 +1391,15 @@ var Misc = {
 			return false;
 		}
 
-		if (!Config.LogLowRunes && ["r01", "r02", "r03", "r04", "r05", "r06", "r07", "r08", "r09", "r10", "r11", "r12", "r13", "r14", "r15", "r16", "r17", "r18", "r19", "r20", "r01s", "r02s", "r03s", "r04s", "r05s", "r06s", "r07s", "r08s", "r09s", "r10s", "r11s", "r12s", "r13s", "r14s", "r15s", "r16s", "r17s", "r18s", "r19s", "r20s"].indexOf(unit.code) > -1) {
+		if (!Config.LogLowRunes && lowRuneList.indexOf(unit.code) > -1) {
 			return false;
 		}
 
-		if (!Config.LogMiddleRunes && ["r21", "r22", "r23","r24", "r25", "r26", "r21s", "r22s", "r23s","r24s", "r25s", "r26s"].indexOf(unit.code) > -1) {
+		if (!Config.LogMiddleRunes && middleRuneList.indexOf(unit.code) > -1) {
 			return false;
 		}
 
-		if (!Config.LogHighRunes && ["r27", "r28", "r29", "r30", "r31", "r32", "r33", "r27s", "r28s", "r29s", "r30s", "r31s", "r32s", "r33s"].indexOf(unit.code) > -1) {
+		if (!Config.LogHighRunes && highRuneList.indexOf(unit.code) > -1) {
 			return false;
 		}
 
