@@ -132,6 +132,10 @@ var Precast = new function () {
 
 	this.doPrecast = function (force) {
 		var buffSummons = false;
+		
+		if (me.getSkill(226, 1)) {
+			Skill.cast(226, 0); // Oak Sage
+		}
 
 		// Force BO 30 seconds before it expires
 		this.precastCTA(!me.getState(32) || force || (getTickCount() - this.BOTick >= this.BODuration - 30000));
