@@ -1141,11 +1141,19 @@ Unit.prototype.castChargedSkill = function (...args) {
 				let stats = item.getStat(-2);
 
 				if (stats.hasOwnProperty(204)) {
-					stats = stats[204].filter(validCharge);
-					stats.length && chargedItems.push({
-						charge: stats.first(),
-						item: item
-					});
+					if(stats[204].length > 1){
+						stats = stats[204].filter(validCharge);
+						stats.length && chargedItems.push({
+							charge: stats.first(),
+							item: item
+						});
+					} else {
+							stats = stats[204];
+							chargedItems.push({
+							charge: stats,
+							item: item
+						});
+					}
 				}
 			});
 
@@ -1163,13 +1171,13 @@ Unit.prototype.castChargedSkill = function (...args) {
 			throw Error('No charged skill on this item');
 		}
 
-		if (skillId) {
+/* 		if (skillId) {
 			charge = charge.filter(item => (skillId && item.skill === skillId) && !!item.charges); // Filter out all other charged skills
 		} else if (charge.length > 1) {
 			throw new Error('multiple charges on this item without a given skillId');
-		}
+		} */
 
-		charge = charge.first();
+		//charge = charge.first();
 
 		if (charge) {
 			// Setting skill on hand
