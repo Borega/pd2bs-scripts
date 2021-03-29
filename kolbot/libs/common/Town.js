@@ -1436,17 +1436,18 @@ CursorLoop:
 
 					if (chargedItems) {
 						// Charged item check
-						charge = item.getStat(-2)[204];
-
-						if (typeof (charge) === "object") {
-							if (charge instanceof Array) {
-								for (i = 0; i < charge.length; i += 1) {
-									if (charge[i] !== undefined && charge[i].hasOwnProperty("charges") && charge[i].charges * 100 / charge[i].maxcharges <= repairPercent) {
-										itemList.push(copyUnit(item));
+					if(!item.getStat(-2).hasOwnProperty(422)){ // Found 422 Comparing Naj Staff & Enigma...
+							charge = item.getStat(-2)[204];
+							if (typeof (charge) === "object") {
+								if (charge instanceof Array) {
+									for (i = 0; i < charge.length; i += 1) {
+										if (charge[i] !== undefined && charge[i].hasOwnProperty("charges") && charge[i].charges * 100 / charge[i].maxcharges <= repairPercent) {
+											itemList.push(copyUnit(item));
+										}
 									}
+								} else if (charge.charges * 100 / charge.maxcharges <= repairPercent) {
+									itemList.push(copyUnit(item));
 								}
-							} else if (charge.charges * 100 / charge.maxcharges <= repairPercent) {
-								itemList.push(copyUnit(item));
 							}
 						}
 					}
