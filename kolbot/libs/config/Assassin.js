@@ -342,7 +342,7 @@ function LoadConfig() {
 	Config.LogHighRunes = true; // Log high runes (Ist - Zod) on item viewer
 	Config.LogLowGems = false; // Log low gems (chipped, flawed, normal) on item viewer
 	Config.LogHighGems = false; // Log high gems (flawless, perfect) on item viewer
-	Config.SkipLogging = []; // Custom log skip list. Set as three digit item code or classid. Example: ["tes", "ceh", 656, 657] will ignore logging of essences.
+	Config.SkipLogging = ["wss"]; // Custom log skip list. Set as three digit item code or classid. Example: ["tes", "ceh", 656, 657] will ignore logging of essences.
 	Config.ShowCubingInfo = true; // Show cubing messages on console
 
 	// Repair settings
