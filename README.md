@@ -16,7 +16,7 @@ In \d2bs\kolbot\libs\OOG.js on line 6 you should see a `gameserver` option. Put 
 
 ### What's the skill ID for xxxxxx?
 
-Check skill ID list here: https://github.com/Borega/pd2bs-scripts/blob/main/Skills.txt
+Check skill ID list here: https://github.com/Borega/pd2bs-scripts/blob/main/kolbot/sdk/skills.txt
 
 ### How do I make my bot pick up a specific item?
 
@@ -117,7 +117,7 @@ Using Notepad++ or any coding-friendly text editor you can edit this javascript 
 The first thing you'll need to do is set `Scripts.UserAddon = false;`
 
 #### 2. Setting Up Attacks.
-There's no "perfect" config for all characters, so you'll need to fine tune each one to suit the build you're using. But one error that will affect all characters is not having your attacks set up. Our second step is to set up these attacks by going to the `Config.Attack` section of the file. The bare minimum you will need is to set `Config.AttackSkill[1] // Primary skill to bosses.` and `Config.AttackSkill[3] = -1; // Primary skill to others.`. Not setting these up will result in errors because you're bot won't know what skill to use when attacking. So head on over to our skill list here: https://github.com/Borega/pd2bs-scripts/blob/main/Skills.txt and find the skills you want to use for this character.
+There's no "perfect" config for all characters, so you'll need to fine tune each one to suit the build you're using. But one error that will affect all characters is not having your attacks set up. Our second step is to set up these attacks by going to the `Config.Attack` section of the file. The bare minimum you will need is to set `Config.AttackSkill[1] // Primary skill to bosses.` and `Config.AttackSkill[3] = -1; // Primary skill to others.`. Not setting these up will result in errors because you're bot won't know what skill to use when attacking. So head on over to our skill list here: https://github.com/Borega/pd2bs-scripts/blob/main/kolbot/sdk/skills.txt and find the skills you want to use for this character.
 
 #### 3. Setting up Inventory Spaces
 Next we need to make sure the inventory section for our bot is configured properly, `CTRL+F` and find `Config.Inventory` and make sure it atleast looks like this:
