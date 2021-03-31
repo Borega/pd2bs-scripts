@@ -398,11 +398,11 @@ var Pather = {
 MainLoop:
 
 		for (i = 0; i < 3; i += 1) {
-			if (Config.PacketCasting) {
+			if (me.classid != 1 && (skillToUse == 54 || skillToUse == 357)) {
+				me.castChargedSkill(skillToUse, x, y);
+			} else if (Config.PacketCasting) {
 				Skill.setSkill(skillToUse, 0);
 				Packet.castSkill(0, x, y);
-			} else if (me.classid != 1 && (skillToUse == 54 || skillToUse == 357)) {
-				me.castChargedSkill(skillToUse, x, y);
 			} else {
 				Skill.cast(skillToUse, 0, x, y);
 			}
