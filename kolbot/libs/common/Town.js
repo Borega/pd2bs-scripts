@@ -2094,6 +2094,27 @@ MainLoop:
 			this.initialize();
 		}
 
+		// Act 2 Meshif override -
+		// 	Fix interaction trigger with Meshif while he moves around
+		var meshif = getUnit(1, 210); 
+		
+		// Logic applies only when meshif is within range 
+		// (For instance, when we are at the portals area)
+		if (me.act === 2 && spot === NPC.Meshif && meshif) {
+			Pather.walkTo(5200, 5060);
+			
+			var prevDistance, distance; 
+			// Waits until Meshif stops walking
+			while((distance = getDistance(me, meshif)) !== prevDistance) { 
+				delay(500);
+				prevDistance = distance;
+			}
+			
+			Pather.walkTo(meshif.x, meshif.y);
+			
+			return true;
+		}
+
 		// Act 5 wp->portalspot override - ActMap.cpp crash
 		if (me.act === 5 && spot === "portalspot" && getDistance(me.x, me.y, 5113, 5068) <= 8) {
 			path = [5113, 5068, 5108, 5051, 5106, 5046, 5104, 5041, 5102, 5027, 5098, 5018];
