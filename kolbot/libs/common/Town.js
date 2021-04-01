@@ -2096,12 +2096,10 @@ MainLoop:
 
 		// Act 2 Meshif override -
 		// 	Fix interaction trigger with Meshif while he moves around
-		var meshif = getUnit(1, 210); 
-		
-		// Logic applies only when meshif is within range 
-		// (For instance, when we are at the portals area)
-		if (me.act === 2 && spot === NPC.Meshif && meshif) {
-			Pather.walkTo(5200, 5060);
+		if (me.act === 2 && spot === NPC.Meshif) {
+			Pather.moveTo(5200, 5060, 0);
+			
+			var meshif = getUnit(1, 210); 
 			
 			var prevDistance, distance; 
 			// Waits until Meshif stops walking
