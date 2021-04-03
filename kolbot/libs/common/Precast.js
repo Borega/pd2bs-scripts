@@ -170,16 +170,16 @@ var Precast = new function () {
 						this.precastSkill(50); // Shiver Armor
 					}
 				}
-
-				switch(Config.Enchant.toLowerCase()){
+				
+				switch(Config.Enchant){
 					case "None":
 						break;
-					case "cold":
+					case "Cold":
 						if(me.getSkill(40, 0) && (!me.getState(188) || force)){
 							this.enchant(40);
 						}
 						break;
-					case "fire":
+					case "Fire":
 						if(me.getSkill(52, 0) && (!me.getState(16) || force)){
 							this.enchant(52);
 						}
