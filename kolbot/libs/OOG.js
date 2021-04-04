@@ -629,12 +629,12 @@ MainLoop:
 		return rval;
 	},
 
-	createGame: function (name, pass, diff, delay) {
+	createGame: function (name, pass, tag, diff, delay) {
 		var control;
 
 		ControlAction.setText(1, 432, 162, 158, 20, name);
 		ControlAction.setText(1, 432, 217, 158, 20, pass);
-		ControlAction.setText(1,432,268,333,20, gameserver);
+		ControlAction.setText(1,432,268,333,20, tag);
 
 		switch (diff) {
 		case "Normal":
