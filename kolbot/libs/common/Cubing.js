@@ -724,6 +724,12 @@ IngredientLoop:
 		if (!Config.Cubing) {
 			return false;
 		}
+		
+		if(Scripts.Mapper){ // Band-aid
+			if (unit.itemType === 58) {
+				return true;
+			}
+		}
 
 		var i;
 
