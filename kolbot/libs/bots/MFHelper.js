@@ -36,17 +36,17 @@ function MFHelper() {
 			indexes = [];
 
 		kingPreset = getPresetUnit(me.area, 1, 773);
-		badRooms = getRoom(kingPreset.roomx * 5 + kingPreset.x, kingPreset.roomy * 5 + kingPreset.y).getNearby();
+		badRooms = []// getRoom(kingPreset.roomx * 5 + kingPreset.x, kingPreset.roomy * 5 + kingPreset.y).getNearby();
 
-		for (i = 0; i < badRooms.length; i += 1) {
-			badRooms2 = badRooms[i].getNearby();
+		// for (i = 0; i < badRooms.length; i += 1) {
+			// badRooms2 = badRooms[i].getNearby();
 
-			for (j = 0; j < badRooms2.length; j += 1) {
-				if (indexes.indexOf(badRooms2[j].x.toString() + badRooms2[j].y.toString()) === -1) {
-					indexes.push(badRooms2[j].x.toString() + badRooms2[j].y.toString());
-				}
-			}
-		}
+			// for (j = 0; j < badRooms2.length; j += 1) {
+				// if (indexes.indexOf(badRooms2[j].x.toString() + badRooms2[j].y.toString()) === -1) {
+					// indexes.push(badRooms2[j].x.toString() + badRooms2[j].y.toString());
+				// }
+			// }
+		// }
 
 		room = getRoom();
 
