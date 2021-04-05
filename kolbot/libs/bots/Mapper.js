@@ -81,6 +81,7 @@ function Mapper() {
 					}
 				}
 				print("ÿc7Couldn't find any low runes to use");
+				return false;
 				
 			break;
 			case "Item":
@@ -92,6 +93,7 @@ function Mapper() {
 							}
 						}
 						print("ÿc7We dont have any junk jewels to use");	
+						return false;
 						
 					break;
 					case 4:
@@ -99,7 +101,8 @@ function Mapper() {
 							return 682
 						}
 						print("ÿc7We dont have any Perfect Skulls");					
-					
+						return false;
+						
 					break;
 					case 6:
 						for (var i = 0; i < items.length; i++){
@@ -108,7 +111,8 @@ function Mapper() {
 							}
 						}
 						print("ÿc7We dont have any Perfect Gems");						
-					
+						return false;
+						
 					break;
 				}
 				
@@ -141,7 +145,6 @@ function Mapper() {
 			break;
 		}
 		
-		print("Ingredient Check Failed");
 		return false;				
 	};
 
@@ -158,7 +161,7 @@ function Mapper() {
 			delay(200 + me.ping);
 			this.start();
 		}
-		print("Failed to upgrade");
+		
 		return false;
 	};		
 		
