@@ -1921,6 +1921,8 @@ MainLoop:
 
 		for (i = 0; !!items && i < items.length; i += 1) {
 			if ([18, 41, 76, 77, 78].indexOf(items[i].itemType) === -1 && // Don't drop tomes, keys or potions
+					 [106, 107, 108].indexOf(items[i].itemType) === -1 && // Don't drop maps
+					 [118, 120, 121, 122, 123, 124].indexOf(items[i].itemType) === -1 && // Don't drop map ingredients					
 					// Keep some quest items
 					items[i].classid !== 524 && // Scroll of Inifuss
 					items[i].classid !== 525 && // Key to Cairn Stones

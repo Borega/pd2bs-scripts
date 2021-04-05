@@ -126,6 +126,31 @@ function LoadConfig() {
 		Config.Baal.SoulQuit = false; // End script if Souls (Burning Souls) are found.
 		Config.Baal.DollQuit = false; // End script if Dolls (Undead Soul Killers) are found.
 		Config.Baal.KillBaal = true; // Kill Baal. Leaves game after wave 5 if false.
+		
+	/* PD2 Season 2 Map Script
+	 *
+	 * Map IDs:  "ruinsofviz", "bastionskeep", "horazon'smemory", "phlegethon",
+	 *			 "torajanjungle","arreatbattlefield", "bloodmoon", "riverofblood",
+	 *			 "throneofinsanity", "sewersofharrogath", "ancestraltrial", "tombofzoltunkulle"
+	 * Quality: The quality of map you want to run. If you set it to 2 or 4, stats check will be ignored.
+	 * Monster Types: "Succubus", "Cows", "Dolls", "Vampires", "Reanimated", "Ghosts"
+	 * Sorbskip: This will skip any maps that contains monsters who sorb that element and will reroll map
+	 * MapContains: This will only do maps with that monster, leave empty to turn off. Example: Config.Mapper.MapContains = ""
+	 * SkipMonsters: Will do the opposite of MapContains.
+	 */
+	Scripts.Mapper = false;
+		Config.Mapper.Maps = ["ruinsofviz", "bastionskeep", "horazon'smemory", "phlegethon",
+							  "torajanjungle","arreatbattlefield", "bloodmoon", "riverofblood",
+							  "throneofinsanity", "sewersofharrogath", "ancestraltrial", "tombofzoltunkulle"];
+		Config.Mapper.Quality = 6; //Which quality of map do you want to run? 2 = Normal, 4 = Magic, 6 = Rare
+		Config.Mapper.MagicFind = 0; // Minimum Map Magic Find %
+		Config.Mapper.GoldFind = 0; // Minimum Map Gold Find %
+		Config.Mapper.Density = 0; // Minimum Map Density
+		Config.Mapper.Rarity = 0; // Minimum Monster Rarity
+		Config.Mapper.Experience = 0; // Minimum Map Experience
+		Config.Mapper.MapContains = ["Cows", "Ghosts"]; // If map DOESN'T contain these monsters, it will skip it
+		Config.Mapper.SkipMonsters = ["Dolls", "Succubus"]; //If map contains these monsters, it will skip
+		Config.Mapper.SorbSkip = [""] // If map has monsters that sorb, skip it. Use any of the following: "Magic", "Lightning", "Fire", "Cold"		
 
 	/* ### leeching section ###
 	* Unless stated otherwise, leader's character name isn't needed on order to run.

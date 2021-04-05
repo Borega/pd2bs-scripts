@@ -474,6 +474,21 @@ var Config = {
 	Follower: {
 		Leader: ""
 	},
+	Mapper: {
+		Maps: ["ruinsofviz", "bastionskeep", "horazon'smemory", "phlegethon",
+				"torajanjungle","arreatbattlefield", "bloodmoon", "riverofblood",
+				"throneofinsanity", "sewersofharrogath", "ancestraltrial", "tombofzoltunkulle"],
+		Quality: 6,
+		MagicFind: 200,
+		GoldFind: 0,
+		Density: 150,
+		Rarity: 20,
+		Experience: 20,
+		GhostMapsOnly: false,
+		MapContains: ["Cows"],
+		SkipMonsters: ["Succubus", "Dolls"],
+		SorbSkip: [""],
+	},
 	Mephisto: {
 		MoatTrick: false,
 		KillCouncil: false,

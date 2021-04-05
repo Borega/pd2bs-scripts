@@ -92,7 +92,8 @@ var Recipe = {
 	LowToNorm: {
 		Armor: 54,
 		Weapon: 55
-	}
+	},
+	Map: 56
 };
 
 var Cubing = {
@@ -519,6 +520,10 @@ var Cubing = {
 			case Recipe.Token:
 				this.recipes.push({Ingredients: [654, 655, 656, 657], Index: Recipe.Token, AlwaysEnabled: true});
 				break;
+			//Used by mapper script, will make standalone cubing script later. -yayza
+			case Recipe.Map:
+				this.recipes.push({Ingredients: [Config.Recipes[i][1], Config.Recipes[i][2], Config.Recipes[i][3], Config.Recipes[i][4]], Index: Recipe.Map});
+				break;				
 			}
 		} 
 	},
@@ -893,6 +898,10 @@ IngredientLoop:
 		}
 
 		if (recipe.Index === Recipe.Token) {
+			return true;
+		}
+		
+		if (recipe.Index === Recipe.Map) {
 			return true;
 		}
 
