@@ -18,18 +18,18 @@ function Mapper() {
 		items = me.findItems(-1, 0);
 		
 		for (var i = 0; i < items.length; i++){
-			if(this.checkMap(items[i])){
+			if (this.checkMap(items[i])){
 				this.openMap(items[i]);
 				return true;
 			}
 		}
 
 		for (var i = 0; i < items.length; i++){
-			if(mapids.indexOf(items[i].classid) > -1 && !this.checkMap(items[i])){
+			if (mapids.indexOf(items[i].classid) > -1 && !this.checkMap(items[i])){
 				upgrade = items[i];
 		}
 		
-		if(me.getStat(14) + me.getStat(15) > 200000){
+		if (me.getStat(14) + me.getStat(15) > 200000){
 			this.upgradeMap(upgrade);
 		} else {
 			print("ÿc1We have a map but not enough gold to upgrade it");
@@ -51,12 +51,12 @@ function Mapper() {
 		anya.startTrade();
 		orb = anya.getItem(orb, 0);
 		
-		if(gold < orb.getItemCost(0)){
+		if (gold < orb.getItemCost(0)){
 			print("Not enough gold for " + orb.name);
 			return false;
 		}
 		
-		if(orb.buy()) {
+		if (orb.buy()) {
 			return orb.classid;
 		};
 		
@@ -75,7 +75,7 @@ function Mapper() {
 				}
 				
 				for (var i = 0; i < lowrunes.length; i++){
-					if(me.getItem(lowrunes[i])){
+					if (me.getItem(lowrunes[i])){
 						return me.getItem(lowrunes[i]).classid;
 					}
 				}
@@ -86,7 +86,7 @@ function Mapper() {
 				switch(mapquality){
 					case 2:
 						for (var i = 0; i < items.length; i++){
-							if(items[i].itemType == 58 && NTIP.CheckItem(items[i]) == 0){
+							if (items[i].itemType == 58 && NTIP.CheckItem(items[i]) == 0){
 								return items[i].classid;
 							}
 						}
@@ -94,7 +94,7 @@ function Mapper() {
 						
 					break;
 					case 4:
-						if(me.getItem(682)){
+						if (me.getItem(682)){
 							return 682
 						}
 						print("ÿc7We dont have any Perfect Skulls");					
@@ -102,7 +102,7 @@ function Mapper() {
 					break;
 					case 6:
 						for (var i = 0; i < items.length; i++){
-							if(items[i].itemType == 162){
+							if (items[i].itemType == 162){
 								return items[i].classid;
 							}
 						}
@@ -115,14 +115,14 @@ function Mapper() {
 			case "Orb":
 				switch(mapquality){
 					case 2:
-						if(!me.getItem(662)){
+						if (!me.getItem(662)){
 							return this.shopAnya(662);
 						} else {
 							return 662;
 						}
 					break;
 					case 4:
-						if(!me.getItem(665)){
+						if (!me.getItem(665)){
 							return this.shopAnya(665);
 						} else {
 							return 665;
@@ -130,7 +130,7 @@ function Mapper() {
 					
 					break;
 					case 6:
-						if(!me.getItem(663)){
+						if (!me.getItem(663)){
 							return this.shopAnya(663);
 						} else {
 							return 663;
@@ -147,7 +147,7 @@ function Mapper() {
 	this.upgradeMap = function (map) {
 		print("ÿc7No preferred maps found, lets try upgrading");
 		
-		if(this.buildRecipes("Rune") && this.buildRecipes("Item", map.quality)){
+		if (this.buildRecipes("Rune") && this.buildRecipes("Item", map.quality)){
 			Config.Recipes.push([Recipe.Map, map.classid, this.buildRecipes("Rune"),
 			this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
 			
@@ -164,7 +164,7 @@ function Mapper() {
 	this.mapRooms = function () {
 		var room, mapRooms = [];
 		
-		/*if(me.area == 149){ // Because Bastion wants to act funny
+		/*if (me.area == 149){ // Because Bastion wants to act funny
 			Pather.moveTo(15135, 23648);
 		  }*/
 
@@ -239,44 +239,44 @@ function Mapper() {
 					for(var i = 0; i < Config.Mapper[config].length; i++){
 						mapids.push(NTIPAliasClassID[Config.Mapper[config][i]]);
 					}
-					if(mapids.indexOf(map.classid) < 0){
+					if (mapids.indexOf(map.classid) < 0){
 						return false;
 					}
 					
 					break;
 				case "Quality":
-					if(Config.Mapper[config] == 2 || Config.Mapper[config] == 4) {
+					if (Config.Mapper[config] == 2 || Config.Mapper[config] == 4) {
 						return true; // Don't continue stat check for normal / magic maps, just farm them.
 					} else if (map.quality != Config.Mapper[config]){
 						return false;
 					}
 				break;
 				case "MagicFind":
-					if(map.getStat(370) < Config.Mapper[config]){
+					if (map.getStat(370) < Config.Mapper[config]){
 						return false;
 					}
 					
 					break;
 				case "GoldFind":
-					if(map.getStat(371) < Config.Mapper[config]){
+					if (map.getStat(371) < Config.Mapper[config]){
 						return false;
 					}
 
 					break;		
 				case "Density":
-					if(map.getStat(372) < Config.Mapper[config]){
+					if (map.getStat(372) < Config.Mapper[config]){
 						return false;
 					}
 					
 					break;
 				case "Experience":
-					if(map.getStat(373) < Config.Mapper[config]){
+					if (map.getStat(373) < Config.Mapper[config]){
 						return false;
 					}
 					
 					break;
 				case "Rarity":
-					if(map.getStat(375) < Config.Mapper[config]){
+					if (map.getStat(375) < Config.Mapper[config]){
 						return false;
 					}
 					
@@ -284,8 +284,8 @@ function Mapper() {
 				case "MapContains":
 					var currentStat = Config.Mapper[config];
 					for (var i = 0; i < currentStat.length; i++){
-						if(MonsterTypes[currentStat[i]]){
-							if(!map.getStat(MonsterTypes[currentStat[i]])) {
+						if (MonsterTypes[currentStat[i]]){
+							if (!map.getStat(MonsterTypes[currentStat[i]])) {
 								return false;
 							}
 						}
@@ -295,8 +295,8 @@ function Mapper() {
 				case "SkipMonsters":
 					var currentStat = Config.Mapper[config];
 					for (var i = 0; i < currentStat.length; i++){
-						if(MonsterTypes[currentStat[i]]){
-							if(map.getStat(MonsterTypes[currentStat[i]])) {
+						if (MonsterTypes[currentStat[i]]){
+							if (map.getStat(MonsterTypes[currentStat[i]])) {
 								return false;
 							}
 						}
@@ -304,8 +304,8 @@ function Mapper() {
 				case "SorbSkip":
 					var currentStat = Config.Mapper[config];
 					for (var i = 0; i < currentStat.length; i++){
-						if(MonsterAbsorbs[currentStat[i]]){
-							if(map.getStat(MonsterAbsorbs[currentStat[i]])) {
+						if (MonsterAbsorbs[currentStat[i]]){
+							if (map.getStat(MonsterAbsorbs[currentStat[i]])) {
 								return false;
 							}
 						}							
@@ -322,7 +322,7 @@ function Mapper() {
 		
 		Town.goToTown(5);
 		Town.openStash();
-		if(map.location == 7){
+		if (map.location == 7){
 			Storage.Inventory.MoveTo(map);
 		}
 		Pather.moveTo(5098, 5020);
@@ -337,12 +337,12 @@ function Mapper() {
 		var portal;
 	
 		for (var i = 137; i <= 155; i++) {
-			if(Pather.getPortal(i)){
+			if (Pather.getPortal(i)){
 				portal = i;
 			} 
 		}
 		
-		if(!Pather.usePortal(portal)){
+		if (!Pather.usePortal(portal)){
 			throw new Error("Failed to use portal!");
 			return false;
 		};
