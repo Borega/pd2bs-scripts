@@ -7,7 +7,7 @@
 function Mapper() {
 	
 	this.start = function (){
-		var items,
+		var items, upgrade,
 			maps = Config.Mapper.Maps,
 			mapids = [];
 				
@@ -23,19 +23,19 @@ function Mapper() {
 				return true;
 			}
 		}
+
+		for (var i = 0; i < items.length; i++){
+			if(mapids.indexOf(items[i].classid) > -1 && !this.checkMap(items[i])){
+				upgrade = items[i];
+		}
 		
 		if(me.getStat(14) + me.getStat(15) > 200000){
-			for (var i = 0; i < items.length; i++){
-				if(mapids.indexOf(items[i].classid) > -1 && !this.checkMap(items[i])){
-					this.upgradeMap(items[i]);
-					return true;
-				}
-			}
+			this.upgradeMap(upgrade);
 		} else {
-			print("ÿc7We have a map but not enough gold to upgrade it.");
+			print("ÿc1We have a map but not enough gold to upgrade it");
 			return false;
-		}			
-		
+		}	
+					
 		print("ÿc1Failed to find or pick a map.");
 		return false;
 		
