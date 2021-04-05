@@ -357,4 +357,3 @@ function Mapper() {
 	print("Ending Map Script.");
 	return true;
 }
-}
