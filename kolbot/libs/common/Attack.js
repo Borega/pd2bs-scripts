@@ -1267,17 +1267,22 @@ var Attack = {
 	},
 
 	skipCheck: function (unit) {
-		if (me.area === 131) {
-			return true;
-		}
+        var nonskip = [750, 752, 809, 883, 746, 879, 882, 755, 870, 861, 884, 826, 800, 744, 799, 747];
+        if (me.area === 131) {
+            return true;
+        }
 
-		if ((unit.spectype & 0x7) && Config.SkipException && Config.SkipException.indexOf(unit.name) > -1) {
-			print("ÿc1Skip Exception: " + unit.name);
-			return true;
-		}
+        if ((unit.spectype & 0x7) && Config.SkipException && Config.SkipException.indexOf(unit.name) > -1) {
+            print("ÿc1Skip Exception: " + unit.name);
+            return true;
+        }
+        
+        if (nonskip.indexOf(unit.classid) > -1){
+            return true;
+        }
 
-		var i, j, rval,
-			tempArray = [];
+        var i, j, rval,
+            tempArray = [];
 
 EnchantLoop: // Skip enchanted monsters
 		for (i = 0; i < Config.SkipEnchant.length; i += 1) {
