@@ -1852,7 +1852,25 @@ MainLoop:
 			"Matron's Den",
 			"Fogotten Sands",
 			"Furnace of Pain",
-			"Tristram"];
+			"Tristram".
+			"Unknown Area 138",
+			"Arreat Battlefield",
+			"Unknown Area 140",
+			"Sewers of Harrogath",
+			"Arcane (Horazon's Memory)",
+			"Ruins of Viz-Jun",
+			"River of Blood",
+			"Phlegathon",
+			"Ancestral Trial",
+			"Unknown Area 147",
+			"Torajan Jungle",
+			"Bastion Keep",
+			"Throne of Insanity",
+			"Throne of Zoltun Kulle",
+			"Cathedral of Light",
+			"Cathedral of Light Basement 1",
+			"Blood Moon",
+			"Unknown Area 155" ];
 
 		return areas[area];
 	}
