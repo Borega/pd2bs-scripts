@@ -355,6 +355,6 @@ function Mapper() {
 
 	// start
 	this.start();
-	print("Finished map.");
+	print("Ending Map Script.");
 	return true;
 }
