@@ -25,21 +25,22 @@ function Mapper() {
 		}
 
 		for (var i = 0; i < items.length; i++){
-			if (mapids.indexOf(items[i].classid) > -1 && !this.checkMap(items[i])){
-				upgrade = items[i];
+				if (mapids.indexOf(items[i].classid) > -1 && !this.checkMap(items[i])){
+					upgrade = items[i];
+			}
 		}
 		
 		if (me.getStat(14) + me.getStat(15) > 200000){
 			this.upgradeMap(upgrade);
 		} else {
 			print("ÿc1We have a map but not enough gold to upgrade it");
-			return false;
 		}	
 					
 		print("ÿc1Failed to find or pick a map.");
 		return false;
 		
 	};
+	
 	
 	this.shopAnya = function (orb){
 		var anya,
@@ -355,4 +356,5 @@ function Mapper() {
 	this.start();
 	print("Ending Map Script.");
 	return true;
+}
 }
