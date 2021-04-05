@@ -10,8 +10,12 @@ For changes please summit issues and pullrequests.
 ## Frequently Asked Questions:
 
 ### How do I change which GS server to make game in?
+You now have 2 options:
+1. In your profile write the gameserver into the Info tag. DO NOT USE QUTOES!
+<img align="center" width="50%" padding="10" src="https://i.imgur.com/GCgtNaK.png">
+2. In \d2bs\kolbot\libs\OOG.js on line 6 you should see a `gameserver` option. Put your preferred GS there in quotes (Eg. `"gs 1"`).
 
-In \d2bs\kolbot\libs\OOG.js on line 6 you should see a `gameserver` option. Put your preferred GS there in quotes (Eg. `"gs 1"`).
+
 
 
 ### What's the skill ID for xxxxxx?

@@ -1,7 +1,7 @@
 var StarterConfig = {
-	MinGameTime: 60, // Minimum game length in seconds. If a game is ended too soon, the rest of the time is waited in the lobby
-	PingQuitDelay: 10, // Time in seconds to wait in lobby after quitting due to high ping
-	CreateGameDelay: 5, // Seconds to wait before creating a new game
+	MinGameTime: 0, // Minimum game length in seconds. If a game is ended too soon, the rest of the time is waited in the lobby
+	PingQuitDelay: 0, // Time in seconds to wait in lobby after quitting due to high ping
+	CreateGameDelay: 0, // Seconds to wait before creating a new game
 	ResetCount: 10, // Reset game count back to 1 every X games.
 	CharacterDifference: 99, // Character level difference. Set to false to disable character difference.
 	ChatActionsDelay: 2, // Seconds to wait in lobby before entering a channel
@@ -82,7 +82,7 @@ if (!FileTools.exists("data/" + me.profile + ".json")) {
 }
 
 var gameInfo, gameStart, ingame, chatActionsDone, pingQuit,
-	handle, useChat, firstLogin, connectFail,
+	handle, useChat, firstLogin, connectFail, setUp,
 	gameCount = DataFile.getStats().runs + 1,
 	loginRetry = 0,
 	lastGameStatus = "ready",
@@ -115,9 +115,18 @@ function ReceiveCopyData(mode, msg) {
 	switch (mode) {
 	case 2: // Game info
 		print("Recieved Game Info");
-
+		print(D2Bot.getProfile());
 		gameInfo = JSON.parse(msg);
-
+		obj = JSON.parse(msg);
+		setUp = {};
+		setUp.profile = me.profile.toUpperCase();
+		setUp.account = obj.Account;
+		setUp.charName = obj.Character;
+		setUp.tag = obj.Tag;
+		if (setUp.tag !== "") {
+			setUp.tag = setUp.tag[0].toUpperCase() + setUp.tag.substring(1).toLowerCase();
+			D2Bot.setProfile(null, null, null, null, null, setUp.tag);
+		}
 		break;
 	case 3: // Game request
 		// Don't let others join mule/torch/key/gold drop game
@@ -148,6 +157,20 @@ function ReceiveCopyData(mode, msg) {
 		}
 
 		break;
+		
+	case 1638: // getProfile
+		obj = JSON.parse(msg);
+		setUp = {};
+		setUp.profile = me.profile.toUpperCase();
+		setUp.account = obj.Account;
+		setUp.charName = obj.Character;
+		setUp.tag = obj.Tag;
+		if (setUp.tag !== "") {
+			setUp.tag = setUp.tag[0].toLowerCase() + setUp.tag.substring(1).toLowerCase();
+			D2Bot.setProfile(null, null, null, null, null, setUp.tag);
+		}
+		break;
+	
 	}
 }
 
@@ -260,6 +283,12 @@ function main() {
 
 	while (!gameInfo) {
 		D2Bot.requestGameInfo();
+		delay(500);
+	}
+	
+	while (!setUp) {
+		D2Bot.getProfile();
+		print("Getting Profile");
 		delay(500);
 	}
 
@@ -557,7 +586,7 @@ MainSwitch:
 			D2Bot.updateRuns();
 		}
 
-		ControlAction.createGame((gameInfo.gameName === "?" ? randomString(null,true) : gameInfo.gameName + gameCount), (gameInfo.gamePass === "?" ? randomString(null,true) : gameInfo.gamePass), gameInfo.difficulty, StarterConfig.CreateGameDelay * 1000);
+		ControlAction.createGame((gameInfo.gameName === "?" ? randomString(null,true) : gameInfo.gameName + gameCount), (gameInfo.gamePass === "?" ? randomString(null,true) : gameInfo.gamePass), (setUp.tag === "" ? gameserver : setUp.tag), gameInfo.difficulty, StarterConfig.CreateGameDelay * 1000);
 
 		lastGameStatus = "pending";
 
