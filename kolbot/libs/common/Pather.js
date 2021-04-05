@@ -1852,7 +1852,7 @@ MainLoop:
 			"Matron's Den",
 			"Fogotten Sands",
 			"Furnace of Pain",
-			"Tristram".
+			"Tristram",
 			"Unknown Area 138",
 			"Arreat Battlefield",
 			"Unknown Area 140",
