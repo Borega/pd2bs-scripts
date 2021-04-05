@@ -7,7 +7,7 @@
 function Mapper() {
 	
 	this.start = function (){
-		var items, upgrade,
+		var items,
 			maps = Config.Mapper.Maps,
 			mapids = [];
 				
