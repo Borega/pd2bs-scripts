@@ -145,19 +145,21 @@ function Mapper() {
 	};
 
 	this.upgradeMap = function (map) {
-		
 		print("ÿc7No preferred maps found, lets try upgrading");
 		
-		Config.Recipes.push([Recipe.Map, map.classid, this.buildRecipes("Rune"),
-		this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
-
-		Cubing.buildRecipes();
-		Cubing.update();
-		Town.doChores();
-		delay(200 + me.ping);
-		this.start();
+		if(this.buildRecipes("Rune") && this.buildRecipes("Item", map.quality)){
+			Config.Recipes.push([Recipe.Map, map.classid, this.buildRecipes("Rune"),
+			this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
+			
+			Cubing.buildRecipes();
+			Cubing.update();
+			Town.doChores();
+			delay(200 + me.ping);
+			this.start();
+		}
+		print("Failed to upgrade");
 		return false;
-	};	
+	};		
 		
 	this.mapRooms = function () {
 		var room, mapRooms = [];
