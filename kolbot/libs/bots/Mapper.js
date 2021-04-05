@@ -82,10 +82,6 @@ function Mapper() {
 				print("ÿc7Couldn't find any low runes to use");
 				
 			break;
-			case "Jewel":
-
-				
-			break;
 			case "Item":
 				switch(mapquality){
 					case 2:
