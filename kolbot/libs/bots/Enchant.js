@@ -141,7 +141,7 @@ function Enchant() {
 
 		Pather.useWaypoint(4);
 		Precast.doPrecast(true);
-		Pather.moveToPreset(me.area, 1, 888, 8, 8);
+		Pather.moveToPreset(me.area, 1, 889, 8, 8);
 
 		for (i = 0; i < 6; i += 1) {
 			portal = Pather.getPortal(38);
