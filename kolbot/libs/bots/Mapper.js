@@ -7,13 +7,7 @@
 function Mapper() {
 	
 	this.start = function (){
-		var items, upgrade,
-			maps = Config.Mapper.Maps,
-			mapids = [];
-				
-		for (var i = 0; i < maps.length; i++){
-			mapids.push(NTIPAliasClassID[maps[i]]);
-		}
+		var items;
 		
 		items = me.findItems(-1, 0);
 		
@@ -23,25 +17,70 @@ function Mapper() {
 				return true;
 			}
 		}
-
-		for (var i = 0; i < items.length; i++){
-				if (mapids.indexOf(items[i].classid) > -1 && !this.checkMap(items[i])){
-					upgrade = items[i];
-			}
-		}
 		
-		if (me.getStat(14) + me.getStat(15) > 200000){
-			this.upgradeMap(upgrade);
-		} else {
-			print("ÿc1We have a map but not enough gold to upgrade it");
-		}	
-					
-		print("ÿc1Failed to find or pick a map.");
+		this.upgradeMaps();
+		
 		return false;
 		
 	};
-	
-	
+
+	this.upgradeMaps = function () {
+		var map, maps, roll,
+			ids = Config.Mapper.Maps,
+			mapids = [];
+		
+		if(!this.buildRecipes("Rune")){
+			return false;
+		}		
+		
+		for (var i = 0; i < ids.length; i++){ 
+			mapids.push(NTIPAliasClassID[ids[i]]);
+		}
+		
+		if (me.getStat(14) + me.getStat(15) > 2){
+			maps = me.findItems(-1, 0).filter( function(x) { return mapids.indexOf(x.classid) > -1 && !this.checkMap(x)});
+		} else {
+			print("ÿc8Upgrading maps requiresÿc7 gold.ÿc8 Get your shit together!");
+			return false;
+		} 	
+		
+		if (maps.length > 0) {
+			
+			maps = maps.filter(function(elem, index, self){ // filter down to 1 map of each quality
+			  return self.findIndex(function(t){
+			  return t.quality == elem.quality;
+				}) === index;
+			});	
+			
+			print("ÿc7We have maps! ÿc2 Lets try upgrading...");
+			
+ 			while(maps.length > 0) {
+				map = maps.shift()
+				
+				if (this.buildRecipes("Item", map.quality)){
+					roll = true;
+					Config.Recipes.push([Recipe.Map, map.classid, this.buildRecipes("Rune"),
+					this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
+					print("ÿc2Upgrading " + map.name);
+
+				}
+			} 
+		} else {
+			print("ÿc8No maps found to upgrade");
+			return false;
+		}
+							
+		if(roll){
+			Cubing.buildRecipes();
+			Cubing.update();
+			Town.doChores();
+			delay(200 + me.ping);
+			this.start();
+		}
+		
+		return false;
+	};		
+		
 	this.shopAnya = function (orb){
 		var anya,
 			gold = me.getStat(14) + me.getStat(15);
@@ -53,7 +92,7 @@ function Mapper() {
 		orb = anya.getItem(orb, 0);
 		
 		if (gold < orb.getItemCost(0)){
-			print("Not enough gold for " + orb.name);
+			print("ÿc8Not enough gold for " + orb.name);
 			return false;
 		}
 		
@@ -80,7 +119,7 @@ function Mapper() {
 						return me.getItem(lowrunes[i]).classid;
 					}
 				}
-				print("ÿc7Couldn't find any low runes to use");
+				print("ÿc8Couldn't find any low runes to use");
 				return false;
 				
 			break;
@@ -92,7 +131,7 @@ function Mapper() {
 								return items[i].classid;
 							}
 						}
-						print("ÿc7We dont have any junk jewels to use");	
+						print("ÿc8No junk jewels to upgrade ÿc0normal map");	
 						return false;
 						
 					break;
@@ -100,17 +139,17 @@ function Mapper() {
 						if (me.getItem(682)){
 							return 682
 						}
-						print("ÿc7We dont have any Perfect Skulls");					
+						print("ÿc8No Perfect Skulls upgrade ÿc3magic map");					
 						return false;
 						
-					break;
+					break;					
 					case 6:
 						for (var i = 0; i < items.length; i++){
 							if (items[i].itemType == 162){
 								return items[i].classid;
 							}
 						}
-						print("ÿc7We dont have any Perfect Gems");						
+						print("ÿc8No Perfect Gems to reroll ÿc9rare map");			
 						return false;
 						
 					break;
@@ -147,24 +186,7 @@ function Mapper() {
 		
 		return false;				
 	};
-
-	this.upgradeMap = function (map) {
-		print("ÿc7No preferred maps found, lets try upgrading");
-		
-		if (this.buildRecipes("Rune") && this.buildRecipes("Item", map.quality)){
-			Config.Recipes.push([Recipe.Map, map.classid, this.buildRecipes("Rune"),
-			this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
-			
-			Cubing.buildRecipes();
-			Cubing.update();
-			Town.doChores();
-			delay(200 + me.ping);
-			this.start();
-		}
-		
-		return false;
-	};		
-		
+	
 	this.mapRooms = function () {
 		var room, mapRooms = [];
 		
