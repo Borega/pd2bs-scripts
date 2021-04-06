@@ -726,7 +726,7 @@ IngredientLoop:
 		}
 		
 		if(Scripts.Mapper){ // Band-aid
-			if (unit.itemType === 58) {
+			if (unit.itemType === 58 && NTIP.CheckItem(unit) === 0) {
 				return true;
 			}
 		}

@@ -52,7 +52,7 @@ function Tristram() {
 		stones = [getUnit(2, 17), getUnit(2, 18), getUnit(2, 19), getUnit(2, 20), getUnit(2, 21)];
 	}
 
-	Pather.moveToPreset(me.area, 1, 888, 10, 10, false, true); //(area, unitType, unitId, offX, offY, clearPath, pop)
+	Pather.moveToPreset(me.area, 1, 889, 10, 10, false, true); //(area, unitType, unitId, offX, offY, clearPath, pop)
 
 
 	while (!me.getQuest(4, 4)) {
