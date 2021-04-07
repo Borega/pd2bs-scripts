@@ -516,14 +516,14 @@ var Cubing = {
 					this.recipes.push({Ingredients: [Config.Recipes[i][1], 543], Index: Recipe.Rune});
 					break;
 			}
-			break;
+				break;
 			case Recipe.Token:
 				this.recipes.push({Ingredients: [654, 655, 656, 657], Index: Recipe.Token, AlwaysEnabled: true});
 				break;
 			//Used by mapper script, will make standalone cubing script later. -yayza
 			case Recipe.Map:
 				this.recipes.push({Ingredients: [Config.Recipes[i][1], Config.Recipes[i][2], Config.Recipes[i][3], Config.Recipes[i][4]], Index: Recipe.Map});
-				break;				
+				break;
 			}
 		} 
 	},
@@ -724,12 +724,14 @@ IngredientLoop:
 		if (!Config.Cubing) {
 			return false;
 		}
-		
-		if(Scripts.Mapper){ // Band-aid
-			if (unit.itemType === 58 && NTIP.CheckItem(unit) === 0) {
+
+		if(Scripts.Mapper){ // Only keep junk jewel if Mapper script is on and we have less than 6 junk jewels
+			if (unit.itemType === 58 && NTIP.CheckItem(unit) === 0 && 
+				me.findItems(-1,0).filter(x => x.itemType == 58).length < 6) {
+
 				return true;
 			}
-		}
+		}			
 
 		var i;
 
@@ -796,9 +798,8 @@ IngredientLoop:
 			} else if (unit.getStat(70) >= Config.MinRuneStack + 2) {
 				return true;
 			}	
-		}
+		}		
 		
-
 
 		if (recipe.Index >= Recipe.HitPower.Helm && recipe.Index <= Recipe.Safety.Weapon) {
 			// Junk jewels (NOT matching a pickit entry)
