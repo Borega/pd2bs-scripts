@@ -1853,6 +1853,7 @@ MainLoop:
 			"Fogotten Sands",
 			"Furnace of Pain",
 			"Tristram",
+			"Unknown Area 137",
 			"Unknown Area 138",
 			"Arreat Battlefield",
 			"Unknown Area 140",
@@ -1869,8 +1870,7 @@ MainLoop:
 			"Throne of Zoltun Kulle",
 			"Cathedral of Light",
 			"Cathedral of Light Basement 1",
-			"Blood Moon",
-			"Unknown Area 155" ];
+			"Blood Moon" ];
 
 		return areas[area];
 	}
