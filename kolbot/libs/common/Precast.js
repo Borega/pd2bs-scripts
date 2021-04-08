@@ -132,6 +132,7 @@ var Precast = new function () {
 
 	this.doPrecast = function (force) {
 		var buffSummons = false;
+		
 		if (me.classid != 5){
 			if (me.getSkill(226, 1)&& !me.getState(149)) {
 				Skill.cast(226, 0); // Oak Sage

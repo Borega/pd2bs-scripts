@@ -10,8 +10,9 @@ var ClassAttack = {
 		return me.pets.filter(pet => pet.classid === 351).length;
 	},
 	
+	
 	getHydraCountInRange: function(unit) {
-		var hydra = me.pets.filter(pet => pet.classid === 351), 
+		var hydra = me.pets.filter(pet => (pet.classid === 351||pet.classid ===738)), 
 			hydraInRange = 0, 
 			i;
 		for (i = 0; i < hydra.length; ++i){
@@ -24,6 +25,11 @@ var ClassAttack = {
 	
 	castHydra: function(unit){
 		if(Config.CastHydra) {
+			if (me.getSkill(383, 1) && !me.getSkill(62,1) && !me.getState(121)){
+				while (this.getHydraCountInRange(unit) < 3 ) {
+						Skill.cast(383, 1, unit);
+				}
+			}
 			if(me.getSkill(62, 1) && !me.getState(121)){	
 				while (this.getHydraCountInRange(unit) < 3 ) {
 						Skill.cast(62, 1, unit);
