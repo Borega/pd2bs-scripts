@@ -37,7 +37,7 @@ function Mapper() {
 			mapids.push(NTIPAliasClassID[ids[i]]);
 		}
 		
-		if (me.getStat(14) + me.getStat(15) > 2){
+		if (me.getStat(14) + me.getStat(15) > 200000){
 			maps = me.findItems(-1, 0).filter( function(x) { return mapids.indexOf(x.classid) > -1 && !this.checkMap(x)});
 		} else {
 			print("ÿc8Upgrading maps requiresÿc7 gold.ÿc8 Get your shit together!");
