@@ -579,6 +579,7 @@ function LoadConfig() {
 	/* Attack config
 	 * To disable an attack, set it to -1
 	 * Skills MUST be POSITIVE numbers. For reference see ...\kolbot\sdk\skills.txt
+	 * Do not use Hydra(skill no. 62) as an attack here. Instead set Config.CastHydra = true; 
 	 */
 	Config.AttackSkill[0] = -1; // Preattack skill.
 	Config.AttackSkill[1] = -1; // Primary skill to bosses.
@@ -600,7 +601,8 @@ function LoadConfig() {
 	Config.CustomAttack = {
 		//"Monster Name": [-1, -1]
 	};
-
+	
+	Config.CastHydra = false;
 	Config.NoTele = false; // Restrict char from teleporting. Useful for low level/low mana chars
 	Config.Dodge = true; // Move away from monsters that get too close. Don't use with short-ranged attacks like Poison Dagger.
 	Config.DodgeRange = 11; // Distance to keep from monsters.
