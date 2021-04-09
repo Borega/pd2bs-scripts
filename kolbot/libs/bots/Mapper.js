@@ -188,11 +188,11 @@ function Mapper() {
 	};
 	
 	this.killBoss = function () { 
-		
 		var boss, bossPreset;
 		
 		bossPreset = [746, 750, 755, 800, 809, 826, 861, 870, 879, 882, 883, 884];
 		boss = bossPreset.find( unit => getPresetUnit(me.area, 1, unit));
+		
 		Pather.moveToPreset(me.area, 1, boss, 0, 0, true, false);
 		Attack.clear(30, 0, boss);
 		
