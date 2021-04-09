@@ -29,7 +29,7 @@ var NodeAction = {
 			}
 		}
 		
-		if (!me.inTown) {
+		if (!me.inTown && !Config.ManualPlayPick) {
 			Attack.clear(7, 0);
 		}		
 		
