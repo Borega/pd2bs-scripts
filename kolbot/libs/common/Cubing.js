@@ -93,7 +93,11 @@ var Recipe = {
 		Armor: 54,
 		Weapon: 55
 	},
-	Map: 56
+	Map: {
+		Normal: 56,
+		Magic: 57,
+		Rare: 58
+	}
 };
 
 var Cubing = {
@@ -521,9 +525,15 @@ var Cubing = {
 				this.recipes.push({Ingredients: [654, 655, 656, 657], Index: Recipe.Token, AlwaysEnabled: true});
 				break;
 			//Used by mapper script, will make standalone cubing script later. -yayza
-			case Recipe.Map:
-				this.recipes.push({Ingredients: [Config.Recipes[i][1], Config.Recipes[i][2], Config.Recipes[i][3], Config.Recipes[i][4]], Index: Recipe.Map});
+			case Recipe.Map.Normal:
+				this.recipes.push({Ingredients: [Config.Recipes[i][1], Config.Recipes[i][2], Config.Recipes[i][3], Config.Recipes[i][4]], Index: Recipe.Map.Normal});
 				break;
+			case Recipe.Map.Magic:
+				this.recipes.push({Ingredients: [Config.Recipes[i][1], Config.Recipes[i][2], Config.Recipes[i][3], Config.Recipes[i][4]], Index: Recipe.Map.Magic});
+				break;
+			case Recipe.Map.Rare:
+				this.recipes.push({Ingredients: [Config.Recipes[i][1], Config.Recipes[i][2], Config.Recipes[i][3], Config.Recipes[i][4]], Index: Recipe.Map.Rare});
+				break;				
 			}
 		} 
 	},
@@ -908,10 +918,35 @@ IngredientLoop:
 			return true;
 		}
 		
-		if (recipe.Index === Recipe.Map) {
-			return true;
+		if([106, 107, 108].indexOf(unit.itemType) > -1){
+			switch(recipe.Index){
+				case Recipe.Map.Normal:
+					if(unit.quality !== 2){
+						return false;
+					}
+					
+				break;
+				case Recipe.Map.Magic:
+					if(unit.quality !== 4){
+						return false;
+					}
+					
+				break;
+				case Recipe.Map.Rare:
+					if(unit.quality !== 6){
+						return false;
+					}			
+				break;
+			}
+			return true;		
 		}
-
+		
+		if([Recipe.Map.Normal, Recipe.Map.Magic, Recipe.Map.Rare].find( e => e == recipe.Index)){
+			if([106, 107, 108].indexOf(unit.itemType < 0)){
+				return true;
+			}
+		}		
+		
 		return false;
 	},
 
