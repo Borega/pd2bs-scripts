@@ -29,9 +29,13 @@ var NodeAction = {
 			}
 		}
 		
-		if (Config.ClearPathingUniques) { //
-                              Attack.clear(30); //clear all mobs in 30 yards, no spectype - either this line OR the one above
-        }
+		if (!me.inTown) {
+			Attack.clear(7, 0);
+		}		
+		
+/* 		if (Config.ClearPathingUniques) { //
+            Attack.clear(30); //clear all mobs in 30 yards, no spectype - either this line OR the one above
+        } */
 
 		if ((typeof Config.ClearPath === "number" || typeof Config.ClearPath === "object") && arg.clearPath === false) {
 			switch (typeof Config.ClearPath) {

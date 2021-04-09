@@ -69,29 +69,23 @@ function Mapper() {
 					
 					switch(map.quality){
 						case 2: // Normal > Rare
-						
-						Config.Recipes.push([Recipe.Map.Normal, map.classid, this.buildRecipes("Rune"),
-						this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
-						print("ÿc2Upgrading " + map.name);
+							Config.Recipes.push([Recipe.Map.Normal, map.classid, this.buildRecipes("Rune"),
+							this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
 						
 						break;
 						case 4: //Magic > Rare
-						
-						Config.Recipes.push([Recipe.Map.Magic, map.classid, this.buildRecipes("Rune"),
-						this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
-						print("ÿc2Upgrading " + map.name);	
+							Config.Recipes.push([Recipe.Map.Magic, map.classid, this.buildRecipes("Rune"),
+							this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
 						
 						break;
 						case 6: //Re-roll
-						
-						Config.Recipes.push([Recipe.Map.Rare, map.classid, this.buildRecipes("Rune"),
-						this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
+							Config.Recipes.push([Recipe.Map.Rare, map.classid, this.buildRecipes("Rune"),
+							this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
 						
 						break;
-						
 					}
 					
-				print("ÿc2Upgrading " + map.name);	
+				print("ÿc2Upgrading ÿc0" + map.name);	
 
 				}
 			} 
