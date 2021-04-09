@@ -187,6 +187,18 @@ function Mapper() {
 		return false;				
 	};
 	
+	this.killBoss = function () { 
+		
+		var boss, bossPreset;
+		
+		bossPreset = [746, 750, 755, 800, 809, 826, 861, 870, 879, 882, 883, 884];
+		boss = bossPreset.find( unit => getPresetUnit(me.area, 1, unit));
+		Pather.moveToPreset(me.area, 1, boss, 0, 0, true, false);
+		Attack.clear(30, 0, boss);
+		
+		return true;
+	};	
+	
 	this.mapRooms = function () {
 		var room, mapRooms = [];
 		
@@ -241,7 +253,7 @@ function Mapper() {
 		}
 
 		return true;
-	};
+	}; 
 	
 	this.checkMap = function(map){
 		
@@ -373,7 +385,7 @@ function Mapper() {
 			return false;
 		};
 		
-		this.clearMap();
+		this.killBoss();
 		return true;
 	};
 
