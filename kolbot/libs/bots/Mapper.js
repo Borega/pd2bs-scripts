@@ -378,6 +378,7 @@ function Mapper() {
 	};
 
 	// start
+	Town.doChores();
 	this.start();
 	print("Ending Map Script.");
 	return true;
