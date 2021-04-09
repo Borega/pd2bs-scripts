@@ -5,7 +5,41 @@
 */
 
 var ClassAttack = {
+	
+	getHydraCount: function() {
+		return me.pets.filter(pet => pet.classid === 351).length;
+	},
+	
+	
+	getHydraCountInRange: function(unit) {
+		var hydra = me.pets.filter(pet => (pet.classid === 351||pet.classid ===738)), 
+			hydraInRange = 0, 
+			i;
+		for (i = 0; i < hydra.length; ++i){
+			if (getDistance(hydra[i], unit) <= Skill.getRange(62, 0x4)){
+				hydraInRange += 1;
+			}
+		}
+		return hydraInRange
+	},
+	
+	castHydra: function(unit){
+		if(Config.CastHydra) {
+			if (me.getSkill(383, 1) && !me.getSkill(62,1) && !me.getState(121)){
+				while (this.getHydraCountInRange(unit) < 3 ) {
+						Skill.cast(383, 1, unit);
+				}
+			}
+			if(me.getSkill(62, 1) && !me.getState(121)){	
+				while (this.getHydraCountInRange(unit) < 3 ) {
+						Skill.cast(62, 1, unit);
+				}
+			}
+		}
+	},
+	
 	doAttack: function (unit, preattack) {
+		
 		if (Config.MercWatch && Town.needMerc()) {
 			print("mercwatch");
 			Town.visitTown();
@@ -71,7 +105,7 @@ var ClassAttack = {
 				}
 			}
 		}
-
+		
 		index = ((unit.spectype & 0x7) || unit.type === 0) ? 1 : 3;
 
 		// Get timed skill
@@ -81,7 +115,7 @@ var ClassAttack = {
 			checkSkill = Config.AttackSkill[index];
 		}
 
-		if (Attack.checkResist(unit, checkSkill) && ([56, 59].indexOf(checkSkill) === -1 || Attack.validSpot(unit.x, unit.y))) {
+		if (Attack.checkResist(unit, checkSkill) && ([56, 59].indexOf(checkSkill) === -1 || Attack.validSpot(unit.x, unit.y)) ) {
 			timedSkill = checkSkill;
 		} else if (Config.AttackSkill[5] > -1 && Attack.checkResist(unit, Config.AttackSkill[5]) && ([56, 59].indexOf(Config.AttackSkill[5]) === -1 || Attack.validSpot(unit.x, unit.y))) {
 			timedSkill = Config.AttackSkill[5];
@@ -110,6 +144,7 @@ var ClassAttack = {
 			untimedSkill = Config.LowManaSkill[1];
 		}
 
+		
 		result = this.doCast(unit, timedSkill, untimedSkill);
 
 		if (result === 2 && Config.TeleStomp && Attack.checkResist(unit, "physical") && !!me.getMerc() && Attack.validSpot(unit.x, unit.y)) {
@@ -147,11 +182,14 @@ var ClassAttack = {
 		if (timedSkill < 0 && untimedSkill < 0) {
 			return 2;
 		}
-
+		
+		this.castHydra(unit);
+		
 		if (timedSkill > -1 && (!me.getState(121) || !Skill.isTimed(timedSkill))) {
 			if (Skill.getRange(timedSkill) < 4 && !Attack.validSpot(unit.x, unit.y)) {
 				return 0;
 			}
+			
 
 			if (Math.round(getDistance(me, unit)) > Skill.getRange(timedSkill) || checkCollision(me, unit, 0x4)) {
 				// Allow short-distance walking for melee skills
@@ -162,17 +200,18 @@ var ClassAttack = {
 				}
 			}
 
-			if (!unit.dead && !checkCollision(me, unit, 0x4)) {
+			if (!unit.dead && !checkCollision(me, unit, 0x4) ) {
 				Skill.cast(timedSkill, Skill.getHand(timedSkill), unit);
 			}
 
 			return 1;
-		}
-
+		}	
+			
 		if (untimedSkill > -1) {
 			if (Skill.getRange(untimedSkill) < 4 && !Attack.validSpot(unit.x, unit.y)) {
 				return 0;
 			}
+
 
 			if (Math.round(getDistance(me, unit)) > Skill.getRange(untimedSkill) || checkCollision(me, unit, 0x4)) {
 				// Allow short-distance walking for melee skills
@@ -200,4 +239,7 @@ var ClassAttack = {
 
 		return 1;
 	}
+	
+
+		
 };

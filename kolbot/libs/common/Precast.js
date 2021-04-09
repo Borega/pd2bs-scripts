@@ -133,8 +133,10 @@ var Precast = new function () {
 	this.doPrecast = function (force) {
 		var buffSummons = false;
 		
-		if (me.getSkill(226, 1)&& !me.getState(149)) {
-			Skill.cast(226, 0); // Oak Sage
+		if (me.classid != 5){
+			if (me.getSkill(226, 1)&& !me.getState(149)) {
+				Skill.cast(226, 0); // Oak Sage
+			}
 		}
 
 		// Force BO 30 seconds before it expires
@@ -439,7 +441,7 @@ var Precast = new function () {
 			case 221: // Raven
 				minion = 10;
 				if (me.getSkill(221, 1) <= 10) {
-					count = me.getSkill(221, 1) + 1;
+					count = me.getSkill(221, 1) + 2;
 
 				}
 				if (me.getSkill(221, 1) > 10) {
