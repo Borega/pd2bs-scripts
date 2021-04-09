@@ -9,6 +9,13 @@ function Mapper() {
 	this.start = function (){
 		var items;
 		
+		if(me.diff !== 2){
+			print("Must be in Hell Difficulty to open maps.");
+			return false
+		}
+		
+		Town.doChores();
+		
 		items = me.findItems(-1, 0);
 		
 		for (var i = 0; i < items.length; i++){
@@ -413,7 +420,6 @@ function Mapper() {
 	};
 
 	// start
-	Town.doChores();
 	this.start();
 	print("Ending Map Script.");
 	return true;
