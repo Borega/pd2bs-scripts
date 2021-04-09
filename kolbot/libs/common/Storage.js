@@ -188,7 +188,7 @@ var Container = function (name, width, height, location) {
             *  Stackable Runes: 137
             *  Keys/Essences(Not Complete List): 197
             */
-            var quant_types = [137, 104, 194, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 197];
+            var quant_types = [118, 120, 121, 122, 123, 124, 137, 104, 194, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 197];
 
             if ((this.location === 3 || this.location === 7) && quant_types.indexOf(item.itemType) > -1) {
                 var stack = find_eligible_stack(item.classid, 50, this.location);
