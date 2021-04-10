@@ -537,7 +537,7 @@ var Cubing = {
 				break;				
 			case Recipe.Nonstackable:
 				if (Config.Recipes[i][1] >= 669 && Config.Recipes[i][1] <= 715) { // stackable gems/runes
-					this.recipes.push({Ingredients: [Config.Recipes[i][1]], Index: Recipe.Nonstackable});
+					this.recipes.push({Ingredients: [Config.Recipes[i][1]], Index: Recipe.Nonstackable, AmountLimit: Config.Recipes[i][2] || 1});
 				}
 				break;
 			}
@@ -779,7 +779,22 @@ IngredientLoop:
 
 			return true;
 		}
+		
+		// PD2 - Validate conversion of stackable gem/rune into non-stackable version
+		if (recipe.Ingredients.length === 1 && recipe.Ingredients[0] === unit.classid && unit.classid >= 669 && unit.classid <= 715) {
+			let stackableClassid;
+			
+			if (unit.name.toLowerCase().contains("rune")) {
+				stackableClassid = unit.classid - 73;
+			} else { // gem
+				const code = unit.name.toLowerCase().replace(/\s/g, '');
+				stackableClassid = NTIPAliasClassID[code];
+			}
 
+			const amountAlreadyOwn = me.getItems().filter(item => item.classid === stackableClassid).length;
+
+			return amountAlreadyOwn < recipe.AmountLimit;
+		}
 		
 		// PD2 Flawless Gems Validation
 		if ((unit.itemType >= 149 && unit.itemType <= 155) && unit.getStat(70) >= 3 || unit.itemType == 41) {
@@ -793,11 +808,6 @@ IngredientLoop:
 /* 			if (!recipe.Enabled && recipe.Ingredients [0] !== unit.classid && recipe.Ingredients[1] !== unit.classid) {
 				return false;
 			} */
-			return true;
-		}
-		
-		// PD2 - Validate conversion of stackable gem/rune into non-stackable version
-		if (recipe.Ingredients.length === 1 && recipe.Ingredients[0] === unit.classid && unit.classid >= 669 && unit.classid <= 715) {
 			return true;
 		}
 		
