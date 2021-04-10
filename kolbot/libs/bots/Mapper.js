@@ -32,16 +32,22 @@ function Mapper() {
 	};
 
 	this.upgradeMaps = function () {
-		var map, maps, roll,
+		var map, maps, roll, minGold,
 			ids = Config.Mapper.Maps,
 			mapids = [];
 			
-		if (!me.getQuest(37, 0)) { 
+		if(!me.getQuest(35, 0)){ // Orbs cost more if Siege quest isn't done
+			minGold = 400000;
+		} else {
+			minGold = 200000;
+		}			
+			
+		if (!me.getQuest(37, 0)) { // Check Anya Quest
 			print("Anya quest incomplete!");
 			return false;
 		}			
 		
-		if(!this.buildRecipes("Rune")){
+		if (!this.buildRecipes("Rune")){ // Check if we have low runes
 			return false;
 		}		
 		
@@ -49,7 +55,7 @@ function Mapper() {
 			mapids.push(NTIPAliasClassID[ids[i]]);
 		}
 		
-		if (me.getStat(14) + me.getStat(15) > 200000){
+		if (me.getStat(14) + me.getStat(15) > minGold){
 			maps = me.findItems(-1, 0).filter( function(x) { return mapids.indexOf(x.classid) > -1 && !this.checkMap(x)});
 		} else {
 			print("ÿc8Upgrading maps requiresÿc7 gold.ÿc8 Get your shit together!");
