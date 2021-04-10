@@ -98,7 +98,7 @@ var Recipe = {
 		Magic: 57,
 		Rare: 58
 	},
-	Unstackable: 59
+	Nonstackable: 59
 };
 
 var Cubing = {
@@ -535,9 +535,9 @@ var Cubing = {
 			case Recipe.Map.Rare:
 				this.recipes.push({Ingredients: [Config.Recipes[i][1], Config.Recipes[i][2], Config.Recipes[i][3], Config.Recipes[i][4]], Index: Recipe.Map.Rare});
 				break;				
-			case Recipe.Unstackable:
+			case Recipe.Nonstackable:
 				if (Config.Recipes[i][1] >= 669 && Config.Recipes[i][1] <= 715) { // stackable gems/runes
-					this.recipes.push({Ingredients: [Config.Recipes[i][1]], Index: Recipe.Unstackable});
+					this.recipes.push({Ingredients: [Config.Recipes[i][1]], Index: Recipe.Nonstackable});
 				}
 				break;
 			}
