@@ -35,6 +35,11 @@ function Mapper() {
 		var map, maps, roll,
 			ids = Config.Mapper.Maps,
 			mapids = [];
+			
+		if (!me.getQuest(37, 0)) { 
+			print("Anya quest incomplete!");
+			return false;
+		}			
 		
 		if(!this.buildRecipes("Rune")){
 			return false;
