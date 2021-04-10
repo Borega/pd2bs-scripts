@@ -97,7 +97,8 @@ var Recipe = {
 		Normal: 56,
 		Magic: 57,
 		Rare: 58
-	}
+	},
+	Unstackable: 59
 };
 
 var Cubing = {
@@ -534,6 +535,11 @@ var Cubing = {
 			case Recipe.Map.Rare:
 				this.recipes.push({Ingredients: [Config.Recipes[i][1], Config.Recipes[i][2], Config.Recipes[i][3], Config.Recipes[i][4]], Index: Recipe.Map.Rare});
 				break;				
+			case Recipe.Unstackable:
+				if (Config.Recipes[i][1] >= 669 && Config.Recipes[i][1] <= 715) { // stackable gems/runes
+					this.recipes.push({Ingredients: [Config.Recipes[i][1]], Index: Recipe.Unstackable});
+				}
+				break;
 			}
 		} 
 	},
@@ -790,7 +796,10 @@ IngredientLoop:
 			return true;
 		}
 		
-
+		// PD2 - Validate conversion of stackable gem/rune into non-stackable version
+		if (recipe.Ingredients.length === 1 && recipe.Ingredients[0] === unit.classid && unit.classid >= 669 && unit.classid <= 715) {
+			return true;
+		}
 		
 		// PD2 - Validate & Quantity Check Low Rune Stack
 		if (unit.classid >= 683 && unit.classid <= 702) {
