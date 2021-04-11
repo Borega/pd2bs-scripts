@@ -29,18 +29,14 @@ var NodeAction = {
 			}
 		}
 		
-		if (!me.inTown && !Config.ManualPlayPick) {
-			Attack.clear(7, 0);
+		if (!me.inTown && !Config.ManualPlayPick && Config.NoTele) {
+			Attack.clear(12, 0);
 		}		
-		
-/* 		if (Config.ClearPathingUniques) { //
-            Attack.clear(30); //clear all mobs in 30 yards, no spectype - either this line OR the one above
-        } */
 
 		if ((typeof Config.ClearPath === "number" || typeof Config.ClearPath === "object") && arg.clearPath === false) {
 			switch (typeof Config.ClearPath) {
 			case "number":
-				Attack.clear(30, Config.ClearPath);
+				Attack.clear(15, Config.ClearPath);
 
 				break;
 			case "object":
