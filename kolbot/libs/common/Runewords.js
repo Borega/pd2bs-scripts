@@ -240,6 +240,18 @@ RuneLoop:
 							k -= 1;
 
 							break; // stop item cycle - we found the item
+						} else if (Cubing.getNonstackableClassId(items[k]) === Config.Runewords[i][0][j]) {
+							// no matching nonstackable rune, but there is matching rune stack,
+							// so we need to transmute the stack to get a nonstackable rune to use
+							Cubing.recipes.push({
+								Ingredients: [items[k].classid], 
+								Index: Recipe.Nonstackable,
+								AmountLimit: 1
+							});
+							Cubing.doCubing();
+							
+							// run the check again, reflecting the newly transmuted rune
+							return this.checkRunewords();
 						}
 					}
 
