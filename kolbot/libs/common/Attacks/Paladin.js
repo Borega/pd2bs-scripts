@@ -184,7 +184,6 @@ var ClassAttack = {
 
 			return 1;
 		case 121: // FoH
-			if (!me.getState(121)) {
 				if (getDistance(me, unit) > Skill.getRange(attackSkill) || CollMap.checkColl(me, unit, 0x2004, 2)) {
 					if (!Attack.getIntoPosition(unit, Skill.getRange(attackSkill), 0x2004, true)) {
 						return 0;
@@ -200,7 +199,6 @@ var ClassAttack = {
 
 					return 1;
 				}
-			}
 
 			break;
 		default:

@@ -530,9 +530,10 @@ var Attack = {
 
 						break;
 					}
-
-					// Skip non-unique monsters after 15 attacks, except in Throne of Destruction
-					if (me.area !== 131 && !(target.spectype & 0x7) && gidAttack[i].attacks > 15) {
+					
+					if([746, 750, 755, 800, 809, 826, 861, 870, 879, 882, 883, 884].indexOf(target.classid) > -1 && gidAttack[i].attacks > 64) {
+						monsterList.shift();
+					} else if (me.area !== 131 && !(target.spectype & 0x7) && gidAttack[i].attacks > 15) { // Skip non-unique monsters after 15 attacks, except in Throne of Destruction
 						print("ÿc1Skipping " + target.name + " " + target.gid + " " + gidAttack[i].attacks);
 						monsterList.shift();
 					}
