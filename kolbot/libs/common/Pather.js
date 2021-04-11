@@ -28,10 +28,6 @@ var NodeAction = {
 				Attack.clearList(monList);
 			}
 		}
-		
-		if (!me.inTown && !Config.ManualPlayPick && Config.NoTele) {
-			Attack.clear(12, 0);
-		}		
 
 		if ((typeof Config.ClearPath === "number" || typeof Config.ClearPath === "object") && arg.clearPath === false) {
 			switch (typeof Config.ClearPath) {
