@@ -9,30 +9,56 @@ function Mapper() {
 	this.start = function (){
 		var items;
 		
+		items = me.findItems(-1, 0);
+		
 		if(me.diff !== 2){
 			print("Must be in Hell Difficulty to open maps.");
 			return false
 		}
 		
-		Town.doChores();
+		Town.doChores();		
 		
-		items = me.findItems(-1, 0);
-		
-		for (var i = 0; i < items.length; i++){
+ 		for (var i = 0; i < items.length; i++){
 			if (this.checkMap(items[i])){
 				this.openMap(items[i]);
 				return true;
 			}
-		}
+		} 
 		
 		this.upgradeMaps();
 		
 		return false;
 		
 	};
+	
+	this.identifyMaps = function (maps){
+		var tome, identified;
+		
+		tome = me.findItem(519, 0, 3);
+		
+		if (tome && tome.getStat(70) < maps.length) {
+			Town.fillTome(519);
+		}
+		
+		Town.openStash();
+		
+		maps.forEach(function(map){
+			if(!map.getFlag(0x10) && map.quality == 6){ 
+				identified = true;
+				Town.identifyItem(map, tome);
+				
+		}});
+		
+		if(identified){	
+			return true;
+		}
+		
+		return false;
+	};
+	
 
 	this.upgradeMaps = function () {
-		var map, maps, roll, minGold,
+		var map, maps, roll, tome, minGold,
 			ids = Config.Mapper.Maps,
 			mapids = [];
 			
@@ -40,23 +66,24 @@ function Mapper() {
 			minGold = 400000;
 		} else {
 			minGold = 200000;
-		}			
-			
-		if (!me.getQuest(37, 0)) { // Check Anya Quest
-			print("Anya quest incomplete!");
-			return false;
-		}			
+		}						
 		
-		if (!this.buildRecipes("Rune")){ // Check if we have low runes
+		if (!this.buildRecipes("Rune") || !this.shopAnya()){ // Prequisite Check
 			return false;
-		}		
+		}	
 		
 		for (var i = 0; i < ids.length; i++){ 
 			mapids.push(NTIPAliasClassID[ids[i]]);
 		}
 		
+ 		maps = me.findItems(-1, 0).filter( function(x) { return mapids.indexOf(x.classid) > -1});
+		
+		if(this.identifyMaps(maps)){
+			this.start();
+		};
+
 		if (me.getStat(14) + me.getStat(15) > minGold){
-			maps = me.findItems(-1, 0).filter( function(x) { return mapids.indexOf(x.classid) > -1 && !this.checkMap(x)});
+			maps = maps.filter( function(x) { return !this.checkMap(x) });
 		} else {
 			print("ÿc8Upgrading maps requiresÿc7 gold.ÿc8 Get your shit together!");
 			return false;
@@ -80,20 +107,21 @@ function Mapper() {
 					
 					switch(map.quality){
 						case 2: // Normal > Rare
-							Config.Recipes.push([Recipe.Map.Normal, map.classid, this.buildRecipes("Rune"),
-							this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
+						Config.Recipes.push([Recipe.Map.Normal, map.classid, this.buildRecipes("Rune"),
+						this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
 						
 						break;
 						case 4: //Magic > Rare
-							Config.Recipes.push([Recipe.Map.Magic, map.classid, this.buildRecipes("Rune"),
-							this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
+						Config.Recipes.push([Recipe.Map.Magic, map.classid, this.buildRecipes("Rune"),
+						this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
 						
 						break;
 						case 6: //Re-roll
-							Config.Recipes.push([Recipe.Map.Rare, map.classid, this.buildRecipes("Rune"),
-							this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
+						Config.Recipes.push([Recipe.Map.Rare, map.classid, this.buildRecipes("Rune"),
+						this.buildRecipes("Item", map.quality), this.buildRecipes("Orb", map.quality)]);
 						
 						break;
+						
 					}
 					
 				print("ÿc2Upgrading ÿc0" + map.name);	
@@ -104,7 +132,7 @@ function Mapper() {
 			print("ÿc8No maps found to upgrade");
 			return false;
 		}
-							
+			
 		if(roll){
 			Cubing.buildRecipes();
 			Cubing.update();
@@ -113,29 +141,37 @@ function Mapper() {
 			this.start();
 		}
 		
+		
 		return false;
 	};		
 		
 	this.shopAnya = function (orb){
 		var anya,
 			gold = me.getStat(14) + me.getStat(15);
-		
-		Town.goToTown(5);
-		Town.move(NPC.Anya);
-		anya = getUnit(1, NPC.Anya);
-		anya.startTrade();
-		orb = anya.getItem(orb, 0);
-		
-		if (gold < orb.getItemCost(0)){
-			print("ÿc8Not enough gold for " + orb.name);
+			
+		if (!me.getQuest(37, 0)) { // Check Anya Quest
+			print("Anya quest incomplete!");
 			return false;
+		}			
+		
+		if(orb){
+			Town.goToTown(5);
+			Town.move(NPC.Anya);
+			anya = getUnit(1, NPC.Anya);
+			anya.startTrade();
+			orb = anya.getItem(orb, 0);
+			
+			if (gold < orb.getItemCost(0)){
+				print("ÿc8Not enough gold for " + orb.name);
+				return false;
+			}
+			
+			if (orb.buy()) {
+				return orb.classid;
+			};
 		}
 		
-		if (orb.buy()) {
-			return orb.classid;
-		};
-		
-		return -1;
+		return true;
 	};
 	
 	this.buildRecipes = function(type, mapquality){
@@ -228,7 +264,10 @@ function Mapper() {
 		bossPreset = [746, 750, 755, 800, 809, 826, 861, 870, 879, 882, 883, 884];
 		boss = bossPreset.find( unit => getPresetUnit(me.area, 1, unit));
 		
-		Pather.moveToPreset(me.area, 1, boss, 0, 0, true, false);
+		while (getDistance(me, getPresetUnit(me.area, 1, boss)) > 20){
+			Pather.moveToPreset(me.area, 1, boss, 0, 0, true, false);
+		};
+		
 		Attack.clear(30, 0, boss);
 		
 		return true;
@@ -425,6 +464,7 @@ function Mapper() {
 	};
 
 	// start
+	Town.doChores();
 	this.start();
 	print("Ending Map Script.");
 	return true;
