@@ -1020,7 +1020,7 @@ IngredientLoop:
 						
 						// if the item was used in Nonstackable conversion 
 						// (either the source stackable or the target non-stackable)
-						const isNonstackableConversion = (items.length === 2 &&
+						const isNonstackableConversion = (items.length <= 2 &&
 							(this.isStackable(items[j]) || this.isNonstackable(items[j])));
 
 						if(isNeededIngredient || isNonstackableConversion){
