@@ -100,6 +100,7 @@ var Runewords = {
 	needList: [],
 	pickitEntries: [],
 	validGids: [],
+	hashes: [],
 
 	init: function () {
 		if (!Config.MakeRunewords) {
@@ -224,6 +225,15 @@ RuneLoop:
 		items = me.findItems(-1, 0); // get items in inventory/stash
 
 		for (i = 0; i < Config.Runewords.length; i += 1) {
+			if (this.hashes.contains(this.getHash(Config.Runewords[i][0]))) {
+				// If the target runeword has already been recently created, 
+				// then skip the check even if the required base and runeword 
+				// runes are available.
+				// (The next call to makeRunewords() would create the runeword
+				//  if the required base and runeword runes are still available.)
+				continue;
+			}
+			
 			itemList = []; // reset item list
 			base = this.getBase(Config.Runewords[i][0], Config.Runewords[i][1], (Config.Runewords[i][2]||0)); // check base
 
@@ -244,9 +254,9 @@ RuneLoop:
 						
 						const classid = Cubing.getNonstackableClassId(items[k]);
 						if (classid === Config.Runewords[i][0][j] && 
-						    !me.getItems().some(item => item.classid === classid)) {
-							// no matching nonstackable rune, but there is matching rune stack,
-							// so we need to transmute the stack to get a nonstackable rune to use
+						    !me.getItems().some(item => item.classid === classid)) {	
+							// No matching nonstackable rune, but there is matching rune stack,
+							// so we need to transmute the stack to get a nonstackable rune to use.
 							Cubing.recipes.push({
 								Ingredients: [items[k].classid], 
 								Index: Recipe.Nonstackable,
@@ -254,8 +264,14 @@ RuneLoop:
 							});
 							Cubing.doCubing();
 							
-							// run the check again, reflecting the newly transmuted rune
-							return this.checkRunewords();
+							Cubing.recipes.pop();
+							
+							itemList.push(me.getItems().find((item => item.classid === classid))); // push into the item list
+							items.splice(k, 1); // remove from item list as to not count it twice
+
+							k -= 1;
+
+							break; // stop item cycle - we found the item
 						}
 					}
 
@@ -264,6 +280,7 @@ RuneLoop:
 					}
 
 					if (itemList.length === Config.Runewords[i][0].length + 1) { // runes + base
+						this.hashes.push(this.getHash(Config.Runewords[i][0]));
 						return itemList; // these items are our runeword
 					}
 				}
@@ -383,9 +400,10 @@ RuneLoop:
 		if (!Config.MakeRunewords) {
 			return false;
 		}
-
+		
 		var i, items;
-
+		this.hashes = [];
+	
 		while (true) {
 			this.buildLists();
 
@@ -467,5 +485,11 @@ RuneLoop:
 		}
 
 		return true;
+	},
+	
+	// given a list of required runes for a runeword,
+	// generate and return the hashcode of that list
+	getHash: function(runewords) {
+		return runewords.join("|");
 	}
 };
