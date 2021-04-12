@@ -68,7 +68,7 @@ function Mapper() {
 			minGold = 200000;
 		}						
 		
-		if (!this.buildRecipes("Rune") || !this.shopAnya()){ // Prequisite Check
+		if (!this.buildRecipes("Rune") || !this.shopAnya()){ // Prerequisite Check
 			return false;
 		}	
 		
