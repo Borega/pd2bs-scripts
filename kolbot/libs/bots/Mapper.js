@@ -53,7 +53,6 @@ function Mapper() {
 		return false;
 	};
 	
-
 	this.upgradeMaps = function () {
 		var map, maps, roll, tome, minGold,
 			ids = Config.Mapper.Maps,
@@ -137,7 +136,6 @@ function Mapper() {
 			delay(200 + me.ping);
 			this.start();
 		}
-		
 		
 		return false;
 	};		
@@ -275,7 +273,6 @@ function Mapper() {
 	};	 
 	
 	this.checkMap = function(map){
-		
 		 const MonsterTypes = { "Dolls":      437,
 								"Succubus":   438,
 								"Vampires":   439,
@@ -288,7 +285,6 @@ function Mapper() {
 								"Lightning":  398,
 								"Fire":		  399  };
 								
-
 		for (var config in Config.Mapper){
 			switch (config){
  				case "Maps":
