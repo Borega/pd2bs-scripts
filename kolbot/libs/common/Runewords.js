@@ -490,6 +490,6 @@ RuneLoop:
 	// given a list of required runes for a runeword,
 	// generate and return the hashcode of that list
 	getHash: function(runewords) {
-		return runewords.join("|");
+		return Array.isArray(runewords) ? runewords.join("|") : runewords;
 	}
 };
