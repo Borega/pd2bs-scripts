@@ -97,7 +97,8 @@ var Recipe = {
 		Normal: 56,
 		Magic: 57,
 		Rare: 58
-	}
+	},
+	Nonstackable: 59
 };
 
 var Cubing = {
@@ -534,6 +535,11 @@ var Cubing = {
 			case Recipe.Map.Rare:
 				this.recipes.push({Ingredients: [Config.Recipes[i][1], Config.Recipes[i][2], Config.Recipes[i][3], Config.Recipes[i][4]], Index: Recipe.Map.Rare});
 				break;				
+			case Recipe.Nonstackable:
+				if (this.isStackable(Config.Recipes[i][1])) { // stackable gems/runes
+					this.recipes.push({Ingredients: [Config.Recipes[i][1]], Index: Recipe.Nonstackable, AmountLimit: Config.Recipes[i][2] || 1});
+				}
+				break;
 			}
 		} 
 	},
@@ -773,7 +779,13 @@ IngredientLoop:
 
 			return true;
 		}
-
+		
+		// PD2 - Validate conversion of stackable gem/rune into non-stackable version
+		if (recipe.Ingredients.length === 1 && recipe.Ingredients[0] === unit.classid && this.isStackable(unit)) {
+			const classid = this.getNonstackableClassId(unit);
+			const amountAlreadyOwn = me.getItems().filter(item => item.classid === classid).length;
+			return amountAlreadyOwn < recipe.AmountLimit;
+		}
 		
 		// PD2 Flawless Gems Validation
 		if ((unit.itemType >= 149 && unit.itemType <= 155) && unit.getStat(70) >= 3 || unit.itemType == 41) {
@@ -789,8 +801,6 @@ IngredientLoop:
 			} */
 			return true;
 		}
-		
-
 		
 		// PD2 - Validate & Quantity Check Low Rune Stack
 		if (unit.classid >= 683 && unit.classid <= 702) {
@@ -962,6 +972,7 @@ IngredientLoop:
 		var i, j, items, string, result, tempArray;
 
 		this.update();
+
 		// Randomize the recipe array to prevent recipe blocking (multiple caster items etc.)
 		tempArray = this.recipes.slice().shuffle();
 		
@@ -990,6 +1001,7 @@ IngredientLoop:
 				}
 
 				transmute();
+
 				delay(700 + me.ping);
 				print("ÿc4Cubing: " + string);
 
@@ -998,20 +1010,27 @@ IngredientLoop:
 				}
 
 				this.update();
-
+				
 				items = me.findItems(-1, -1, 6);
 
 				if (items) {
 					for (j = 0; j < items.length; j += 1) {
+						// if item in cube is still needed for another recipe
+						const isNeededIngredient = this.validIngredients.some(({classid}) => classid === items[j].classid);
 						
-						if(this.validIngredients.indexOf(items[j].classid)){
+						// if the item was used in Nonstackable conversion 
+						// (either the source stackable or the target non-stackable)
+						const isNonstackableConversion = (items.length <= 2 &&
+							(this.isStackable(items[j]) || this.isNonstackable(items[j])));
+
+						if(isNeededIngredient || isNonstackableConversion){
 							Storage.Inventory.MoveTo(items[j]);
 						} else {
 							result = Pickit.checkItem(items[j]);
 							
 							switch (result.result) {
 							case 0:
-							if(!items[j].classid == 549){
+							if(items[j].classid !== 549){
 								Misc.itemLogger("Dropped", items[j], "doCubing");
 								items[j].drop();
 							}
@@ -1253,4 +1272,42 @@ IngredientLoop:
 		me.cancel();
 		me.cancel();
 	},
+	
+	// checks whether unit/classid is a stackable rune/gem
+	isStackable: function(unitOrClassId) {
+		const classid = unitOrClassId.hasOwnProperty("classid") ? unitOrClassId.classid : unitOrClassId;
+		return classid >= 669 && classid <= 715;
+	},
+	
+	// checks whether unit is a non-stackable rune/gem
+	isNonstackable: function(unit) { 
+		return !this.isStackable(unit) && !!this.getNonstackableClassId(unit);
+	},
+	
+	// given a rune/gem (either stackable or Nonstackable), 
+	// returns the classid of the non-stackable version of it
+	getNonstackableClassId: function(unit) {
+		let code;
+		
+		let name = unit.name;
+		const match = name.match(/([A-Z][a-z]+ Rune) \[/);
+
+		if (match && match[1]) { // rune
+			code = match[1].toLowerCase().replace(/\s/g, '');
+		} else { // gem
+			name = name.toLowerCase();
+			
+			const types = ["amethyst", "topaz", "sapphire", "emerald", "diamond", "skull"];
+			
+			if (types.some(t => name.contains(t))) {
+				const quality = ["chipped", "flawed", "flawless", "perfect"]; 
+				
+				if (quality.some(q => name.contains(q)) || types.contains(name)) {
+					code = name.replace(/\s/g, '');
+				}
+			}
+		}
+		
+		return (code && NTIPAliasClassID[code]) || false;
+	}
 };
