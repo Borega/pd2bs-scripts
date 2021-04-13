@@ -9,13 +9,12 @@ function Mapper() {
 	this.start = function (){
 		var items;
 		
-		items = me.findItems(-1, 0);
-		
-		if(me.diff !== 2){
+		if (me.diff !== 2){
 			print("Must be in Hell Difficulty to open maps.");
 			return false
 		}
 		
+		items = me.findItems(-1, 0);
 		Town.doChores();		
 		
  		for (var i = 0; i < items.length; i++){
@@ -26,9 +25,7 @@ function Mapper() {
 		} 
 		
 		this.upgradeMaps();
-		
-		return false;
-		
+		return false;	
 	};
 	
 	this.identifyMaps = function (maps){
@@ -49,7 +46,7 @@ function Mapper() {
 				
 		}});
 		
-		if(identified){	
+		if (identified){	
 			return true;
 		}
 		
@@ -62,7 +59,7 @@ function Mapper() {
 			ids = Config.Mapper.Maps,
 			mapids = [];
 			
-		if(!me.getQuest(35, 0)){ // Orbs cost more if Siege quest isn't done
+		if (!me.getQuest(35, 0)){ // Orbs cost more if Siege quest isn't done
 			minGold = 400000;
 		} else {
 			minGold = 200000;
@@ -78,7 +75,7 @@ function Mapper() {
 		
  		maps = me.findItems(-1, 0).filter( function(x) { return mapids.indexOf(x.classid) > -1});
 		
-		if(this.identifyMaps(maps)){
+		if (this.identifyMaps(maps)){
 			this.start();
 		};
 
@@ -99,7 +96,7 @@ function Mapper() {
 			
 			print("ÿc7We have maps! ÿc2 Lets try upgrading...");
 			
- 			while(maps.length > 0) {
+ 			while (maps.length > 0) {
 				map = maps.shift()
 				
 				if (this.buildRecipes("Item", map.quality)){
@@ -133,7 +130,7 @@ function Mapper() {
 			return false;
 		}
 			
-		if(roll){
+		if (roll){
 			Cubing.buildRecipes();
 			Cubing.update();
 			Town.doChores();
@@ -154,7 +151,7 @@ function Mapper() {
 			return false;
 		}			
 		
-		if(orb){
+		if (orb){
 			Town.goToTown(5);
 			Town.move(NPC.Anya);
 			anya = getUnit(1, NPC.Anya);
@@ -208,7 +205,7 @@ function Mapper() {
 					break;
 					case 4:
 						if (me.getItem(682)){
-							return 682
+							return 682;
 						}
 						print("ÿc8No Perfect Skulls upgrade ÿc3magic map");					
 						return false;
@@ -265,8 +262,8 @@ function Mapper() {
 		bossId = bossPreset.find( unit => getPresetUnit(me.area, 1, unit));
 		bossUnit = getPresetUnit(me.area, 1, bossId);
 		
-		while(getDistance(me, bossUnit.roomx * 5 + bossUnit.x, bossUnit.roomy * 5 + bossUnit.y) > 20){
-			if(Pather.moveToPreset(me.area, 1, bossId, 0, 0, true, false)){
+		while (getDistance(me, bossUnit.roomx * 5 + bossUnit.x, bossUnit.roomy * 5 + bossUnit.y) > 20){
+			if (Pather.moveToPreset(me.area, 1, bossId, 0, 0, true, false)){
 				Attack.clear(40, 0, bossId);
 				}
 			else if (Pather.moveTo(bossUnit.roomx * 5, bossUnit.roomy * 5, 3, true, false)){
@@ -275,63 +272,7 @@ function Mapper() {
 		}
 		
 		return true;
-	};	
-	
-	this.mapRooms = function () {
-		var room, mapRooms = [];
-		
-		/*if (me.area == 149){ // Because Bastion wants to act funny
-			Pather.moveTo(15135, 23648);
-		  }*/
-
-		room = getRoom(me.x, me.y);
-		
-		do {
-			mapRooms.push([room.x * 5 + room.xsize / 2, room.y * 5 + room.ysize / 2]);		
-		} while (room.getNext());
-
-		return mapRooms;
-	};
-	
-	this.clearMap = function () { 
-		
-		var room, result, myRoom, bossPreset,
-			rooms = this.mapRooms();
-		
-		function RoomSort(a, b) {
-			return getDistance(myRoom[0], myRoom[1], a[0], a[1]) - getDistance(myRoom[0], myRoom[1], b[0], b[1]);
-		}
-
-		while (rooms.length > 0) {
-			// get the first room + initialize myRoom var
-			if (!myRoom) {
-				room = getRoom(me.x, me.y);
-			}
-
-			if (room) {
-				if (room instanceof Array) { // use previous room to calculate distance
-					myRoom = [room[0], room[1]];
-				} else { // create a new room to calculate distance (first room, done only once)
-					myRoom = [room.x * 5 + room.xsize / 2, room.y * 5 + room.ysize / 2];
-				}
-			}
-
-			rooms.sort(RoomSort);
-			room = rooms.shift();
-
-			result = Pather.getNearestWalkable(room[0], room[1], 10, 2);
-
-			if (result) {
-				Pather.moveTo(result[0], result[1], 3);
-
-				if (!Attack.clear(30)) {
-					return false;
-				}
-			}
-		}
-
-		return true;
-	}; 
+	};	 
 	
 	this.checkMap = function(map){
 		
@@ -348,8 +289,8 @@ function Mapper() {
 								"Fire":		  399  };
 								
 
-		for(var config in Config.Mapper){
-			switch(config){
+		for (var config in Config.Mapper){
+			switch (config){
  				case "Maps":
 					var mapids = [];
 					for(var i = 0; i < Config.Mapper[config].length; i++){
@@ -417,6 +358,8 @@ function Mapper() {
 							}
 						}
 					}
+					
+					break;
 				case "SorbSkip":
 					var currentStat = Config.Mapper[config];
 					for (var i = 0; i < currentStat.length; i++){
@@ -438,9 +381,11 @@ function Mapper() {
 		
 		Town.goToTown(5);
 		Town.openStash();
+		
 		if (map.location == 7){
 			Storage.Inventory.MoveTo(map);
 		}
+		
 		Pather.moveTo(5098, 5020);
 		clickItem(1, map);
 		delay(200 + me.ping);
