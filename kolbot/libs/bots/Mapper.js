@@ -264,11 +264,15 @@ function Mapper() {
 		bossPreset = [746, 750, 755, 800, 809, 826, 861, 870, 879, 882, 883, 884];
 		bossId = bossPreset.find( unit => getPresetUnit(me.area, 1, unit));
 		bossUnit = getPresetUnit(me.area, 1, bossId);
-
-		Pather.moveToPreset(me.area, 1, bossId, 0, 0, true, false);
-		Pather.moveTo(bossUnit.roomx * 5, bossUnit.roomy * 5, 3, true, false); // yea, I know... it's a Band-aid for Great Worm
 		
-		Attack.clear(30, 0, bossId);
+		while(getDistance(me, bossUnit.roomx * 5 + bossUnit.x, bossUnit.roomy * 5 + bossUnit.y) > 20){
+			if(Pather.moveToPreset(me.area, 1, bossId, 0, 0, true, false)){
+				Attack.clear(40, 0, bossId);
+				}
+			else if (Pather.moveTo(bossUnit.roomx * 5, bossUnit.roomy * 5, 3, true, false)){
+				Attack.clear(40, 0, bossId);
+				}
+		}
 		
 		return true;
 	};	
