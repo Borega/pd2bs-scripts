@@ -54,7 +54,7 @@ function Mapper() {
 	};
 	
 	this.upgradeMaps = function () {
-		var map, maps, roll, tome, minGold,
+		var map, maps, roll, minGold,
 			ids = Config.Mapper.Maps,
 			mapids = [];
 			

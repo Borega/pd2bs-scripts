@@ -134,8 +134,10 @@ var Precast = new function () {
 		var buffSummons = false;
 		
 		if (me.classid != 5){
-			if (me.getSkill(226, 1)&& !me.getState(149)) {
+			if (me.getSkill(226, 1) && !me.getState(149)) {
 				Skill.cast(226, 0); // Oak Sage
+			} else if (me.getSkill(236, 1) && !me.getState(148)){
+				Skill.cast(236, 0); // Heart of the Wolverine
 			}
 		}
 
