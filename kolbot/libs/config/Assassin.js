@@ -55,6 +55,8 @@ function LoadConfig() {
 	Scripts.Cows = false;
 
 	// *** act 2 ***
+	Scripts.StonyTomb = false;
+        Config.StonyTomb.ClearType = 0; // 0xF = skip normal, 0x7 = champions/bosses, 0 = all	
 	Scripts.Radament = false;
 	Scripts.Coldworm = false;
 		Config.Coldworm.KillBeetleburst = false;
