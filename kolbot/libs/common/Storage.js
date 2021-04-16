@@ -191,20 +191,13 @@ var Container = function (name, width, height, location) {
             var quant_types = [118, 120, 121, 122, 123, 124, 137, 104, 194, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 160, 161, 162, 197];
 
             if ((this.location === 3 || this.location === 7) && quant_types.indexOf(item.itemType) > -1) {
-                var stack = find_eligible_stack(item.classid, 50, this.location);
+                var stack = find_eligible_stack(item.classid, item.getStat(70), this.location);
 
                 if (stack) {
                     for (var i = 0; i < 3; i++) {
                         clickItem(0, stack);
-                        var max_wait = Date.now() + 500 + me.ping;
-                        while (Date.now() < max_wait) {
-                            delay(10);
-                            if (!me.itemoncursor) {
-                                // successfully stacked?
-                                delay(41);
-                                return true;
-                            }
-                        }
+						delay(100 + me.ping);
+						return true;						 
                     }
                 }
             }
@@ -413,13 +406,13 @@ var Storage = new function () {
     };
 };
 
-function find_eligible_stack(item_index, max_quant, loc) {
+function find_eligible_stack(item_index, currentStack, loc) {
     var stacks = me.findItems(item_index, 0, loc);
     if (!stacks) {
         return false;
     }
     for (var i = 0; i < stacks.length; i++) {
-        if (stacks[i].getStat(70) >= 1 && stacks[i].getStat(70) < max_quant) {
+        if (stacks[i].getStat(70) + currentStack <= 50) {
             return stacks[i];
         }
     }
