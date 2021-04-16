@@ -14,7 +14,7 @@ function Mausoleum() {
 	}
 
 	if (Config.Mausoleum.KillBloodRaven) {
-		Pather.moveToPreset(17, 1, 957);
+		Pather.moveToPreset(17, 1, 958);
 		Attack.kill(getLocaleString(3111)); // Blood Raven
 		Pickit.pickItems();
 	}
