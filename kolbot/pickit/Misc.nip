@@ -160,6 +160,4 @@
 [Name] == primeevilsoul
 
 //MAPS
-[type] == t1map && [Quality] == Rare
-[type] == t2map && [Quality] == Rare
-[type] == t3map && [Quality] == Rare
+[type] >= t1map && [type] <= t3map
