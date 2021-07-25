@@ -182,6 +182,7 @@
 [Name] == SwirlingCrystal 	&& [Quality] == Unique				//THE OCULUS
 [Name] == EldritchOrb 		&& [Quality] == Unique				//ESCHUTA'S TEMPER
 [Name] == DimensionalShard  && [Quality] == Unique				//DEATH'S FATHOM
+[Name] == GlowingOrb		&& [Quality] == Unique				//The Tempest
 
 //UNIQUE DRUID
 [Name] == TotemicMask 		&& [Quality] == Unique				//JALAL'S MANE
