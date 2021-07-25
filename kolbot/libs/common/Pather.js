@@ -120,7 +120,7 @@ var Pather = {
 	
 
 	useTeleport: function () {
-		return this.teleport && this.teleCheck() && !Config.NoTele && !me.getState(139) && !me.getState(140) && !me.inTown && !([3, 73, 121, 57, 60].indexOf(me.area) > -1 &&[1, 2].indexOf(me.diff) > -1);
+		return this.teleport && this.teleCheck() && !Config.NoTele && !me.getState(139) && !me.getState(140) && !me.inTown && !([73].indexOf(me.area) > -1);
 	},
 
 	/*
