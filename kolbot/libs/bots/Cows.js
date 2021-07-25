@@ -89,7 +89,7 @@ function Cows() {
 
 		Pather.useWaypoint(4);
 		Precast.doPrecast(true);
-		Pather.moveToPreset(me.area, 1, 889, 10, 10);
+		Pather.moveToPreset(me.area, 1, 922, 10, 10);
 
 		for (i = 0; i < 6; i += 1) {
 			portal = Pather.getPortal(38);
