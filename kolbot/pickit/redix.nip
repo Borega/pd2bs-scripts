@@ -193,6 +193,7 @@
 [Name] == GildedShield 		&& [Quality] == Unique				//HERALD OF ZAKARUM
 [Name] == SacredRondache 	&& [Quality] == Unique 				//ALMA NEGRA
 [Name] == GildedShield 		&& [Quality] == Unique 				//DRAGONSCALE
+[Name] == HeraldicShield 	&& [Quality] == Unique 				//Sankekur's Fall
 
 //UNIQUE JEWELERY
 [Type] == Amulet 			&& [Quality] == Unique				//ANY UNIQUE AMULET
