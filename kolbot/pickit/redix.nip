@@ -161,22 +161,28 @@
 //UNIQUE AMAZON
 [Name] == CeremonialJavelin && [Quality] == Unique 				//TITAN'S REVENGE
 [Name] == MatriarchalJavelin && [Quality] == Unique 			//THUNDERSTROKE
+[Name] == MaidenJavelin 	&& [Quality] == Unique 				//True Silver
 [Name] == CeremonialBow		&& [Quality] == Unique 				//lyncidars aim
+[Name] == MatriarchalBow	&& [Quality] == Unique 				//Blood Raven's Charge
 
 //unique assassin
 [Name] == BattleCestus 		&& [Quality] == Unique 				//SHADOW KILLER
 [Name] == GreaterTalons		&& [Quality] == Unique 				//BARTUCS CUT THROAT
 [Name] == WristSword		&& [Quality] == Unique 				//JADE TALON
 [Name] == FeralClaws		&& [Quality] == Unique 				//FIRELIZARD TALONS
+[Name] == Quhab				&& [Quality] == Unique 				//Mage Slayer
+[Name] == ScissorsSuwayyah	&& [Quality] == Unique 				//Aidan's Scar
 
 //UNIQUE NECROMANCER
 [Name] == HierophantTrophy	&& [Quality] == Unique				//HOMUNCULUS
 [Name] == BloodlordSkull 	&& [Quality] == Unique				//DARKFORCE SPAWN
 [Name] == SuccubusSkull 	&& [Quality] == Unique				//BONEFLAME
+[Name] == MummifiedTrophy 	&& [Quality] == Unique				//Kalan's Legacy
 
 //UNIQUE BARBARIAN 
 [Name] == SlayerGuard 		&& [Quality] == Unique				//ARREAT'S FACE
 [Name] == FuryVisor 		&& [Quality] == Unique				//WOLFHOWL
+[Name] == JawboneVisor 		&& [Quality] == Unique				//Cyclopean Roar
 
 //UNIQUE SORCERESS
 [Name] == SwirlingCrystal 	&& [Quality] == Unique				//THE OCULUS
@@ -188,6 +194,7 @@
 [Name] == TotemicMask 		&& [Quality] == Unique				//JALAL'S MANE
 [Name] == BloodSpirit 		&& [Quality] == Unique 				//CEREBUS' BITE
 [Name] == SkySpirit 		&& [Quality] == Unique				//RAVENLORE
+[Name] == HawkHelm	 		&& [Quality] == Unique				//Quetzalcoatl
 
 //UNIQUE PALADIN
 [Name] == GildedShield 		&& [Quality] == Unique				//HERALD OF ZAKARUM
