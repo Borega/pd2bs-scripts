@@ -836,21 +836,23 @@ NTIPAliasClassID["dcho"] = 718;  NTIPAliasClassID["blacksoulstone"] = 718;
 NTIPAliasClassID["dcso"] = 719;  NTIPAliasClassID["primeevilsoul"] = 719;
 
 //PD2 Maps
-NTIPAliasClassID["t11"] = 720;  NTIPAliasClassID["ruinsofviz"] = 720;
-NTIPAliasClassID["t12"] = 721;  NTIPAliasClassID["horazon'smemory"] = 721;
-NTIPAliasClassID["t13"] = 722;  NTIPAliasClassID["bastionskeep"] = 722;
-NTIPAliasClassID["t21"] = 723;  NTIPAliasClassID["phlegethon"] = 723;
-NTIPAliasClassID["t22"] = 724;  NTIPAliasClassID["torajanjungle"] = 724;
-NTIPAliasClassID["t23"] = 725;  NTIPAliasClassID["arreatbattlefield"] = 725;
-NTIPAliasClassID["t24"] = 726;  NTIPAliasClassID["bloodmoon"] = 726;
-NTIPAliasClassID["t31"] = 727;  NTIPAliasClassID["riverofblood"] = 727;
-NTIPAliasClassID["t32"] = 728;  NTIPAliasClassID["throneofinsanity"] = 728;
-NTIPAliasClassID["t33"] = 729;  NTIPAliasClassID["sewersofharrogath"] = 729;
-NTIPAliasClassID["t34"] = 730;  NTIPAliasClassID["ancestraltrial"] = 730;
-NTIPAliasClassID["t35"] = 731;  NTIPAliasClassID["tombofzoltunkulle"] = 731;
-NTIPAliasClassID["t41"] = 732;  NTIPAliasClassID["cathedraloflight"] = 732;
-NTIPAliasClassID["t43"] = 733;  NTIPAliasClassID["plainsoftorment"] = 733;
-NTIPAliasClassID["t42"] = 734;  NTIPAliasClassID["desertmap"] = 734;
+NTIPAliasClassID["t11"] = 721;  NTIPAliasClassID["ruinsofviz"] = 721;
+NTIPAliasClassID["t12"] = 722;  NTIPAliasClassID["horazon'smemory"] = 722;
+NTIPAliasClassID["t13"] = 723;  NTIPAliasClassID["bastionskeep"] = 723;
+NTIPAliasClassID["t21"] = 724;  NTIPAliasClassID["phlegethon"] = 724;
+NTIPAliasClassID["t22"] = 725;  NTIPAliasClassID["torajanjungle"] = 725;
+NTIPAliasClassID["t23"] = 726;  NTIPAliasClassID["arreatbattlefield"] = 726;
+NTIPAliasClassID["t24"] = 733;  NTIPAliasClassID["bloodmoon"] = 733;
+NTIPAliasClassID["t31"] = 729;  NTIPAliasClassID["riverofblood"] = 729;
+NTIPAliasClassID["t32"] = 730;  NTIPAliasClassID["throneofinsanity"] = 730;
+NTIPAliasClassID["t33"] = 728;  NTIPAliasClassID["sewersofharrogath"] = 728;
+NTIPAliasClassID["t34"] = 732;  NTIPAliasClassID["ancestraltrial"] = 732;
+NTIPAliasClassID["t35"] = 727;  NTIPAliasClassID["tombofzoltunkulle"] = 727;
+NTIPAliasClassID["t36"] = 734;  NTIPAliasClassID["fallofcaldeum"] = 734;
+NTIPAliasClassID["t37"] = 735;  NTIPAliasClassID["pandemoniumcitadel"] = 735;
+NTIPAliasClassID["t41"] = 736;  NTIPAliasClassID["cathedraloflight"] = 736;
+NTIPAliasClassID["t43"] = 737;  NTIPAliasClassID["plainsoftorment"] = 737;
+NTIPAliasClassID["t42"] = 738;  NTIPAliasClassID["desertmap"] = 738;
 
 var NTIPAliasClass = {};
 NTIPAliasClass["normal"] = 0;
