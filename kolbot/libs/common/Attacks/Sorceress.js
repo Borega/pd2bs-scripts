@@ -183,7 +183,21 @@ var ClassAttack = {
 			return 2;
 		}
 		
-		this.castHydra(unit);
+		if (Config.CastHydra) {
+			if (Math.round(getDistance(me, unit)) > Skill.getRange(62) || checkCollision(me, unit, 0x4)) {
+				// Allow short-distance walking for melee skills
+				walk = Skill.getRange(62) < 4 && getDistance(me, unit) < 10 && !checkCollision(me, unit, 0x1);
+
+				if (!Attack.getIntoPosition(unit, Skill.getRange(62), 0x4, walk)) {
+					return 0;
+				}
+			}
+
+			if (!unit.dead && !checkCollision(me, unit, 0x4) ) {
+				this.castHydra(unit);
+			}
+	
+		}
 		
 		if (timedSkill > -1 && (!me.getState(121) || !Skill.isTimed(timedSkill))) {
 			if (Skill.getRange(timedSkill) < 4 && !Attack.validSpot(unit.x, unit.y)) {
