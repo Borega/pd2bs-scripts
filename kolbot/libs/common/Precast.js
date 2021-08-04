@@ -47,7 +47,7 @@ var Precast = new function () {
 			sumSwap = 0;
 
 		switch (skillId) {
-			case 40: // Cold Enchant
+			//case 40: // Frozen Armor // PD2
 			case 50: // Shiver Armor
 			case 60: // Chilling Armor
 				classid = 1;
@@ -132,14 +132,6 @@ var Precast = new function () {
 
 	this.doPrecast = function (force) {
 		var buffSummons = false;
-		
-		if (me.classid != 5){
-			if (me.getSkill(226, 1) && !me.getState(149)) {
-				Skill.cast(226, 0); // Oak Sage
-			} else if (me.getSkill(236, 1) && !me.getState(148)){
-				Skill.cast(236, 0); // Heart of the Wolverine
-			}
-		}
 
 		// Force BO 30 seconds before it expires
 		this.precastCTA(!me.getState(32) || force || (getTickCount() - this.BOTick >= this.BODuration - 30000));
@@ -174,27 +166,20 @@ var Precast = new function () {
 						this.precastSkill(50); // Shiver Armor
 					}
 				}
-				
-				switch(Config.Enchant){
-					case "None":
-						break;
-					case "Cold":
-						if(me.getSkill(40, 0) && (!me.getState(188) || force)){
-							this.enchant(40);
-						}
-						break;
-					case "Fire":
-						if(me.getSkill(52, 0) && (!me.getState(16) || force)){
-							this.enchant(52);
-						}
-						break;	
+
+
+				if (me.getSkill(52, 0) && (!me.getState(16) || force)) {
+					this.enchant();
 				}
-				break;				
+
+				break;
 			case 2: // Necromancer
 				if (me.getSkill(68, 0) && (!me.getState(14) || force)) {
 					this.precastSkill(68); // Bone Armor
 				}
-
+				if (me.getSkill(236, 1) && (!me.getState(148) || force)) {
+					Skill.cast(236, 0); // Heart of Wolverine
+				}
 				switch (Config.Golem) {
 					case 0:
 					case "None":
@@ -211,6 +196,119 @@ var Precast = new function () {
 					case "Fire":
 						this.summon(94);
 						break;
+				}
+				var i, corpse, corpseList, castTimes;
+				for (castTimes = 0; castTimes < 4; castTimes += 1) { // Loop 4 times, to summon at least 16 skells + Revives
+					if (me.getSkill(83, 0) || force) {
+						var skill, maxSkeletons, maxMages, maxRevives;
+						skill = me.getSkill(70, 1);
+						maxSkeletons = skill < 4 ? skill : (Math.floor(skill / 3) + 2);
+			　　        if (maxSkeletons > 8) {
+						maxSkeletons = 8;
+						}
+						skill = me.getSkill(80, 1);
+						maxMages = skill < 4 ? skill : (Math.floor(skill / 3) + 2);
+			　　        if (maxMages > 8) {
+						maxMages = 8;
+						}
+						
+						// maxSkeletons = 10; // Leoric wand
+						// maxMages = 10; // Leoric wand
+						maxRevives = 3; // Need to set based on the skill
+						if (me.getMinionCount(4) < maxSkeletons || me.getMinionCount(5) < maxMages) {
+							this.precastSkill(83); // desecrate for raizeArmy()
+							this.summon(75);
+
+							var count = me.getMinionCount(4);
+							var tick = getTickCount();
+
+							while (getTickCount() - tick < 200) {
+								if (me.getMinionCount(4) > count) {
+									break;
+								}
+
+								delay(10);
+							}
+						}
+
+						for (i = 0; i < 3; i += 1) {
+							corpse = getUnit(1, -1, 12);
+							corpseList = [];
+
+							var	range = 25;
+				
+							if (corpse) {
+								do {
+									if (getDistance(me, corpse) <= range && this.checkCorpse(corpse)) { // within casting distance
+										corpseList.push(copyUnit(corpse));
+									}
+								} while (corpse.getNext());
+							}
+				
+							MainLoop:
+							while (corpseList.length > 0) {
+								corpse = corpseList.shift();
+								if (me.getMinionCount(4) < maxSkeletons) {
+				
+									if (!Skill.cast(70, 0, corpse)) {
+									//if (!this.precastSkill(70, 0, corpse)) {
+										break;
+									}
+									me.overhead("!raize Skeletons : " + me.getMinionCount(4) + "/" + maxSkeletons);
+				
+									count = me.getMinionCount(4);
+									tick = getTickCount();
+				
+									while (getTickCount() - tick < 200) {
+										if (me.getMinionCount(4) > count) {
+											break;
+										}
+				
+										delay(10);
+									}
+								} else if (me.getMinionCount(5) < maxMages) {
+									if (!Skill.cast(80, 0, corpse)) {
+									//if (!this.precastSkill(80, 0, corpse)) {
+										break;
+									}
+									me.overhead("!raize mage : " + me.getMinionCount(5) + "/" + maxMages);
+				
+									count = me.getMinionCount(5);
+									tick = getTickCount();
+				
+									while (getTickCount() - tick < 200) {
+										if (me.getMinionCount(5) > count) {
+											break;
+										}
+				
+										delay(10);
+									}
+								} else if (me.getMinionCount(6) < maxRevives) {
+									if (this.checkCorpse(corpse, true)) {
+										if (!Skill.cast(95, 0, corpse)) {
+										//if (!this.precastSkill(95, 0, corpse)) {
+											break;
+										}
+										me.overhead("!raize : (" + corpse.name + ") " + me.getMinionCount(6) + "/" + maxRevives);
+				
+										count = me.getMinionCount(6);
+										tick = getTickCount();
+				
+										while (getTickCount() - tick < 200) {
+											if (me.getMinionCount(6) > count) {
+												break;
+											}
+				
+											delay(10);
+										}
+									}
+								} else {
+									break;
+								}
+							}
+						}
+
+					}
 				}
 
 				break;
@@ -420,30 +518,15 @@ var Precast = new function () {
 			case 75: // Clay Golem
 			case 85: // Blood Golem
 			case 94: // Fire Golem
-				var mastery = me.getSkill(79, 0);
-				
-				if (mastery >= 20 ) {
-					count = 5;
+				if(Config.GolemCount){
+					count = Config.GolemCount;
 				}
-				else if (mastery >= 15) {
-					count = 4;
-				}
-				else if (mastery >= 10) {
-					count = 3;
-				}
-				else if (mastery >= 5) {
-					count = 2;
-				}	
-				else {
-					count = 1;
-				}
-				
 				minion = 3;
 				break;
 			case 221: // Raven
 				minion = 10;
 				if (me.getSkill(221, 1) <= 10) {
-					count = me.getSkill(221, 1) + 2;
+					count = me.getSkill(221, 1) + 1;
 
 				}
 				if (me.getSkill(221, 1) > 10) {
@@ -476,10 +559,8 @@ var Precast = new function () {
 
 				break;
 			case 247: // Grizzly
-				if(Config.GrizzlyCount){
-					count = Config.GrizzlyCount;
-				}
 				minion = 15;
+
 				break;
 			case 268: // Shadow Warrior
 			case 279: // Shadow Master
@@ -504,10 +585,10 @@ var Precast = new function () {
 		return !!rv;
 	};
 
-	this.enchant = function (skillId) {
+	this.enchant = function () {
 		var unit, slot = me.weaponswitch, chanted = [];
 
-		Attack.weaponSwitch(this.getBetterSlot(skillId));
+		Attack.weaponSwitch(this.getBetterSlot(52));
 
 		// Player
 		unit = getUnit(0);
@@ -515,7 +596,7 @@ var Precast = new function () {
 		if (unit) {
 			do {
 				if (!unit.dead && Misc.inMyParty(unit.name) && getDistance(me, unit) <= 40) {
-					Skill.cast(skillId, 0, unit);
+					Skill.cast(52, 0, unit);
 					chanted.push(unit.name);
 				}
 			} while (unit.getNext());
@@ -527,7 +608,7 @@ var Precast = new function () {
 		if (unit) {
 			do {
 				if (unit.getParent() && chanted.indexOf(unit.getParent().name) > -1 && getDistance(me, unit) <= 40) {
-					Skill.cast(skillId, 0, unit);
+					Skill.cast(52, 0, unit);
 				}
 			} while (unit.getNext());
 		}
@@ -536,4 +617,55 @@ var Precast = new function () {
 
 		return true;
 	};
+	this.checkCorpseNearMonster = function (monster, range) {
+		var corpse = getUnit(1, -1, 12);
+
+		if (range === undefined) { // Assume CorpseExplosion if no range specified
+			range = Math.floor((me.getSkill(Config.ExplodeCorpses, 1) + 7) / 3);
+		}
+
+		if (corpse) {
+			do {
+				if (getDistance(corpse, monster) <= range) {
+					return true;
+				}
+			} while (corpse.getNext());
+		}
+
+		return false;
+	},
+
+	this.checkCorpse = function (unit, revive) {
+		if (unit.mode !== 12) {
+			return false;
+		}
+
+		if (revive === undefined) {
+			revive = false;
+		}
+
+		var baseId = getBaseStat("monstats", unit.classid, "baseid"),
+			badList = [312, 571];
+
+		if (revive && ((unit.spectype & 0x7) || badList.indexOf(baseId) > -1 || (Config.ReviveUnstackable && getBaseStat("monstats2", baseId, "sizex") === 3))) {
+			return false;
+		}
+
+		if (!getBaseStat("monstats2", baseId, revive ? "revive" : "corpseSel")) {
+			return false;
+		}
+
+		if (getDistance(me, unit) <= 25 && !checkCollision(me, unit, 0x4) &&
+				!unit.getState(1) && // freeze
+				!unit.getState(96) && // revive
+				!unit.getState(99) && // redeemed
+				!unit.getState(104) && // nodraw
+				!unit.getState(107) && // shatter
+				!unit.getState(118) // noselect
+				) {
+			return true;
+		}
+
+		return false;
+	}
 };
