@@ -47,7 +47,7 @@ var Precast = new function () {
 			sumSwap = 0;
 
 		switch (skillId) {
-			//case 40: // Frozen Armor // PD2
+			case 40: // Cold Enchant
 			case 50: // Shiver Armor
 			case 60: // Chilling Armor
 				classid = 1;
@@ -132,6 +132,14 @@ var Precast = new function () {
 
 	this.doPrecast = function (force) {
 		var buffSummons = false;
+		
+		if (me.classid != 5){
+			if (me.getSkill(226, 1) && !me.getState(149)) {
+				Skill.cast(226, 0); // Oak Sage
+			} else if (me.getSkill(236, 1) && !me.getState(148)){
+				Skill.cast(236, 0); // Heart of the Wolverine
+			}
+		}
 
 		// Force BO 30 seconds before it expires
 		this.precastCTA(!me.getState(32) || force || (getTickCount() - this.BOTick >= this.BODuration - 30000));
@@ -166,13 +174,22 @@ var Precast = new function () {
 						this.precastSkill(50); // Shiver Armor
 					}
 				}
-
-
-				if (me.getSkill(52, 0) && (!me.getState(16) || force)) {
-					this.enchant();
+				
+				switch(Config.Enchant){
+					case "None":
+						break;
+					case "Cold":
+						if(me.getSkill(40, 0) && (!me.getState(188) || force)){
+							this.enchant(40);
+						}
+						break;
+					case "Fire":
+						if(me.getSkill(52, 0) && (!me.getState(16) || force)){
+							this.enchant(52);
+						}
+						break;	
 				}
-
-				break;
+				break;				
 			case 2: // Necromancer
 				if (me.getSkill(68, 0) && (!me.getState(14) || force)) {
 					this.precastSkill(68); // Bone Armor
@@ -203,12 +220,12 @@ var Precast = new function () {
 						var skill, maxSkeletons, maxMages, maxRevives;
 						skill = me.getSkill(70, 1);
 						maxSkeletons = skill < 4 ? skill : (Math.floor(skill / 3) + 2);
-			　　        if (maxSkeletons > 8) {
+				　　        if (maxSkeletons > 8) {
 						maxSkeletons = 8;
 						}
 						skill = me.getSkill(80, 1);
 						maxMages = skill < 4 ? skill : (Math.floor(skill / 3) + 2);
-			　　        if (maxMages > 8) {
+				　　        if (maxMages > 8) {
 						maxMages = 8;
 						}
 						
@@ -218,23 +235,23 @@ var Precast = new function () {
 						if (me.getMinionCount(4) < maxSkeletons || me.getMinionCount(5) < maxMages) {
 							this.precastSkill(83); // desecrate for raizeArmy()
 							this.summon(75);
-
+				
 							var count = me.getMinionCount(4);
 							var tick = getTickCount();
-
+				
 							while (getTickCount() - tick < 200) {
 								if (me.getMinionCount(4) > count) {
 									break;
 								}
-
+				
 								delay(10);
 							}
 						}
-
+				
 						for (i = 0; i < 3; i += 1) {
 							corpse = getUnit(1, -1, 12);
 							corpseList = [];
-
+				
 							var	range = 25;
 				
 							if (corpse) {
@@ -284,6 +301,7 @@ var Precast = new function () {
 										delay(10);
 									}
 								} else if (me.getMinionCount(6) < maxRevives) {
+									//if (me.getMinionCount(6) < maxRevives) {
 									if (this.checkCorpse(corpse, true)) {
 										if (!Skill.cast(95, 0, corpse)) {
 										//if (!this.precastSkill(95, 0, corpse)) {
@@ -307,10 +325,10 @@ var Precast = new function () {
 								}
 							}
 						}
-
+				
 					}
 				}
-
+				
 				break;
 			case 3: // Paladin
 				if (me.getSkill(117, 0) && (!me.getState(101) || force)) {
@@ -518,15 +536,30 @@ var Precast = new function () {
 			case 75: // Clay Golem
 			case 85: // Blood Golem
 			case 94: // Fire Golem
-				if(Config.GolemCount){
-					count = Config.GolemCount;
+				var mastery = me.getSkill(79, 0);
+				
+				if (mastery >= 20 ) {
+					count = 5;
 				}
+				else if (mastery >= 15) {
+					count = 4;
+				}
+				else if (mastery >= 10) {
+					count = 3;
+				}
+				else if (mastery >= 5) {
+					count = 2;
+				}	
+				else {
+					count = 1;
+				}
+				
 				minion = 3;
 				break;
 			case 221: // Raven
 				minion = 10;
 				if (me.getSkill(221, 1) <= 10) {
-					count = me.getSkill(221, 1) + 1;
+					count = me.getSkill(221, 1) + 2;
 
 				}
 				if (me.getSkill(221, 1) > 10) {
@@ -559,8 +592,10 @@ var Precast = new function () {
 
 				break;
 			case 247: // Grizzly
+				if(Config.GrizzlyCount){
+					count = Config.GrizzlyCount;
+				}
 				minion = 15;
-
 				break;
 			case 268: // Shadow Warrior
 			case 279: // Shadow Master
@@ -585,10 +620,10 @@ var Precast = new function () {
 		return !!rv;
 	};
 
-	this.enchant = function () {
+	this.enchant = function (skillId) {
 		var unit, slot = me.weaponswitch, chanted = [];
 
-		Attack.weaponSwitch(this.getBetterSlot(52));
+		Attack.weaponSwitch(this.getBetterSlot(skillId));
 
 		// Player
 		unit = getUnit(0);
@@ -596,7 +631,7 @@ var Precast = new function () {
 		if (unit) {
 			do {
 				if (!unit.dead && Misc.inMyParty(unit.name) && getDistance(me, unit) <= 40) {
-					Skill.cast(52, 0, unit);
+					Skill.cast(skillId, 0, unit);
 					chanted.push(unit.name);
 				}
 			} while (unit.getNext());
@@ -608,7 +643,7 @@ var Precast = new function () {
 		if (unit) {
 			do {
 				if (unit.getParent() && chanted.indexOf(unit.getParent().name) > -1 && getDistance(me, unit) <= 40) {
-					Skill.cast(52, 0, unit);
+					Skill.cast(skillId, 0, unit);
 				}
 			} while (unit.getNext());
 		}
@@ -667,5 +702,5 @@ var Precast = new function () {
 		}
 
 		return false;
-	}
+	}	
 };
