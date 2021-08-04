@@ -194,7 +194,9 @@ var Precast = new function () {
 				if (me.getSkill(68, 0) && (!me.getState(14) || force)) {
 					this.precastSkill(68); // Bone Armor
 				}
-
+				if (me.getSkill(236, 1) && (!me.getState(148) || force)) {
+					Skill.cast(236, 0); // Heart of Wolverine
+				}
 				switch (Config.Golem) {
 					case 0:
 					case "None":
@@ -212,7 +214,121 @@ var Precast = new function () {
 						this.summon(94);
 						break;
 				}
-
+				var i, corpse, corpseList, castTimes;
+				for (castTimes = 0; castTimes < 4; castTimes += 1) { // Loop 4 times, to summon at least 16 skells + Revives
+					if (me.getSkill(83, 0) || force) {
+						var skill, maxSkeletons, maxMages, maxRevives;
+						skill = me.getSkill(70, 1);
+						maxSkeletons = skill < 4 ? skill : (Math.floor(skill / 3) + 2);
+				　　        if (maxSkeletons > 8) {
+						maxSkeletons = 8;
+						}
+						skill = me.getSkill(80, 1);
+						maxMages = skill < 4 ? skill : (Math.floor(skill / 3) + 2);
+				　　        if (maxMages > 8) {
+						maxMages = 8;
+						}
+						
+						// maxSkeletons = 10; // Leoric wand
+						// maxMages = 10; // Leoric wand
+						maxRevives = 3; // Need to set based on the skill
+						if (me.getMinionCount(4) < maxSkeletons || me.getMinionCount(5) < maxMages) {
+							this.precastSkill(83); // desecrate for raizeArmy()
+							this.summon(75);
+				
+							var count = me.getMinionCount(4);
+							var tick = getTickCount();
+				
+							while (getTickCount() - tick < 200) {
+								if (me.getMinionCount(4) > count) {
+									break;
+								}
+				
+								delay(10);
+							}
+						}
+				
+						for (i = 0; i < 3; i += 1) {
+							corpse = getUnit(1, -1, 12);
+							corpseList = [];
+				
+							var	range = 25;
+				
+							if (corpse) {
+								do {
+									if (getDistance(me, corpse) <= range && this.checkCorpse(corpse)) { // within casting distance
+										corpseList.push(copyUnit(corpse));
+									}
+								} while (corpse.getNext());
+							}
+				
+							MainLoop:
+							while (corpseList.length > 0) {
+								corpse = corpseList.shift();
+								if (me.getMinionCount(4) < maxSkeletons) {
+				
+									if (!Skill.cast(70, 0, corpse)) {
+									//if (!this.precastSkill(70, 0, corpse)) {
+										break;
+									}
+									me.overhead("!raize Skeletons : " + me.getMinionCount(4) + "/" + maxSkeletons);
+				
+									count = me.getMinionCount(4);
+									tick = getTickCount();
+				
+									while (getTickCount() - tick < 200) {
+										if (me.getMinionCount(4) > count) {
+											break;
+										}
+				
+										delay(10);
+									}
+								} else if (me.getMinionCount(5) < maxMages) {
+									if (!Skill.cast(80, 0, corpse)) {
+									//if (!this.precastSkill(80, 0, corpse)) {
+										break;
+									}
+									me.overhead("!raize mage : " + me.getMinionCount(5) + "/" + maxMages);
+				
+									count = me.getMinionCount(5);
+									tick = getTickCount();
+				
+									while (getTickCount() - tick < 200) {
+										if (me.getMinionCount(5) > count) {
+											break;
+										}
+				
+										delay(10);
+									}
+								} else if (me.getMinionCount(6) < maxRevives) {
+									//if (me.getMinionCount(6) < maxRevives) {
+									if (this.checkCorpse(corpse, true)) {
+										if (!Skill.cast(95, 0, corpse)) {
+										//if (!this.precastSkill(95, 0, corpse)) {
+											break;
+										}
+										me.overhead("!raize : (" + corpse.name + ") " + me.getMinionCount(6) + "/" + maxRevives);
+				
+										count = me.getMinionCount(6);
+										tick = getTickCount();
+				
+										while (getTickCount() - tick < 200) {
+											if (me.getMinionCount(6) > count) {
+												break;
+											}
+				
+											delay(10);
+										}
+									}
+								} else {
+									break;
+								}
+							}
+						}
+				
+					}
+				}
+				
 				break;
 			case 3: // Paladin
 				if (me.getSkill(117, 0) && (!me.getState(101) || force)) {
@@ -536,4 +652,55 @@ var Precast = new function () {
 
 		return true;
 	};
+	this.checkCorpseNearMonster = function (monster, range) {
+		var corpse = getUnit(1, -1, 12);
+
+		if (range === undefined) { // Assume CorpseExplosion if no range specified
+			range = Math.floor((me.getSkill(Config.ExplodeCorpses, 1) + 7) / 3);
+		}
+
+		if (corpse) {
+			do {
+				if (getDistance(corpse, monster) <= range) {
+					return true;
+				}
+			} while (corpse.getNext());
+		}
+
+		return false;
+	},
+
+	this.checkCorpse = function (unit, revive) {
+		if (unit.mode !== 12) {
+			return false;
+		}
+
+		if (revive === undefined) {
+			revive = false;
+		}
+
+		var baseId = getBaseStat("monstats", unit.classid, "baseid"),
+			badList = [312, 571];
+
+		if (revive && ((unit.spectype & 0x7) || badList.indexOf(baseId) > -1 || (Config.ReviveUnstackable && getBaseStat("monstats2", baseId, "sizex") === 3))) {
+			return false;
+		}
+
+		if (!getBaseStat("monstats2", baseId, revive ? "revive" : "corpseSel")) {
+			return false;
+		}
+
+		if (getDistance(me, unit) <= 25 && !checkCollision(me, unit, 0x4) &&
+				!unit.getState(1) && // freeze
+				!unit.getState(96) && // revive
+				!unit.getState(99) && // redeemed
+				!unit.getState(104) && // nodraw
+				!unit.getState(107) && // shatter
+				!unit.getState(118) // noselect
+				) {
+			return true;
+		}
+
+		return false;
+	}	
 };
